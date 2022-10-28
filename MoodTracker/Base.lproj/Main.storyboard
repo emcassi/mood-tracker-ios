@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_72" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="FredokaOne-Regular.ttf">
+            <string>FredokaOne-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Welcome View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="MoodTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vdT-SZ-drD">
+                                <rect key="frame" x="75" y="747.66666666666663" width="280" height="34.333333333333371"/>
+                                <color key="backgroundColor" red="0.67312711479999998" green="0.48057824370000002" blue="0.84319567679999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign In">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="SignInAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p3h-sb-boz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zC0-w2-5b2">
+                                <rect key="frame" x="75" y="792" width="280" height="31"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Create Account">
+                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="SignUpAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nfp-yZ-zXa"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mood Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKf-Vk-2An">
+                                <rect key="frame" x="109" y="75" width="212" height="39"/>
+                                <fontDescription key="fontDescription" name="FredokaOne-Regular" family="Fredoka One" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" image="love" id="qml-Jc-Mz1">
+                                <rect key="frame" x="27" y="198" width="339" height="313"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zC0-w2-5b2" secondAttribute="bottom" constant="75" id="Fkg-Mj-1it"/>
+                            <constraint firstItem="vdT-SZ-drD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="75" id="Gt8-Hh-COI"/>
+                            <constraint firstItem="zC0-w2-5b2" firstAttribute="top" secondItem="vdT-SZ-drD" secondAttribute="bottom" constant="10" id="Hhr-as-fH4"/>
+                            <constraint firstItem="cKf-Vk-2An" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LCY-vk-Ql1"/>
+                            <constraint firstItem="cKf-Vk-2An" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="75" id="OOz-jR-ShI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vdT-SZ-drD" secondAttribute="trailing" constant="75" id="X1q-mP-TmC"/>
+                            <constraint firstItem="zC0-w2-5b2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aLK-HP-E8d"/>
+                            <constraint firstItem="vdT-SZ-drD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hsq-7C-ubM"/>
+                            <constraint firstItem="zC0-w2-5b2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="75" id="rZp-Jr-aZn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zC0-w2-5b2" secondAttribute="trailing" constant="75" id="zzq-Wn-15a"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="SignInButton" destination="vdT-SZ-drD" id="CjJ-p6-fGT"/>
+                        <outlet property="SignUpButton" destination="zC0-w2-5b2" id="Qxu-8D-JNC"/>
+                        <outlet property="imgView" destination="qml-Jc-Mz1" id="cIb-Qb-rRH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130.40000000000001" y="94.902548725637189"/>
+        </scene>
+        <!--NavVC-->
+        <scene sceneID="SEl-wP-Smp">
+            <objects>
+                <navigationController id="LtH-yh-Rti" customClass="NavVC" customModule="MoodTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zup-Rt-sk9">
+                        <rect key="frame" x="0.0" y="59" width="430" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pUc-ox-lI8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="794" y="-100"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="love" width="878" height="812"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
