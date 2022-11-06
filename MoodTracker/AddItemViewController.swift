@@ -8,160 +8,174 @@
 import Foundation
 import UIKit
 
-class AddItemViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class AddItemViewController : UIViewController, UITextViewDelegate {
     
-    var selectedMoods: [String] = []
+    let moods: [String]?
+    var moodsString: String = ""
     
-    // Collection View delegate methods
+    let detailsPlaceholder = "Enter any details"
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let width = collectionView.bounds.width * 0.27
-        return CGSize(width: width, height: width)
-    }
+    let scrollView: UIScrollView = {
+        let sv = UIScrollView()
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        return sv
+    }()
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mood-cell", for: indexPath) as! MoodCollectionCell
-        cell.contentView.backgroundColor = getColorForMood(section: Moods[indexPath.item]["section"] ?? "")
-        if let mood = Moods[indexPath.item]["name"] {
-            cell.nameLabel.text = mood
-            cell.checkmark.isHidden = !selectedMoods.contains(where: { $0 == mood })
-        }
-        return cell
-    }
-    
-    
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Moods.count
+    let detailsTF: UITextView = {
+        let tv = UITextView()
+        tv.isEditable = true
+        tv.textColor = .lightGray
+        tv.font = .systemFont(ofSize: 14)
+        tv.backgroundColor = .clear
+        tv.layer.borderWidth = 1
+        tv.layer.borderColor = UIColor.white.cgColor
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        return tv
+    }()
 
-    }
+    let moodsLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    } ()
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let mood = Moods[indexPath.item]["name"]{
-            if (collectionView.cellForItem(at: indexPath) as! MoodCollectionCell).check() {
-                selectedMoods.append(mood)
-            } else {
-                selectedMoods.removeAll(where: { $0 == mood})
-            }
-        }
-        print(selectedMoods)
-    }
-    
-    // viewDidLoad
+    let addButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Add", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .tintColor
+        button.layer.cornerRadius = 15
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.black.cgColor
+        button.addTarget(self, action: #selector(addPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = UIColor(r: 50, g: 66, b: 92)
-        collectionView.register(MoodCollectionCell.self, forCellWithReuseIdentifier: "mood-cell")
-    }
-    
-    // Function to get the correct background color for the mood cells based on the section theyre in
-    
-    func getColorForMood(section: String) -> UIColor {
-        switch section {
-        case "Sad":
-            return UIColor(r: 41, g: 90, b: 163)
-        case "Peaceful":
-            return UIColor(r: 36, g: 174, b: 199)
-        case "Powerful":
-            return UIColor(r: 199, g: 112, b: 36)
-        case "Joyful":
-            return UIColor(r: 199, g: 209, b: 52)
-        case "Scared":
-            return UIColor(r: 139, g: 52, b: 209)
-        case "Mad":
-            return UIColor(r: 173, g: 21, b: 21)
-        default:
-            return UIColor(gray: 117)
-        }
-    }
-}
-
-
-// Mood cell class
-
-class MoodCollectionCell: UICollectionViewCell {
         
-    // is the cell currently checked
-    var checked = false
-    
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 12, weight: .bold)
-        label.textColor = .white
-        label.backgroundColor = UIColor(gray: 120)
-        label.layer.cornerRadius = 15
-        label.layer.borderWidth = 1
-        label.layer.borderColor = UIColor.clear.cgColor
-        label.clipsToBounds = true
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    let checkmark: UIImageView = {
-       let iv = UIImageView(image: UIImage(systemName: "checkmark.circle.fill"))
-        iv.tintColor = .green
-        iv.backgroundColor = .black
-        iv.layer.cornerRadius = 8
-        iv.layer.borderWidth = 1
-        iv.layer.borderColor = UIColor.black.cgColor
-        iv.isHidden = true
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        return iv
-    }()
-
-    
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
+        view.backgroundColor = UIColor(named: "bg-color")
         
-        contentView.layer.cornerRadius = 15
-        contentView.layer.borderWidth = 1
-        contentView.clipsToBounds = true
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        let tapGR: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(screenTapped))
         
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(checkmark)
-//        checkmark.isHidden = checked
+        scrollView.addGestureRecognizer(tapGR)
+        
+        detailsTF.delegate = self
+        detailsTF.text = detailsPlaceholder
+        
+        moodsLabel.text = makeMoodsString()
+        
+        view.addSubview(scrollView)
+        scrollView.addSubview(detailsTF)
+        scrollView.addSubview(moodsLabel)
+        view.addSubview(addButton)
         setupSubviews()
     }
     
     func setupSubviews(){
-        nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-        nameLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.9).isActive = true
-        nameLabel.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.3).isActive = true
+        setupScrollView()
+        setupDetailsTF()
+        setupMoodsLabel()
+        setupAddButton()
+    }
+    
+    func setupScrollView(){
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+    
+    func setupDetailsTF() {
+        detailsTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        detailsTF.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 25).isActive = true
+        detailsTF.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        detailsTF.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
+    }
+    
+    func setupMoodsLabel(){
+        moodsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        moodsLabel.topAnchor.constraint(equalTo: detailsTF.bottomAnchor, constant: 25).isActive = true
+        moodsLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
+    }
+    
+    func setupAddButton(){
+        addButton.topAnchor.constraint(equalTo: moodsLabel.bottomAnchor, constant: 25).isActive = true
+        addButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
+        addButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
+    
+    func makeMoodsString() -> String {
+        for mood in moods! {
+            moodsString.append("\(mood), ")
+        }
         
-        checkmark.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -5).isActive = true
-        checkmark.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
-        checkmark.widthAnchor.constraint(equalToConstant: 16).isActive = true
-        checkmark.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        if moodsString.count > 0 {
+            if let index = moodsString.lastIndex(of: ",") {
+                moodsString = String(moodsString.prefix(upTo: index))
+            }
+        }
+        
+        return moodsString
+    }
+    
+    // Text view delegate methods
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.white
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = detailsPlaceholder
+            textView.textColor = UIColor.lightGray
+        }
+    }
+    
+    @objc func screenTapped(){
+        detailsTF.resignFirstResponder()
+    }
+    
+    // add button functionality
+    
+    @objc func addPressed(){
+        
+    }
+    
+    @objc func keyboardWillShow(notification: Notification){
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + keyboardSize.height)
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: Notification){
+        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height)
     }
     
     
+    // initializers
     
-    // called when the cell is selected
-    // switches bool and updates checkmark
-    
-    func check() -> Bool{
-        checked = !checked
-        checkmark.isHidden = !checked
-        return checked
+    init(moods: [String]) {
+        self.moods = moods
+        
+        super.init(nibName: nil, bundle: nil)
     }
- 
+    
     required init?(coder: NSCoder) {
-        fatalError("init(coder: ) has not been initialized")
+        fatalError("init(coder:) has not been implemented")
     }
+    
+    
     
     
 }

@@ -25,9 +25,10 @@
 		FA492A8B2917AB4200E92F9A /* NavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A8A2917AB4200E92F9A /* NavVC.swift */; };
 		FA492A8D2917AC7600E92F9A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A8C2917AC7600E92F9A /* HomeViewController.swift */; };
 		FA492A8F2917B91800E92F9A /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A8E2917B91800E92F9A /* CreateAccountViewController.swift */; };
-		FA492A912917DD2400E92F9A /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A902917DD2400E92F9A /* AddItemViewController.swift */; };
+		FA492A912917DD2400E92F9A /* SelectMoodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A902917DD2400E92F9A /* SelectMoodsViewController.swift */; };
 		FA492A942917E23100E92F9A /* Moods.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A932917E23100E92F9A /* Moods.swift */; };
 		FA492A962917F80E00E92F9A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A952917F80E00E92F9A /* Extensions.swift */; };
+		FA492A98291822FE00E92F9A /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A97291822FE00E92F9A /* AddItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,10 +68,11 @@
 		FA492A8A2917AB4200E92F9A /* NavVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavVC.swift; sourceTree = "<group>"; };
 		FA492A8C2917AC7600E92F9A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FA492A8E2917B91800E92F9A /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
-		FA492A902917DD2400E92F9A /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		FA492A902917DD2400E92F9A /* SelectMoodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMoodsViewController.swift; sourceTree = "<group>"; };
 		FA492A922917DDF600E92F9A /* Moods.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Moods.md; sourceTree = "<group>"; };
 		FA492A932917E23100E92F9A /* Moods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moods.swift; sourceTree = "<group>"; };
 		FA492A952917F80E00E92F9A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FA492A97291822FE00E92F9A /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +135,9 @@
 				FA20D5E0290B9F8F0068332C /* WelcomeViewController.swift */,
 				FA492A882917845A00E92F9A /* LoginViewController.swift */,
 				FA492A8E2917B91800E92F9A /* CreateAccountViewController.swift */,
+				FA492A97291822FE00E92F9A /* AddItemViewController.swift */,
 				FA492A922917DDF600E92F9A /* Moods.md */,
-				FA492A902917DD2400E92F9A /* AddItemViewController.swift */,
+				FA492A902917DD2400E92F9A /* SelectMoodsViewController.swift */,
 				FA492A8C2917AC7600E92F9A /* HomeViewController.swift */,
 				FA20D5E5290B9FA60068332C /* Assets.xcassets */,
 				FA20D5E7290B9FA60068332C /* LaunchScreen.storyboard */,
@@ -315,8 +318,9 @@
 				FA492A942917E23100E92F9A /* Moods.swift in Sources */,
 				FA3B566B290BBCDE00FBA068 /* CustomViews.swift in Sources */,
 				FA20D5DD290B9F8F0068332C /* AppDelegate.swift in Sources */,
+				FA492A98291822FE00E92F9A /* AddItemViewController.swift in Sources */,
 				FA492A8F2917B91800E92F9A /* CreateAccountViewController.swift in Sources */,
-				FA492A912917DD2400E92F9A /* AddItemViewController.swift in Sources */,
+				FA492A912917DD2400E92F9A /* SelectMoodsViewController.swift in Sources */,
 				FA492A892917845A00E92F9A /* LoginViewController.swift in Sources */,
 				FA492A8D2917AC7600E92F9A /* HomeViewController.swift in Sources */,
 				FA492A962917F80E00E92F9A /* Extensions.swift in Sources */,

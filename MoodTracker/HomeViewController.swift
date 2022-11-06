@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func addPressed(){
-        navigationController?.pushViewController(AddItemViewController(collectionViewLayout: UICollectionViewFlowLayout()), animated: true)
+        navigationController?.pushViewController(SelectMoodsViewController(collectionViewLayout: UICollectionViewFlowLayout()), animated: true)
     }
     
     @objc func logout(){
