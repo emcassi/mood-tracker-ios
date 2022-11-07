@@ -47,7 +47,7 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
         let button = UIButton()
         button.setTitle("Add", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .tintColor
+        button.backgroundColor = UIColor(named: "purple")
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.black.cgColor
@@ -71,7 +71,7 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
         detailsTF.delegate = self
         detailsTF.text = detailsPlaceholder
         
-        moodsLabel.text = makeMoodsString()
+        moodsLabel.text = MoodsManager().makeMoodsString(moods: moods)
         
         view.addSubview(scrollView)
         scrollView.addSubview(detailsTF)
@@ -114,19 +114,7 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
         addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
-    func makeMoodsString() -> String {
-        for mood in moods {
-            moodsString.append("\(mood.name), ")
-        }
-        
-        if moodsString.count > 0 {
-            if let index = moodsString.lastIndex(of: ",") {
-                moodsString = String(moodsString.prefix(upTo: index))
-            }
-        }
-        
-        return moodsString
-    }
+    
     
     // Text view delegate methods
     
@@ -157,7 +145,7 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
             }
             
             let preparedMoods = prepareMoodsForFirebase(moods: moods)
-            
+                        
             Firestore.firestore().collection("items").addDocument(data: [
                 "user": user.uid,
                 "moods": preparedMoods,

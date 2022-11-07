@@ -32,6 +32,9 @@
 		FA492A9A2918964400E92F9A /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A992918964400E92F9A /* Mood.swift */; };
 		FA492A9C2918A22F00E92F9A /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A9B2918A22F00E92F9A /* AuthManager.swift */; };
 		FA492A9E2918C21700E92F9A /* MoodsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A9D2918C21700E92F9A /* MoodsItem.swift */; };
+		FA492AA02919506F00E92F9A /* MoodsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A9F2919506F00E92F9A /* MoodsManager.swift */; };
+		FA492AA9291951A800E92F9A /* HomeItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492AA8291951A800E92F9A /* HomeItemCell.swift */; };
+		FA492AAB291951D900E92F9A /* MoodCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +82,9 @@
 		FA492A992918964400E92F9A /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
 		FA492A9B2918A22F00E92F9A /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		FA492A9D2918C21700E92F9A /* MoodsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodsItem.swift; sourceTree = "<group>"; };
+		FA492A9F2919506F00E92F9A /* MoodsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodsManager.swift; sourceTree = "<group>"; };
+		FA492AA8291951A800E92F9A /* HomeItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItemCell.swift; sourceTree = "<group>"; };
+		FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,27 +138,17 @@
 		FA20D5DB290B9F8F0068332C /* MoodTracker */ = {
 			isa = PBXGroup;
 			children = (
-				FA3B5660290BB0A800FBA068 /* fonts */,
-				FA20D5DC290B9F8F0068332C /* AppDelegate.swift */,
-				FA20D5DE290B9F8F0068332C /* SceneDelegate.swift */,
-				FA492A932917E23100E92F9A /* Moods.swift */,
-				FA492A952917F80E00E92F9A /* Extensions.swift */,
-				FA492A8A2917AB4200E92F9A /* NavVC.swift */,
-				FA20D5E0290B9F8F0068332C /* WelcomeViewController.swift */,
-				FA492A9D2918C21700E92F9A /* MoodsItem.swift */,
-				FA492A882917845A00E92F9A /* LoginViewController.swift */,
-				FA492A992918964400E92F9A /* Mood.swift */,
-				FA492A8E2917B91800E92F9A /* CreateAccountViewController.swift */,
-				FA492A97291822FE00E92F9A /* AddItemViewController.swift */,
-				FA492A922917DDF600E92F9A /* Moods.md */,
-				FA492A902917DD2400E92F9A /* SelectMoodsViewController.swift */,
-				FA492A8C2917AC7600E92F9A /* HomeViewController.swift */,
-				FA492A9B2918A22F00E92F9A /* AuthManager.swift */,
+				FA492AA72919518800E92F9A /* Cells */,
+				FA492AA12919509A00E92F9A /* View Controllers */,
+				FA492AA3291950CB00E92F9A /* Managers */,
+				FA492AA2291950B000E92F9A /* Helpers */,
+				FA492AA4291950F000E92F9A /* Delegates */,
 				FA20D5E5290B9FA60068332C /* Assets.xcassets */,
+				FA492A922917DDF600E92F9A /* Moods.md */,
 				FA20D5E7290B9FA60068332C /* LaunchScreen.storyboard */,
-				FA3B5661290BB48A00FBA068 /* GoogleService-Info.plist */,
 				FA20D5EA290B9FA60068332C /* Info.plist */,
-				FA3B566A290BBCDE00FBA068 /* CustomViews.swift */,
+				FA3B5661290BB48A00FBA068 /* GoogleService-Info.plist */,
+				FA3B5660290BB0A800FBA068 /* Fonts */,
 			);
 			path = MoodTracker;
 			sourceTree = "<group>";
@@ -174,12 +170,65 @@
 			path = MoodTrackerUITests;
 			sourceTree = "<group>";
 		};
-		FA3B5660290BB0A800FBA068 /* fonts */ = {
+		FA3B5660290BB0A800FBA068 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
 				FA3B565E290BB0A300FBA068 /* FredokaOne-Regular.ttf */,
 			);
-			path = fonts;
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		FA492AA12919509A00E92F9A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA492A8A2917AB4200E92F9A /* NavVC.swift */,
+				FA20D5E0290B9F8F0068332C /* WelcomeViewController.swift */,
+				FA492A882917845A00E92F9A /* LoginViewController.swift */,
+				FA492A8E2917B91800E92F9A /* CreateAccountViewController.swift */,
+				FA492A97291822FE00E92F9A /* AddItemViewController.swift */,
+				FA492A902917DD2400E92F9A /* SelectMoodsViewController.swift */,
+				FA492A8C2917AC7600E92F9A /* HomeViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FA492AA2291950B000E92F9A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FA3B566A290BBCDE00FBA068 /* CustomViews.swift */,
+				FA492A9D2918C21700E92F9A /* MoodsItem.swift */,
+				FA492A992918964400E92F9A /* Mood.swift */,
+				FA492A952917F80E00E92F9A /* Extensions.swift */,
+				FA492A932917E23100E92F9A /* Moods.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FA492AA3291950CB00E92F9A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				FA492A9F2919506F00E92F9A /* MoodsManager.swift */,
+				FA492A9B2918A22F00E92F9A /* AuthManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		FA492AA4291950F000E92F9A /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				FA20D5DC290B9F8F0068332C /* AppDelegate.swift */,
+				FA20D5DE290B9F8F0068332C /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		FA492AA72919518800E92F9A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FA492AA8291951A800E92F9A /* HomeItemCell.swift */,
+				FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,10 +377,13 @@
 				FA20D5E1290B9F8F0068332C /* WelcomeViewController.swift in Sources */,
 				FA492A942917E23100E92F9A /* Moods.swift in Sources */,
 				FA3B566B290BBCDE00FBA068 /* CustomViews.swift in Sources */,
+				FA492AA9291951A800E92F9A /* HomeItemCell.swift in Sources */,
 				FA20D5DD290B9F8F0068332C /* AppDelegate.swift in Sources */,
 				FA492A9A2918964400E92F9A /* Mood.swift in Sources */,
 				FA492A98291822FE00E92F9A /* AddItemViewController.swift in Sources */,
+				FA492AAB291951D900E92F9A /* MoodCollectionCell.swift in Sources */,
 				FA492A8F2917B91800E92F9A /* CreateAccountViewController.swift in Sources */,
+				FA492AA02919506F00E92F9A /* MoodsManager.swift in Sources */,
 				FA492A912917DD2400E92F9A /* SelectMoodsViewController.swift in Sources */,
 				FA492A892917845A00E92F9A /* LoginViewController.swift in Sources */,
 				FA492A8D2917AC7600E92F9A /* HomeViewController.swift in Sources */,
