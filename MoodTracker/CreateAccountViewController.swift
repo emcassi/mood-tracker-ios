@@ -12,6 +12,8 @@ import FirebaseFirestore
 
 class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
+    // Subviews
+    
     let scrollView: UIScrollView = {
       let sv = UIScrollView()
         sv.translatesAutoresizingMaskIntoConstraints = false
@@ -78,6 +80,8 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
+    // viewDidLoad
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -93,7 +97,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         scrollView.addSubview(passwordTF)
         scrollView.addSubview(button)
         
-        setupViews()
+        setupSubviews()
         
         nameTF.delegate = self
         emailTF.delegate = self
@@ -114,9 +118,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    // View Setup
+    // Subviews Setup
     
-    func setupViews(){
+    func setupSubviews(){
         setupScrollView()
        setupTitleLabel()
         setupNameTF()
@@ -174,18 +178,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     func createAccount(){
         if let name = nameTF.text, let email = emailTF.text, let password = passwordTF.text {
-            Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                if let error = error {
-                    print(error)
-                    return
-                }
-                Firestore.firestore().collection("users").document(result!.user.uid).setData([ "name": name ]) { error in
-                    if let error = error {
-                        print(error)
-                    }
-                    self.dismiss(animated: true)
-                }
-            }
+            (navigationController as! NavVC).authManager.createUser(vc: self, name: name, email: email, password: password)
         } else {
             print("Fields not filled")
         }

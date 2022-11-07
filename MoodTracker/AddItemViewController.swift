@@ -7,10 +7,12 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class AddItemViewController : UIViewController, UITextViewDelegate {
     
-    let moods: [String]?
+    let moods: [Mood]
     var moodsString: String = ""
     
     let detailsPlaceholder = "Enter any details"
@@ -113,8 +115,8 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
     }
     
     func makeMoodsString() -> String {
-        for mood in moods! {
-            moodsString.append("\(mood), ")
+        for mood in moods {
+            moodsString.append("\(mood.name), ")
         }
         
         if moodsString.count > 0 {
@@ -149,12 +151,45 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
     // add button functionality
     
     @objc func addPressed(){
+        if let user = Auth.auth().currentUser, var details = detailsTF.text {
+            if details == detailsPlaceholder {
+                details = ""
+            }
+            
+            let preparedMoods = prepareMoodsForFirebase(moods: moods)
+            
+            Firestore.firestore().collection("items").addDocument(data: [
+                "user": user.uid,
+                "moods": preparedMoods,
+                "details": details,
+                "timestamp": Date.now
+            ]) { error in
+                if let error = error {
+                    
+                    
+                    print(error)
+                } else {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            }
+        }
+    }
+    
+    func prepareMoodsForFirebase(moods: [Mood]) -> [[String: String]]{
+        var preparedMoods: [[String: String]] = []
+        for mood in moods {
+            preparedMoods.append([
+                "name": mood.name,
+                "section": mood.section
+            ])
+        }
         
+        return preparedMoods
     }
     
     @objc func keyboardWillShow(notification: Notification){
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + keyboardSize.height)
+            scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + keyboardSize.height / 2)
         }
     }
     
@@ -165,7 +200,7 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
     
     // initializers
     
-    init(moods: [String]) {
+    init(moods: [Mood]) {
         self.moods = moods
         
         super.init(nibName: nil, bundle: nil)

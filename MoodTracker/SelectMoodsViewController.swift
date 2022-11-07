@@ -45,11 +45,12 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mood-cell", for: indexPath) as! MoodCollectionCell
-        cell.contentView.backgroundColor = getColorForMood(section: Moods[indexPath.item]["section"] ?? "")
-        if let mood = Moods[indexPath.item]["name"] {
-            cell.nameLabel.text = mood
-            cell.checkmark.isHidden = !selectedMoods.contains(where: { $0 == mood })
-        }
+        cell.contentView.backgroundColor = getColorForMood(section: Moods[indexPath.item].section)
+        
+        let mood = Moods[indexPath.item].name
+        cell.nameLabel.text = mood
+        cell.checkmark.isHidden = !selectedMoods.contains(where: { $0 == mood })
+        
         return cell
     }
     
@@ -61,15 +62,15 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let mood = Moods[indexPath.item]["name"]{
-            if (collectionView.cellForItem(at: indexPath) as! MoodCollectionCell).check() {
-                selectedMoods.append(mood)
-            } else {
-                selectedMoods.removeAll(where: { $0 == mood})
-            }
-            
-            nextButton.isHidden = selectedMoods.count < 1
+        let mood = Moods[indexPath.item].name
+        if (collectionView.cellForItem(at: indexPath) as! MoodCollectionCell).check() {
+            selectedMoods.append(mood)
+        } else {
+            selectedMoods.removeAll(where: { $0 == mood})
         }
+            
+        nextButton.isHidden = selectedMoods.count < 1
+        
         
         print(selectedMoods)
     }
@@ -96,7 +97,16 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
     
     @objc func nextPressed(){
         if selectedMoods.count > 0 {
-            navigationController?.pushViewController(AddItemViewController(moods: selectedMoods), animated: true)
+            
+            var moods: [Mood] = []
+            
+            for mood in Moods {
+                if selectedMoods.contains(where: { $0 == mood.name }) {
+                    moods.append(mood)
+                }
+            }
+            
+            navigationController?.pushViewController(AddItemViewController(moods: moods), animated: true)
         }
     }
     

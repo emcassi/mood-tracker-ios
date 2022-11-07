@@ -29,6 +29,9 @@
 		FA492A942917E23100E92F9A /* Moods.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A932917E23100E92F9A /* Moods.swift */; };
 		FA492A962917F80E00E92F9A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A952917F80E00E92F9A /* Extensions.swift */; };
 		FA492A98291822FE00E92F9A /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A97291822FE00E92F9A /* AddItemViewController.swift */; };
+		FA492A9A2918964400E92F9A /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A992918964400E92F9A /* Mood.swift */; };
+		FA492A9C2918A22F00E92F9A /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A9B2918A22F00E92F9A /* AuthManager.swift */; };
+		FA492A9E2918C21700E92F9A /* MoodsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A9D2918C21700E92F9A /* MoodsItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		FA492A932917E23100E92F9A /* Moods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moods.swift; sourceTree = "<group>"; };
 		FA492A952917F80E00E92F9A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FA492A97291822FE00E92F9A /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		FA492A992918964400E92F9A /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
+		FA492A9B2918A22F00E92F9A /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		FA492A9D2918C21700E92F9A /* MoodsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodsItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,12 +139,15 @@
 				FA492A952917F80E00E92F9A /* Extensions.swift */,
 				FA492A8A2917AB4200E92F9A /* NavVC.swift */,
 				FA20D5E0290B9F8F0068332C /* WelcomeViewController.swift */,
+				FA492A9D2918C21700E92F9A /* MoodsItem.swift */,
 				FA492A882917845A00E92F9A /* LoginViewController.swift */,
+				FA492A992918964400E92F9A /* Mood.swift */,
 				FA492A8E2917B91800E92F9A /* CreateAccountViewController.swift */,
 				FA492A97291822FE00E92F9A /* AddItemViewController.swift */,
 				FA492A922917DDF600E92F9A /* Moods.md */,
 				FA492A902917DD2400E92F9A /* SelectMoodsViewController.swift */,
 				FA492A8C2917AC7600E92F9A /* HomeViewController.swift */,
+				FA492A9B2918A22F00E92F9A /* AuthManager.swift */,
 				FA20D5E5290B9FA60068332C /* Assets.xcassets */,
 				FA20D5E7290B9FA60068332C /* LaunchScreen.storyboard */,
 				FA3B5661290BB48A00FBA068 /* GoogleService-Info.plist */,
@@ -314,10 +323,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA492A8B2917AB4200E92F9A /* NavVC.swift in Sources */,
+				FA492A9E2918C21700E92F9A /* MoodsItem.swift in Sources */,
+				FA492A9C2918A22F00E92F9A /* AuthManager.swift in Sources */,
 				FA20D5E1290B9F8F0068332C /* WelcomeViewController.swift in Sources */,
 				FA492A942917E23100E92F9A /* Moods.swift in Sources */,
 				FA3B566B290BBCDE00FBA068 /* CustomViews.swift in Sources */,
 				FA20D5DD290B9F8F0068332C /* AppDelegate.swift in Sources */,
+				FA492A9A2918964400E92F9A /* Mood.swift in Sources */,
 				FA492A98291822FE00E92F9A /* AddItemViewController.swift in Sources */,
 				FA492A8F2917B91800E92F9A /* CreateAccountViewController.swift in Sources */,
 				FA492A912917DD2400E92F9A /* SelectMoodsViewController.swift in Sources */,

@@ -11,19 +11,11 @@ import FirebaseAuth
 
 class NavVC: UINavigationController {
    
-    var currentUser: User?
+    let authManager = AuthManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        Auth.auth().addStateDidChangeListener { auth, user in
-            if let user = user {
-                self.popToRootViewController(animated: false)
-            } else {
-                self.pushViewController(WelcomeViewController(), animated: true)
-            }
-        }
+        authManager.setListener(navVC: self)
     }
     
 }
