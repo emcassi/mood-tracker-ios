@@ -12,37 +12,49 @@ import FirebaseFirestore
 
 class HomeViewController: UITableViewController {
     
-    var items: [MoodsItem] = []
     var grouped: [Date: [MoodsItem]]?
-    
+    var groupedKeys: [Date]?
+    let df = DateFormatter()
+    let calendar = Calendar(identifier: .gregorian)
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "moods-item", for: indexPath) as! HomeItemCell
         
-        if let grouped = grouped {
-            let keys = Array(grouped.keys)
+        if let grouped = grouped, let groupedKeys = groupedKeys {
             
-           
+            if let itemsForDay = grouped.first(where: { $0.key == groupedKeys[indexPath.section] }) {
+                let itemForCell = itemsForDay.value[indexPath.row]
+                let moodsString = MoodsManager().makeMoodsString(moods: itemForCell.moods )
+                
+                df.dateFormat = "hh:mm"
+                let itemTime = df.string(from: itemForCell.timestamp)
+                        
+                cell.timeLabel.text = itemTime
+                cell.moodsLabel.text = moodsString
+                cell.detailsLabel.text = itemForCell.details
+                
+                print(indexPath.row)
+            } else {
+                print("error in cell")
+            }
+        } else {
+            print("error gropued")
         }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if let grouped = grouped {
-            let keys = Array(grouped.keys)
-            
-            if let itemsByDate = grouped.first(where: { $0.key == keys[section] }) {
+        if let grouped = grouped, let groupedKeys = groupedKeys {
+            if let itemsByDate = grouped.first(where: { $0.key == groupedKeys[section] }) {
                 
-                let calendar = Calendar(identifier: .gregorian)
                 
                 if calendar.isDate(itemsByDate.key, inSameDayAs: Date.now) {
                     return "Today"
                 }
                 
-                let df = DateFormatter()
-                df.timeZone = calendar.timeZone
                 df.dateFormat = "EEEE, MMM d, yyyy"
-
+                
                 return df.string(from: itemsByDate.key)
             }
         }
@@ -68,11 +80,9 @@ class HomeViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if let grouped = grouped {
-            let keys = Array(grouped.keys)
-            
-            if let numItemsByDate = grouped.first(where: { $0.key == keys[section] })?.value.count {
-                print(numItemsByDate)
+        if let grouped = grouped, let groupedKeys = groupedKeys {
+                        
+            if let numItemsByDate = grouped.first(where: { $0.key == groupedKeys[section] })?.value.count {
                 return numItemsByDate
             }
         }
@@ -84,6 +94,7 @@ class HomeViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         getItems()
     }
     
@@ -93,6 +104,8 @@ class HomeViewController: UITableViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(settingsPressed))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addPressed))
+
+        df.timeZone = calendar.timeZone
         
         view.backgroundColor = UIColor(r: 50, g: 66, b: 92)
         
@@ -102,7 +115,7 @@ class HomeViewController: UITableViewController {
     func getItems(){
         if let navVC = navigationController as? NavVC {
 
-            self.items = []
+            var items: [MoodsItem] = []
             
             if let user = Auth.auth().currentUser {
                 Firestore.firestore().collection("items").whereField("user", isEqualTo: user.uid).order(by: "timestamp", descending: true).getDocuments() { snapshot, error in
@@ -127,21 +140,29 @@ class HomeViewController: UITableViewController {
                                 }
                                 
                                 if let details = data["details"] as? String, let timestamp = data["timestamp"] as? Timestamp {
-                                   let date = timestamp.dateValue()
+                                    let date = timestamp.dateValue()
                                     let item = MoodsItem(moods: itemMoods, details: details, timestamp: date)
-                                    self.items.append(item)
+                                    items.append(item)
                                 } else {
                                     print("error with deets or dates")
                                 }
                             }
-                        
+                            
                         }
                         
                         let calendar = Calendar(identifier: .gregorian)
                         
-                        let grouped = Dictionary(grouping: self.items.sorted(by: { ($0.timestamp ?? Date.distantPast) < ( $1.timestamp ?? Date.distantPast ) }), by: { calendar.startOfDay(for: $0.timestamp ?? Date.distantPast) })
+                        var grouped = Dictionary(grouping: items.sorted(by: { ($0.timestamp ) < ( $1.timestamp ) }), by: { calendar.startOfDay(for: $0.timestamp ) })
+                        
                         self.grouped = grouped
                         
+                        let i = 0
+                        
+                        let items: [Any]
+                        
+                        
+                        self.groupedKeys = Array(grouped.keys).sorted(by: { $0 > $1 })
+                          
                         self.tableView.reloadData()
                     }
                 }

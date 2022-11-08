@@ -12,6 +12,15 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
     
     var selectedMoods: [String] = []
     
+    let topLabel: UILabel = {
+        let label = UILabel()
+        label.text = "How are you feeling?"
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     let nextButton: UIButton = {
         let button = UIButton()
         button.setTitle("Next", for: .normal)

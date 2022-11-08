@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,16 +13,55 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="emcassi" translatesAutoresizingMaskIntoConstraints="NO" id="CEr-VD-Vcl">
+                                <rect key="frame" x="153.66666666666666" y="717" width="86" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="A4V-If-Dxz"/>
+                                    <constraint firstAttribute="width" constant="86" id="VjB-Qw-wuS"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="logo-alpha" translatesAutoresizingMaskIntoConstraints="NO" id="35R-Dm-OgY">
+                                <rect key="frame" x="25" y="301" width="343" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="SQo-lz-RRH"/>
+                                    <constraint firstAttribute="width" constant="250" id="yeN-rB-bCv"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" text="Mood Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBp-re-eB6">
+                                <rect key="frame" x="77" y="569" width="238" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" name="purple"/>
+                        <constraints>
+                            <constraint firstItem="xBp-re-eB6" firstAttribute="top" secondItem="35R-Dm-OgY" secondAttribute="bottom" constant="10" id="0yB-0D-lLT"/>
+                            <constraint firstItem="CEr-VD-Vcl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9nB-Sx-jHa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CEr-VD-Vcl" secondAttribute="bottom" constant="15" id="C78-8t-MaE"/>
+                            <constraint firstItem="35R-Dm-OgY" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="F0V-Cy-5wq"/>
+                            <constraint firstAttribute="trailing" secondItem="35R-Dm-OgY" secondAttribute="trailing" constant="75" id="IgY-Zv-IBW"/>
+                            <constraint firstItem="35R-Dm-OgY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ekH-ZW-Qoy"/>
+                            <constraint firstAttribute="trailing" secondItem="35R-Dm-OgY" secondAttribute="trailing" constant="25" id="gaJ-kJ-Yp0"/>
+                            <constraint firstItem="xBp-re-eB6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="oj3-qg-02P"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="emcassi" width="946" height="946"/>
+        <image name="logo-alpha" width="718" height="716"/>
+        <namedColor name="purple">
+            <color red="0.56470588235294117" green="0.13296708460000001" blue="0.45165985819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
