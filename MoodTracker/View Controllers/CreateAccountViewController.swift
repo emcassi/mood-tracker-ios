@@ -30,20 +30,6 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         return label
     }()
     
-    let nameTF: UITextField = {
-       let tf = UITextField()
-        tf.placeholder = "Name"
-        tf.textContentType = .name
-        tf.layer.cornerRadius = 15
-        tf.layer.borderColor = UIColor.gray.cgColor
-        tf.layer.borderWidth = 1
-        tf.textColor = .black
-        tf.setLeftPaddingPoints(10)
-        tf.setRightPaddingPoints(10)
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        return tf
-    }()
-    
     let emailTF: UITextField = {
        let tf = UITextField()
         tf.placeholder = "Email"
@@ -96,14 +82,12 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(scrollView)
     
         scrollView.addSubview(titleLabel)
-        scrollView.addSubview(nameTF)
         scrollView.addSubview(emailTF)
         scrollView.addSubview(passwordTF)
         scrollView.addSubview(button)
         
         setupSubviews()
         
-        nameTF.delegate = self
         emailTF.delegate = self
         passwordTF.delegate = self
     }
@@ -112,9 +96,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if textField == nameTF {
-            emailTF.becomeFirstResponder()
-        } else if textField == emailTF {
+        if textField == emailTF {
             passwordTF.becomeFirstResponder()
         } else if textField == passwordTF {
             createAccount()
@@ -127,7 +109,6 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     func setupSubviews(){
         setupScrollView()
        setupTitleLabel()
-        setupNameTF()
         setupEmailTF()
         setupPasswordTF()
         setupButton()
@@ -145,17 +126,10 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         titleLabel.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 75).isActive = true
     }
     
-    func setupNameTF(){
-        nameTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        nameTF.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
-        nameTF.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 75).isActive = true
-        nameTF.heightAnchor.constraint(equalToConstant: 35).isActive = true
-    }
-    
     func setupEmailTF(){
         emailTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        emailTF.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 75).isActive = true
         emailTF.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
-        emailTF.topAnchor.constraint(equalTo: nameTF.bottomAnchor, constant: 10).isActive = true
         emailTF.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     
@@ -181,8 +155,8 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     }
     
     func createAccount(){
-        if let name = nameTF.text, let email = emailTF.text, let password = passwordTF.text {
-            AuthManager().createUser(vc: self, name: name, email: email, password: password)
+        if let email = emailTF.text, let password = passwordTF.text {
+            AuthManager().createUser(vc: self, email: email, password: password)
         } else {
             print("Fields not filled")
         }

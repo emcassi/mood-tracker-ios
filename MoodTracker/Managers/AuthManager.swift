@@ -24,18 +24,14 @@ class AuthManager {
         }
     }
     
-    func createUser(vc: UIViewController, name: String, email: String, password: String){
+    func createUser(vc: UIViewController, email: String, password: String){
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 print(error)
                 return
             }
-            Firestore.firestore().collection("users").document(result!.user.uid).setData([ "name": name ]) { error in
-                if let error = error {
-                    print(error)
-                }
-                vc.dismiss(animated: true)
-            }
+
+            vc.dismiss(animated: true)
         }
     }
     
