@@ -47,4 +47,23 @@ class AuthManager {
         }
     }
     
+    func deleteAccount() {
+        if let user = Auth.auth().currentUser {
+            Firestore.firestore().collection("users").document(user.uid).delete() { error in
+                if let error = error {
+                    print(error)
+                }
+                
+            }
+            
+            user.delete() { error in
+                if let error = error {
+                    print(error)
+                } else {
+                    print("Success")
+                }
+            }
+        }
+    }
+    
 }

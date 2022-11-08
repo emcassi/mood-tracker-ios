@@ -146,7 +146,7 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
             
             let preparedMoods = prepareMoodsForFirebase(moods: moods)
                         
-            Firestore.firestore().collection("items").addDocument(data: [
+            Firestore.firestore().collection("users").document(user.uid).collection("items").addDocument(data: [
                 "user": user.uid,
                 "moods": preparedMoods,
                 "details": details,

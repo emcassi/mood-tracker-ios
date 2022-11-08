@@ -10,9 +10,9 @@ import UIKit
 import FirebaseAuth
 
 class NavVC: UINavigationController {
-   
-    let authManager = AuthManager()
     
+    let authManager = AuthManager()
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         authManager.setListener(navVC: self)

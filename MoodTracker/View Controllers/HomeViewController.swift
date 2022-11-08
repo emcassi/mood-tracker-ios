@@ -64,7 +64,7 @@ class HomeViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
-            headerView.contentView.backgroundColor = UIColor(named: "lighter")
+            headerView.contentView.backgroundColor = UIColor(named: "bg-color")
             headerView.backgroundView?.backgroundColor = .black
             headerView.textLabel?.textColor = .white
         }
@@ -118,7 +118,7 @@ class HomeViewController: UITableViewController {
             var items: [MoodsItem] = []
             
             if let user = Auth.auth().currentUser {
-                Firestore.firestore().collection("items").whereField("user", isEqualTo: user.uid).order(by: "timestamp", descending: true).getDocuments() { snapshot, error in
+                Firestore.firestore().collection("users").document(user.uid).collection("items").whereField("user", isEqualTo: user.uid).order(by: "timestamp", descending: true).getDocuments() { snapshot, error in
                     if let error = error {
                         print(error)
                     } else if let snapshot = snapshot {
@@ -175,7 +175,7 @@ class HomeViewController: UITableViewController {
     }
     
     @objc func settingsPressed(){
-        
+        navigationController?.pushViewController(SettingsViewController(), animated: true)
     }
     
     @objc func addPressed(){
