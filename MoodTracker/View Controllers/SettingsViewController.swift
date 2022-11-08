@@ -10,21 +10,6 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    
-    let aboutButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("About", for: .normal)
-        button.backgroundColor = .clear
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.white.cgColor
-        button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(aboutPressed), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    
     let privacyButton: UIButton = {
         let button = UIButton()
         button.setTitle("Privacy Policy", for: .normal)
@@ -71,7 +56,6 @@ class SettingsViewController: UIViewController {
         view.backgroundColor = UIColor(named: "bg-color")
         
         
-        view.addSubview(aboutButton)
         view.addSubview(privacyButton)
         view.addSubview(signOutButton)
         view.addSubview(deleteAccountButton)
@@ -80,21 +64,14 @@ class SettingsViewController: UIViewController {
     }
     
     func setupSubviews(){
-        setupAboutButton()
         setupPrivacyButton()
         setupSignoutButton()
         setupDeleteAccountButton()
     }
     
-    func setupAboutButton(){
-        aboutButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 75).isActive = true
-        aboutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        aboutButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
-        aboutButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-    }
-    
     func setupPrivacyButton(){
-        privacyButton.topAnchor.constraint(equalTo: aboutButton.bottomAnchor, constant: 10).isActive = true
+
+        privacyButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 75).isActive = true
         privacyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         privacyButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
         privacyButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
@@ -113,10 +90,7 @@ class SettingsViewController: UIViewController {
         deleteAccountButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
         deleteAccountButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
-    
-    @objc func aboutPressed(){
-        
-    }
+
     
     @objc func privacyPressed(){
         if let url = URL(string: "http://emcassi.com/apps/mood-tracker/privacy-policy.html") {

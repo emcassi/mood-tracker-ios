@@ -17,6 +17,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let label = UILabel()
         label.text = "Sign in"
         label.font = .systemFont(ofSize: 48)
+        label.textColor = .black
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -29,6 +30,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         tf.layer.cornerRadius = 15
         tf.layer.borderColor = UIColor.gray.cgColor
         tf.layer.borderWidth = 1
+        tf.textColor = .black
         tf.setLeftPaddingPoints(10)
         tf.setRightPaddingPoints(10)
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -43,6 +45,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         tf.layer.cornerRadius = 15
         tf.layer.borderColor = UIColor.gray.cgColor
         tf.layer.borderWidth = 1
+        tf.textColor = .black
         tf.setLeftPaddingPoints(10)
         tf.setRightPaddingPoints(10)
         tf.translatesAutoresizingMaskIntoConstraints = false

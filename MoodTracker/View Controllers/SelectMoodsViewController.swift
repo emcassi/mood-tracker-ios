@@ -86,6 +86,8 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "How do you feel?"
         collectionView.backgroundColor = UIColor(r: 50, g: 66, b: 92)
         collectionView.register(MoodCollectionCell.self, forCellWithReuseIdentifier: "mood-cell")
         

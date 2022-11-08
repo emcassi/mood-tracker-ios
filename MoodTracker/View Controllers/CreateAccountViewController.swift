@@ -24,6 +24,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         let label = UILabel()
         label.text = "Create Account"
         label.font = .systemFont(ofSize: 48)
+        label.textColor = .black
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -36,6 +37,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         tf.layer.cornerRadius = 15
         tf.layer.borderColor = UIColor.gray.cgColor
         tf.layer.borderWidth = 1
+        tf.textColor = .black
         tf.setLeftPaddingPoints(10)
         tf.setRightPaddingPoints(10)
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -49,6 +51,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         tf.layer.cornerRadius = 15
         tf.layer.borderColor = UIColor.gray.cgColor
         tf.layer.borderWidth = 1
+        tf.textColor = .black
         tf.setLeftPaddingPoints(10)
         tf.setRightPaddingPoints(10)
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -63,6 +66,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         tf.layer.cornerRadius = 15
         tf.layer.borderColor = UIColor.gray.cgColor
         tf.layer.borderWidth = 1
+        tf.textColor = .black
         tf.setLeftPaddingPoints(10)
         tf.setRightPaddingPoints(10)
         tf.translatesAutoresizingMaskIntoConstraints = false

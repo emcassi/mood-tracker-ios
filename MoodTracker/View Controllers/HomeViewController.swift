@@ -29,12 +29,11 @@ class HomeViewController: UITableViewController {
                 
                 df.dateFormat = "hh:mm"
                 let itemTime = df.string(from: itemForCell.timestamp)
-                        
-                cell.timeLabel.text = itemTime
-                cell.moodsLabel.text = moodsString
-                cell.detailsLabel.text = itemForCell.details
                 
-                print(indexPath.row)
+                cell.updateCellWith(row: itemForCell.moods)
+                
+                cell.timeLabel.text = itemTime
+                cell.detailsLabel.text = itemForCell.details
             } else {
                 print("error in cell")
             }
@@ -103,6 +102,7 @@ class HomeViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(settingsPressed))
+        navigationItem.title = "Mood Tracker"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addPressed))
 
         df.timeZone = calendar.timeZone
@@ -122,9 +122,6 @@ class HomeViewController: UITableViewController {
                     if let error = error {
                         print(error)
                     } else if let snapshot = snapshot {
-                        print(snapshot.count)
-                        
-                        
                         
                         for document in snapshot.documents {
                             let data = document.data()

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FA1630F6291A1CE00092721A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1630F5291A1CE00092721A /* SettingsViewController.swift */; };
 		FA1630F8291A351B0092721A /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1630F7291A351B0092721A /* DeleteAccountViewController.swift */; };
+		FA1630FA291A58FC0092721A /* HomeMoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1630F9291A58FC0092721A /* HomeMoodCell.swift */; };
 		FA20D5DD290B9F8F0068332C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20D5DC290B9F8F0068332C /* AppDelegate.swift */; };
 		FA20D5DF290B9F8F0068332C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20D5DE290B9F8F0068332C /* SceneDelegate.swift */; };
 		FA20D5E1290B9F8F0068332C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20D5E0290B9F8F0068332C /* WelcomeViewController.swift */; };
@@ -59,6 +60,7 @@
 /* Begin PBXFileReference section */
 		FA1630F5291A1CE00092721A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FA1630F7291A351B0092721A /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
+		FA1630F9291A58FC0092721A /* HomeMoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMoodCell.swift; sourceTree = "<group>"; };
 		FA20D5D9290B9F8F0068332C /* MoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA20D5DC290B9F8F0068332C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA20D5DE290B9F8F0068332C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				FA492AA8291951A800E92F9A /* HomeItemCell.swift */,
 				FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */,
+				FA1630F9291A58FC0092721A /* HomeMoodCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				FA20D5DD290B9F8F0068332C /* AppDelegate.swift in Sources */,
 				FA492A9A2918964400E92F9A /* Mood.swift in Sources */,
 				FA492A98291822FE00E92F9A /* AddItemViewController.swift in Sources */,
+				FA1630FA291A58FC0092721A /* HomeMoodCell.swift in Sources */,
 				FA492AAB291951D900E92F9A /* MoodCollectionCell.swift in Sources */,
 				FA492A8F2917B91800E92F9A /* CreateAccountViewController.swift in Sources */,
 				FA492AA02919506F00E92F9A /* MoodsManager.swift in Sources */,
