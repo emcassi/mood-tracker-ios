@@ -18,10 +18,6 @@ class MoodCollectionCell: UICollectionViewCell {
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 12, weight: .bold)
         label.textColor = .white
-        label.backgroundColor = UIColor(gray: 120)
-        label.layer.cornerRadius = 15
-        label.layer.borderWidth = 1
-        label.layer.borderColor = UIColor.clear.cgColor
         label.clipsToBounds = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -45,6 +41,7 @@ class MoodCollectionCell: UICollectionViewCell {
         
         contentView.layer.cornerRadius = 15
         contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor.white.cgColor
         contentView.clipsToBounds = true
         
         

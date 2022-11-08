@@ -122,17 +122,17 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
     func getColorForMood(section: String) -> UIColor {
         switch section {
         case "Sad":
-            return UIColor(r: 41, g: 90, b: 163)
+            return UIColor(named: "mood-blue")!
         case "Peaceful":
-            return UIColor(r: 36, g: 174, b: 199)
+            return UIColor(named: "mood-aqua")!
         case "Powerful":
-            return UIColor(r: 199, g: 112, b: 36)
+            return UIColor(named: "mood-yellow")!
         case "Joyful":
-            return UIColor(r: 199, g: 209, b: 52)
+            return UIColor(named: "mood-orange")!
         case "Scared":
-            return UIColor(r: 139, g: 52, b: 209)
+            return UIColor(named: "mood-purple")!
         case "Mad":
-            return UIColor(r: 173, g: 21, b: 21)
+            return UIColor(named: "mood-red")!
         default:
             return UIColor(gray: 117)
         }
