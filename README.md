@@ -20,4 +20,4 @@ Keep track of how you've been feeling with a nice UI with embedded UICollectionV
 ![View of the home screen](http://www.emcassi.com/apps/mood-tracker/screenshots/week.PNG)
 
 **Hope you like it!**
-** -*Alex* **
+-*Alex*
