@@ -78,64 +78,55 @@ class HomeViewController: UITableViewController {
     }
     
     func getItems(){
-        if let navVC = navigationController as? NavVC {
 
-            var items: [MoodsItem] = []
-            
-            if let user = Auth.auth().currentUser {
-                Firestore.firestore().collection("users").document(user.uid).collection("items").whereField("user", isEqualTo: user.uid).order(by: "timestamp", descending: true).getDocuments() { snapshot, error in
-                    if let error = error {
-                        print(error)
-                    } else if let snapshot = snapshot {
+        var items: [MoodsItem] = []
+        
+        if let user = Auth.auth().currentUser {
+            Firestore.firestore().collection("users").document(user.uid).collection("items").whereField("user", isEqualTo: user.uid).order(by: "timestamp", descending: true).getDocuments() { snapshot, error in
+                if let error = error {
+                    print(error)
+                } else if let snapshot = snapshot {
+                    
+                    for document in snapshot.documents {
+                        let data = document.data()
                         
-                        for document in snapshot.documents {
-                            let data = document.data()
+                        if let moodsDict = data["moods"] as? [[String: String]] {
                             
-                            if let moodsDict = data["moods"] as? [[String: String]] {
-                                
-                                var itemMoods: [Mood] = []
-                                
-                                for moodDict in moodsDict {
-                                    if let name = moodDict["name"], let section = moodDict["section"] {
-                                        itemMoods.append(Mood(name: name, section: section))
-                                    }
-                                }
-                                
-                                if let details = data["details"] as? String, let timestamp = data["timestamp"] as? Timestamp {
-                                    let date = timestamp.dateValue()
-                                    let item = MoodsItem(moods: itemMoods, details: details, timestamp: date)
-                                    items.append(item)
-                                } else {
-                                    print("error with deets or dates")
+                            var itemMoods: [Mood] = []
+                            
+                            for moodDict in moodsDict {
+                                if let name = moodDict["name"], let section = moodDict["section"] {
+                                    itemMoods.append(Mood(name: name, section: section))
                                 }
                             }
                             
+                            if let details = data["details"] as? String, let timestamp = data["timestamp"] as? Timestamp {
+                                let date = timestamp.dateValue()
+                                let item = MoodsItem(moods: itemMoods, details: details, timestamp: date)
+                                items.append(item)
+                            } else {
+                                print("error with deets or dates")
+                            }
                         }
                         
-                        let calendar = Calendar(identifier: .gregorian)
-                        
-                        var grouped = Dictionary(grouping: items.sorted(by: { ($0.timestamp ) < ( $1.timestamp ) }), by: { calendar.startOfDay(for: $0.timestamp ) })
-                        
-                        self.grouped = grouped
-                        
-                        self.emptyLabel.isHidden = grouped.count > 0
-                        self.emptyButton.isHidden = grouped.count > 0
-                        
-                        let i = 0
-                        
-                        let items: [Any]
-                        
-                        
-                        self.groupedKeys = Array(grouped.keys).sorted(by: { $0 > $1 })
-                          
-                        self.tableView.reloadData()
                     }
+                    
+                    let calendar = Calendar(identifier: .gregorian)
+                    
+                    var grouped = Dictionary(grouping: items.sorted(by: { ($0.timestamp ) < ( $1.timestamp ) }), by: { calendar.startOfDay(for: $0.timestamp ) })
+                    
+                    self.grouped = grouped
+                    
+                    self.emptyLabel.isHidden = grouped.count > 0
+                    self.emptyButton.isHidden = grouped.count > 0
+                    
+                    self.groupedKeys = Array(grouped.keys).sorted(by: { $0 > $1 })
+                    
+                    self.tableView.reloadData()
                 }
-            } else {
-                print("No user signed in")
             }
         } else {
-            print("cant cast to navvc")
+            print("No user signed in")
         }
     }
     
@@ -157,7 +148,9 @@ class HomeViewController: UITableViewController {
                 let itemForCell = itemsForDay.value[indexPath.row]
                 let moodsString = MoodsManager().makeMoodsString(moods: itemForCell.moods )
                 
-                df.dateFormat = "hh:mm"
+                df.dateFormat = "h:mm a"
+                df.amSymbol = "AM"
+                df.pmSymbol = "PM"
                 let itemTime = df.string(from: itemForCell.timestamp)
                 
                 cell.updateCellWith(row: itemForCell.moods)

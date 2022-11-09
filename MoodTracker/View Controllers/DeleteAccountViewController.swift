@@ -55,7 +55,7 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate {
         let button = UIButton()
         button.setTitle("Delete Account", for: .normal)
         button.layer.cornerRadius = 15
-        button.backgroundColor = UIColor.tintColor
+        button.backgroundColor = UIColor(named: "purple")
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(deleteAccountPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false

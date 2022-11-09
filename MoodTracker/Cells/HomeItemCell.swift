@@ -103,8 +103,8 @@ class HomeItemCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
 //        moodsLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
         
         moodsView.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 10).isActive = true
-        moodsView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
-        moodsView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20).isActive = true
+        moodsView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
+        moodsView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
         moodsView.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
         detailsLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true

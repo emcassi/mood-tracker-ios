@@ -52,11 +52,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return tf
     }()
     
+    let errorLabel: UILabel = {
+        let label = UILabel()
+        label.text = ""
+        label.textColor = .red
+        label.font = .systemFont(ofSize: 10, weight: .bold)
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     let button: UIButton = {
         let button = UIButton()
         button.setTitle("Sign in", for: .normal)
         button.layer.cornerRadius = 15
-        button.backgroundColor = UIColor.tintColor
+        button.backgroundColor = UIColor(named: "purple")
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(signInPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -81,11 +91,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let tg = UITapGestureRecognizer(target: self, action: #selector(tappedScreen))
+        scrollView.addGestureRecognizer(tg)
+
 
         view.addSubview(scrollView)
         scrollView.addSubview(titleLabel)
         scrollView.addSubview(emailTF)
         scrollView.addSubview(passwordTF)
+        scrollView.addSubview(errorLabel )
         scrollView.addSubview(button)
         setupViews()
         
@@ -94,6 +109,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     // Text field delegate methods
+    
+    @objc func tappedScreen(){
+        resignFirstResponder()
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == emailTF {
@@ -111,6 +130,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
        setupTitleLabel()
         setupEmailTF()
         setupPasswordTF()
+        setupErrorLabel()
         setupButton()
     }
     
@@ -133,6 +153,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailTF.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     
+    
     func setupPasswordTF(){
         passwordTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         passwordTF.widthAnchor.constraint(equalTo: emailTF.widthAnchor).isActive = true
@@ -140,11 +161,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTF.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     
+    func setupErrorLabel(){
+        errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        errorLabel.widthAnchor.constraint(equalTo: passwordTF.widthAnchor).isActive = true
+        errorLabel.topAnchor.constraint(equalTo: passwordTF.bottomAnchor, constant: 5).isActive = true
+        errorLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
+    }
+    
     func setupButton(){
         button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        button.topAnchor.constraint(equalTo: passwordTF.bottomAnchor, constant: 75).isActive = true
+        button.topAnchor.constraint(equalTo: errorLabel.bottomAnchor, constant: 35).isActive = true
         button.widthAnchor.constraint(equalTo: passwordTF.widthAnchor, multiplier: 0.8).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
     
     // Sign in button functionality
@@ -156,7 +184,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func signIn(){
         if let email = emailTF.text, let password = passwordTF.text {
             Auth.auth().signIn(withEmail: email, password: password) { result, error in
-                self.dismiss(animated: true) 
+                if let error = error {
+                    if error.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {
+                        self.errorLabel.text = "No accounts found for this email"
+                    } else if error.localizedDescription == "The password is invalid or the user does not have a password." {
+                        self.errorLabel.text = "Incorrect email or password"
+                    } else {
+                        self.errorLabel.text = error.localizedDescription
+                        print(error.localizedDescription)
+                    }
+                } else {
+                    self.dismiss(animated: true)
+                }
             }
         }
     }

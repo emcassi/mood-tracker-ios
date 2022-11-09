@@ -32,7 +32,7 @@ class WelcomeViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Sign in", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .tintColor
+        button.backgroundColor = UIColor(named: "purple")
         button.layer.cornerRadius = 15
         button.addTarget(self, action: #selector(signInPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -42,11 +42,11 @@ class WelcomeViewController: UIViewController {
     let createAcctButton: UIButton = {
         let button = UIButton()
         button.setTitle("Create Account", for: .normal)
-        button.setTitleColor(UIColor.tintColor, for: .normal)
+        button.setTitleColor(UIColor(named: "purple"), for: .normal)
         button.backgroundColor = .white
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.tintColor.cgColor
+        button.layer.borderColor = UIColor(named: "purple")!.cgColor
         button.addTarget(self, action: #selector(createAcctPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
