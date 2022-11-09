@@ -1,5 +1,7 @@
 # Mood Tracker
 
+- Currently awaiting review from Apple. Will post link when it's on the App Store
+
 Mood tracker is an app that allows you to easily log how you're feeling throughout the day.
 
 It is a native iOS app written in **Swift** using **UIKit**. 
