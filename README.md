@@ -1,6 +1,6 @@
 # Mood Tracker
 
-- Currently awaiting review from Apple. Will post link when it's on the App Store
+[Download it here](https://apps.apple.com/us/app/mood-tracker-log-and-journal/id6444286152)
 
 Mood tracker is an app that allows you to easily log how you're feeling throughout the day.
 
