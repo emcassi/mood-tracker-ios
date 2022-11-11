@@ -83,7 +83,7 @@ class HomeItemCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
     }()
-    
+      
     let detailsLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)

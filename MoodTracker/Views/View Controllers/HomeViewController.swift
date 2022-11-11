@@ -54,11 +54,10 @@ class HomeViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(settingsPressed))
         navigationItem.title = "Mood Tracker"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addPressed))
-
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addPressed)), UIBarButtonItem(image: UIImage(systemName: "heart.circle.fill"), style: .plain, target: self, action: #selector(affirmationPressed))]
         df.timeZone = calendar.timeZone
         
         view.backgroundColor = UIColor(r: 50, g: 66, b: 92)
-        
         view.addSubview(emptyLabel)
         view.addSubview(emptyButton)
         setupSubviews()
@@ -67,6 +66,7 @@ class HomeViewController: UITableViewController {
     }
     
     func setupSubviews(){
+        
         emptyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         emptyLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
         emptyLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
@@ -132,6 +132,10 @@ class HomeViewController: UITableViewController {
     
     @objc func settingsPressed(){
         navigationController?.pushViewController(SettingsViewController(), animated: true)
+    }
+    
+    @objc func affirmationPressed(){
+        navigationController?.pushViewController(AffirmationsViewController(), animated: true)
     }
     
     @objc func addPressed(){

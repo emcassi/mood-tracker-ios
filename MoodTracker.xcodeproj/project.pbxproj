@@ -30,7 +30,7 @@
 		FA492A8F2917B91800E92F9A /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A8E2917B91800E92F9A /* CreateAccountViewController.swift */; };
 		FA492A912917DD2400E92F9A /* SelectMoodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A902917DD2400E92F9A /* SelectMoodsViewController.swift */; };
 		FA492A942917E23100E92F9A /* Moods.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A932917E23100E92F9A /* Moods.swift */; };
-		FA492A962917F80E00E92F9A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A952917F80E00E92F9A /* Extensions.swift */; };
+		FA492A962917F80E00E92F9A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A952917F80E00E92F9A /* Colors.swift */; };
 		FA492A98291822FE00E92F9A /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A97291822FE00E92F9A /* AddItemViewController.swift */; };
 		FA492A9A2918964400E92F9A /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A992918964400E92F9A /* Mood.swift */; };
 		FA492A9C2918A22F00E92F9A /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A9B2918A22F00E92F9A /* AuthManager.swift */; };
@@ -38,6 +38,8 @@
 		FA492AA02919506F00E92F9A /* MoodsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492A9F2919506F00E92F9A /* MoodsManager.swift */; };
 		FA492AA9291951A800E92F9A /* HomeItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492AA8291951A800E92F9A /* HomeItemCell.swift */; };
 		FA492AAB291951D900E92F9A /* MoodCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */; };
+		FA7F42D0291D756D00C6EA2C /* GetAffirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F42CF291D756D00C6EA2C /* GetAffirmationView.swift */; };
+		FA7F42D3291D78E300C6EA2C /* Affirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F42D2291D78E300C6EA2C /* Affirmation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +85,7 @@
 		FA492A902917DD2400E92F9A /* SelectMoodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMoodsViewController.swift; sourceTree = "<group>"; };
 		FA492A922917DDF600E92F9A /* Moods.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Moods.md; sourceTree = "<group>"; };
 		FA492A932917E23100E92F9A /* Moods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moods.swift; sourceTree = "<group>"; };
-		FA492A952917F80E00E92F9A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FA492A952917F80E00E92F9A /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FA492A97291822FE00E92F9A /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		FA492A992918964400E92F9A /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
 		FA492A9B2918A22F00E92F9A /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -91,6 +93,8 @@
 		FA492A9F2919506F00E92F9A /* MoodsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodsManager.swift; sourceTree = "<group>"; };
 		FA492AA8291951A800E92F9A /* HomeItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItemCell.swift; sourceTree = "<group>"; };
 		FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCollectionCell.swift; sourceTree = "<group>"; };
+		FA7F42CF291D756D00C6EA2C /* GetAffirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAffirmationView.swift; sourceTree = "<group>"; };
+		FA7F42D2291D78E300C6EA2C /* Affirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Affirmation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,11 +148,12 @@
 		FA20D5DB290B9F8F0068332C /* MoodTracker */ = {
 			isa = PBXGroup;
 			children = (
-				FA492AA72919518800E92F9A /* Cells */,
-				FA492AA12919509A00E92F9A /* View Controllers */,
+				FA7F42D1291D785C00C6EA2C /* Models */,
+				FA7F42CE291D755500C6EA2C /* Views */,
 				FA492AA3291950CB00E92F9A /* Managers */,
-				FA492AA2291950B000E92F9A /* Helpers */,
 				FA492AA4291950F000E92F9A /* Delegates */,
+				FA492A932917E23100E92F9A /* Moods.swift */,
+				FA492A952917F80E00E92F9A /* Colors.swift */,
 				FA20D5E5290B9FA60068332C /* Assets.xcassets */,
 				FA492A922917DDF600E92F9A /* Moods.md */,
 				FA20D5E7290B9FA60068332C /* LaunchScreen.storyboard */,
@@ -200,18 +205,6 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		FA492AA2291950B000E92F9A /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				FA3B566A290BBCDE00FBA068 /* CustomViews.swift */,
-				FA492A9D2918C21700E92F9A /* MoodsItem.swift */,
-				FA492A992918964400E92F9A /* Mood.swift */,
-				FA492A952917F80E00E92F9A /* Extensions.swift */,
-				FA492A932917E23100E92F9A /* Moods.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		FA492AA3291950CB00E92F9A /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +231,27 @@
 				FA1630F9291A58FC0092721A /* HomeMoodCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		FA7F42CE291D755500C6EA2C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA492AA72919518800E92F9A /* Cells */,
+				FA492AA12919509A00E92F9A /* View Controllers */,
+				FA7F42CF291D756D00C6EA2C /* GetAffirmationView.swift */,
+				FA3B566A290BBCDE00FBA068 /* CustomViews.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FA7F42D1291D785C00C6EA2C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA492A9D2918C21700E92F9A /* MoodsItem.swift */,
+				FA7F42D2291D78E300C6EA2C /* Affirmation.swift */,
+				FA492A992918964400E92F9A /* Mood.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7F42D0291D756D00C6EA2C /* GetAffirmationView.swift in Sources */,
 				FA492A8B2917AB4200E92F9A /* NavVC.swift in Sources */,
 				FA492A9E2918C21700E92F9A /* MoodsItem.swift in Sources */,
 				FA492A9C2918A22F00E92F9A /* AuthManager.swift in Sources */,
@@ -390,6 +405,7 @@
 				FA3B566B290BBCDE00FBA068 /* CustomViews.swift in Sources */,
 				FA492AA9291951A800E92F9A /* HomeItemCell.swift in Sources */,
 				FA20D5DD290B9F8F0068332C /* AppDelegate.swift in Sources */,
+				FA7F42D3291D78E300C6EA2C /* Affirmation.swift in Sources */,
 				FA492A9A2918964400E92F9A /* Mood.swift in Sources */,
 				FA492A98291822FE00E92F9A /* AddItemViewController.swift in Sources */,
 				FA1630FA291A58FC0092721A /* HomeMoodCell.swift in Sources */,
@@ -399,7 +415,7 @@
 				FA492A912917DD2400E92F9A /* SelectMoodsViewController.swift in Sources */,
 				FA492A892917845A00E92F9A /* LoginViewController.swift in Sources */,
 				FA492A8D2917AC7600E92F9A /* HomeViewController.swift in Sources */,
-				FA492A962917F80E00E92F9A /* Extensions.swift in Sources */,
+				FA492A962917F80E00E92F9A /* Colors.swift in Sources */,
 				FA20D5DF290B9F8F0068332C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,7 +584,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = TX4WW8TVSW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MoodTracker/Info.plist;
@@ -601,7 +617,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = TX4WW8TVSW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MoodTracker/Info.plist;
