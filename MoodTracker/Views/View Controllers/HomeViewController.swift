@@ -204,7 +204,7 @@ class HomeViewController: UITableViewController {
                 date = df.string(from: itemsByDate.key)
                 
                 if let navigationController = navigationController {
-                    let view = DayHeader(nc: navigationController)
+                    let view = DayHeader(nc: navigationController, items: itemsByDate.value)
                     view.dateLabel.text = date
                     return view
                 }

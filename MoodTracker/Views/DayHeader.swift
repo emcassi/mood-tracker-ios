@@ -11,6 +11,7 @@ import UIKit
 class DayHeader: UIView {
     
     let navController: UINavigationController!
+    let items: [MoodsItem]
     
     let dateLabel: UILabel = {
         let label = UILabel()
@@ -28,8 +29,9 @@ class DayHeader: UIView {
         return button
     }()
     
-    init(nc: UINavigationController){
+    init(nc: UINavigationController, items: [MoodsItem]){
         self.navController = nc
+        self.items = items
         super.init(frame: .zero)
         
         addSubview(dateLabel)
@@ -54,6 +56,6 @@ class DayHeader: UIView {
     }
     
     @objc func buttonTapped(){
-        self.navController.present(DayOverviewViewController(), animated: true)
+        self.navController.present(DayOverviewViewController(items: items), animated: true)
     }
 }
