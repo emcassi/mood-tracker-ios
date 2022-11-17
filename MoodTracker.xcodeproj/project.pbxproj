@@ -10,6 +10,8 @@
 		FA1630F6291A1CE00092721A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1630F5291A1CE00092721A /* SettingsViewController.swift */; };
 		FA1630F8291A351B0092721A /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1630F7291A351B0092721A /* DeleteAccountViewController.swift */; };
 		FA1630FA291A58FC0092721A /* HomeMoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1630F9291A58FC0092721A /* HomeMoodCell.swift */; };
+		FA1CC9BE29268F6A00CDA101 /* DayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CC9BD29268F6A00CDA101 /* DayHeader.swift */; };
+		FA1CC9C0292692A400CDA101 /* DayOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CC9BF292692A400CDA101 /* DayOverviewViewController.swift */; };
 		FA20D5DD290B9F8F0068332C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20D5DC290B9F8F0068332C /* AppDelegate.swift */; };
 		FA20D5DF290B9F8F0068332C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20D5DE290B9F8F0068332C /* SceneDelegate.swift */; };
 		FA20D5E1290B9F8F0068332C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20D5E0290B9F8F0068332C /* WelcomeViewController.swift */; };
@@ -63,6 +65,8 @@
 		FA1630F5291A1CE00092721A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FA1630F7291A351B0092721A /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		FA1630F9291A58FC0092721A /* HomeMoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMoodCell.swift; sourceTree = "<group>"; };
+		FA1CC9BD29268F6A00CDA101 /* DayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayHeader.swift; sourceTree = "<group>"; };
+		FA1CC9BF292692A400CDA101 /* DayOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOverviewViewController.swift; sourceTree = "<group>"; };
 		FA20D5D9290B9F8F0068332C /* MoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA20D5DC290B9F8F0068332C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA20D5DE290B9F8F0068332C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 				FA492A97291822FE00E92F9A /* AddItemViewController.swift */,
 				FA492A902917DD2400E92F9A /* SelectMoodsViewController.swift */,
 				FA492A8C2917AC7600E92F9A /* HomeViewController.swift */,
+				FA1CC9BF292692A400CDA101 /* DayOverviewViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 				FA492AA12919509A00E92F9A /* View Controllers */,
 				FA7F42CF291D756D00C6EA2C /* GetAffirmationView.swift */,
 				FA3B566A290BBCDE00FBA068 /* CustomViews.swift */,
+				FA1CC9BD29268F6A00CDA101 /* DayHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -397,6 +403,7 @@
 				FA7F42D0291D756D00C6EA2C /* GetAffirmationView.swift in Sources */,
 				FA492A8B2917AB4200E92F9A /* NavVC.swift in Sources */,
 				FA492A9E2918C21700E92F9A /* MoodsItem.swift in Sources */,
+				FA1CC9C0292692A400CDA101 /* DayOverviewViewController.swift in Sources */,
 				FA492A9C2918A22F00E92F9A /* AuthManager.swift in Sources */,
 				FA20D5E1290B9F8F0068332C /* WelcomeViewController.swift in Sources */,
 				FA492A942917E23100E92F9A /* Moods.swift in Sources */,
@@ -411,6 +418,7 @@
 				FA1630FA291A58FC0092721A /* HomeMoodCell.swift in Sources */,
 				FA492AAB291951D900E92F9A /* MoodCollectionCell.swift in Sources */,
 				FA492A8F2917B91800E92F9A /* CreateAccountViewController.swift in Sources */,
+				FA1CC9BE29268F6A00CDA101 /* DayHeader.swift in Sources */,
 				FA492AA02919506F00E92F9A /* MoodsManager.swift in Sources */,
 				FA492A912917DD2400E92F9A /* SelectMoodsViewController.swift in Sources */,
 				FA492A892917845A00E92F9A /* LoginViewController.swift in Sources */,
@@ -584,7 +592,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 10ths;
 				DEVELOPMENT_TEAM = TX4WW8TVSW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MoodTracker/Info.plist;
@@ -599,7 +607,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.emcassi.MoodTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -617,7 +625,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 10ths;
 				DEVELOPMENT_TEAM = TX4WW8TVSW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MoodTracker/Info.plist;
@@ -632,7 +640,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.emcassi.MoodTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FirebaseFirestore
 
 class AffirmationsViewController: UIViewController {
     
@@ -106,6 +107,7 @@ class AffirmationsViewController: UIViewController {
                 }
             }
             task.resume()
+            Firestore.firestore().collection("analytics").document("affirmations").setData(["sent": FieldValue.increment(1.0)])
         }
     }
     

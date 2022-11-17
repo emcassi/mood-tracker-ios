@@ -41,6 +41,7 @@ class HomeViewController: UITableViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -54,7 +55,7 @@ class HomeViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(settingsPressed))
         navigationItem.title = "Mood Tracker"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addPressed))
-        navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addPressed)), UIBarButtonItem(image: UIImage(systemName: "heart.circle.fill"), style: .plain, target: self, action: #selector(affirmationPressed))]
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addPressed)), UIBarButtonItem(image: UIImage(systemName: "a.circle"), style: .plain, target: self, action: #selector(affirmationPressed))]
         df.timeZone = calendar.timeZone
         
         view.backgroundColor = UIColor(r: 50, g: 66, b: 92)
@@ -170,22 +171,48 @@ class HomeViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        if let grouped = grouped, let groupedKeys = groupedKeys {
+//            if let itemsByDate = grouped.first(where: { $0.key == groupedKeys[section] }) {
+//
+//
+//                if calendar.isDate(itemsByDate.key, inSameDayAs: Date.now) {
+//                    return "Today"
+//                }
+//
+//                df.dateFormat = "EEEE, MMM d, yyyy"
+//
+//                return df.string(from: itemsByDate.key)
+//            }
+//        }
+//
+//        return ""
+//    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if let grouped = grouped, let groupedKeys = groupedKeys {
+            var date = ""
             if let itemsByDate = grouped.first(where: { $0.key == groupedKeys[section] }) {
                 
                 
                 if calendar.isDate(itemsByDate.key, inSameDayAs: Date.now) {
-                    return "Today"
+                    date = "Today"
                 }
                 
                 df.dateFormat = "EEEE, MMM d, yyyy"
                 
-                return df.string(from: itemsByDate.key)
+                date = df.string(from: itemsByDate.key)
+                
+                if let navigationController = navigationController {
+                    let view = DayHeader(nc: navigationController)
+                    view.dateLabel.text = date
+                    return view
+                }
+                
             }
         }
         
-        return ""
+        return UIView()
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

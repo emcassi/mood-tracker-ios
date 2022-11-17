@@ -21,6 +21,7 @@ let Moods: [Mood] = [
     Mood(name: "Inferior", section: "Sad"),
     Mood(name: "Sleepy", section: "Sad"),
     Mood(name: "Apathetic", section: "Sad"),
+    Mood(name: "Defeated", section: "Sad"),
     Mood(name: "Peaceful", section: "Peaceful"),
     Mood(name: "Content", section: "Peaceful"),
     Mood(name: "Pensive", section: "Peaceful"),
@@ -47,6 +48,7 @@ let Moods: [Mood] = [
     Mood(name: "Satisfied", section: "Powerful"),
     Mood(name: "Proud", section: "Powerful"),
     Mood(name: "Cheerful", section: "Powerful"),
+    Mood(name: "Superior", section: "Powerful"),
     Mood(name: "Joyful", section: "Joyful"),
     Mood(name: "Aware", section: "Joyful"),
     Mood(name: "Delightful", section: "Joyful"),
@@ -86,6 +88,6 @@ let Moods: [Mood] = [
     Mood(name: "Discouraged", section: "Scared"),
     Mood(name: "Rejected", section: "Scared"),
     Mood(name: "Bewildered", section: "Scared"),
-
-
+    Mood(name: "Apprehensive", section: "Scared"),
+    Mood(name: "Overwhelmed", section: "Scared")
 ]

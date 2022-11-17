@@ -93,6 +93,7 @@ class HomeItemCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
         return label
     }()
     
+    
     func setupSubviews(){
         timeLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 5).isActive = true
         timeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
