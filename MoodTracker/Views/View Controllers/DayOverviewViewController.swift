@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Charts
 
-class DayOverviewViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class DayOverviewViewController: UIViewController {
     
     
     let items: [MoodsItem]
@@ -56,13 +56,6 @@ class DayOverviewViewController: UIViewController, UICollectionViewDelegate, UIC
         
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
-    }
     
     func initMoodCounters(){
         for _ in 0...categories.count {

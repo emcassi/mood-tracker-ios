@@ -11,6 +11,8 @@ import FirebaseFirestore
 
 class AffirmationsViewController: UIViewController {
     
+    var lastAff = ""
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 32)
@@ -43,7 +45,7 @@ class AffirmationsViewController: UIViewController {
         return label
     }()
     
-    let button: UIButton = {
+    let getButton: UIButton = {
         let button = UIButton()
         button.setTitle("Get Affirmation", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -51,7 +53,17 @@ class AffirmationsViewController: UIViewController {
         button.layer.borderColor = UIColor.clear.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 15
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(getButtonPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let undoButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Go back", for: .normal)
+        button.setTitleColor(.gray, for: .normal)
+        button.isHidden = true
+        button.addTarget(self, action: #selector(undoPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -64,8 +76,8 @@ class AffirmationsViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(affirmationLabel)
-        view.addSubview(button)
-        
+        view.addSubview(getButton)
+        view.addSubview(undoButton)
         setupSubviews()
     }
     
@@ -83,15 +95,26 @@ class AffirmationsViewController: UIViewController {
         affirmationLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         affirmationLabel.heightAnchor.constraint(equalToConstant: 300).isActive = true
         
-        button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
-        button.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        getButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        getButton.bottomAnchor.constraint(equalTo: undoButton.topAnchor, constant: -15).isActive = true
+        getButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        getButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
+        
+        undoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        undoButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
+        undoButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
     }
     
-    @objc func buttonPressed(){
+    @objc func getButtonPressed(){
         getAffirmation()
+    }
+    
+    @objc func undoPressed(){
+        if lastAff != "" {
+            affirmationLabel.text = lastAff
+        }
+        undoButton.isHidden = true
     }
     
     func getAffirmation() {
@@ -116,7 +139,13 @@ class AffirmationsViewController: UIViewController {
         do {
             let decodedData = try decoder.decode(Affirmation.self, from: data)
             DispatchQueue.main.async {
+                if let aff = self.affirmationLabel.text {
+                    self.lastAff = self.affirmationLabel.text!
+                }
                 self.affirmationLabel.text = decodedData.affirmation
+                if self.lastAff != "" {
+                    self.undoButton.isHidden = false
+                }
             }
         } catch {
             print(error)

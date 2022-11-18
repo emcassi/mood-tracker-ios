@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import StoreKit
 
 class HomeViewController: UITableViewController {
     
@@ -78,7 +79,7 @@ class HomeViewController: UITableViewController {
         emptyButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     
-    func getItems(){
+    func getItems() {
 
         var items: [MoodsItem] = []
         
@@ -124,6 +125,12 @@ class HomeViewController: UITableViewController {
                     self.groupedKeys = Array(grouped.keys).sorted(by: { $0 > $1 })
                     
                     self.tableView.reloadData()
+                    
+                    if items.count > 5 {
+                        if let windowScene = self.view.window?.windowScene {
+//                                     SKStoreReviewController.requestReview(in: windowScene)
+                                }
+                    }
                 }
             }
         } else {
@@ -197,11 +204,12 @@ class HomeViewController: UITableViewController {
                 
                 if calendar.isDate(itemsByDate.key, inSameDayAs: Date.now) {
                     date = "Today"
+                } else {
+                    
+                    df.dateFormat = "EEEE, MMM d, yyyy"
+                    
+                    date = df.string(from: itemsByDate.key)
                 }
-                
-                df.dateFormat = "EEEE, MMM d, yyyy"
-                
-                date = df.string(from: itemsByDate.key)
                 
                 if let navigationController = navigationController {
                     let view = DayHeader(nc: navigationController, items: itemsByDate.value)
@@ -213,6 +221,10 @@ class HomeViewController: UITableViewController {
         }
         
         return UIView()
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 36
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
