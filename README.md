@@ -6,9 +6,11 @@ Mood tracker is an app that allows you to easily log how you're feeling througho
 
 It is a native iOS app written in **Swift** using **UIKit**. 
 
-**Firebase** is used for authentication and databases. 
+- **[Firebase](https://github.com/firebase/firebase-ios-sdk)** is used for authentication and databases. 
 
-- UPDATE: Using the [affirmations.dev](https://github.com/annthurium/affirmations) REST API, you can now easily get affirmations in the app to make you feel better.
+- Using the [affirmations.dev](https://github.com/annthurium/affirmations) REST API, you can easily get affirmations in the app to make you feel better.
+
+- UPDATE: Animated pie charts to help visually analyse your day
 
 ## Dependencies
 - [Firebase - FirebaseAuth and Firestore](https://github.com/firebase/firebase-ios-sdk)
