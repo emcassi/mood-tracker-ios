@@ -17,9 +17,6 @@ It is a native iOS app written in **Swift** using **UIKit**.
 - [Charts](https://github.com/danielgindi/Charts)
 
 ## Screenshots 
-![enter image description here](http://www.emcassi.com/apps/mood-tracker/screenshots/welcome.PNG)
-
-
 Easily log exactly how you feel by tapping any of the 75+ choices
 -
 ![View of the screen for selecting how you feel](http://www.emcassi.com/apps/mood-tracker/screenshots/moods.PNG)
