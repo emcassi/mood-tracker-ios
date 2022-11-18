@@ -128,7 +128,7 @@ class HomeViewController: UITableViewController {
                     
                     if items.count > 5 {
                         if let windowScene = self.view.window?.windowScene {
-//                                     SKStoreReviewController.requestReview(in: windowScene)
+                                     SKStoreReviewController.requestReview(in: windowScene)
                                 }
                     }
                 }

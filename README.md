@@ -8,8 +8,11 @@ It is a native iOS app written in **Swift** using **UIKit**.
 
 **Firebase** is used for authentication and databases. 
 
-- UPDATE: Using the affirmations.dev REST API, you can now easily get affirmations in the app to make you feel better.
+- UPDATE: Using the [affirmations.dev](https://github.com/annthurium/affirmations) REST API, you can now easily get affirmations in the app to make you feel better.
 
+## Dependencies
+- [Firebase - FirebaseAuth and Firestore](https://github.com/firebase/firebase-ios-sdk)
+- [Charts](https://github.com/danielgindi/Charts)
 
 ![enter image description here](http://www.emcassi.com/apps/mood-tracker/screenshots/welcome.PNG)
 
