@@ -14,6 +14,7 @@ It is a native iOS app written in **Swift** using **UIKit**.
 - [Firebase - FirebaseAuth and Firestore](https://github.com/firebase/firebase-ios-sdk)
 - [Charts](https://github.com/danielgindi/Charts)
 
+## Screenshots 
 ![enter image description here](http://www.emcassi.com/apps/mood-tracker/screenshots/welcome.PNG)
 
 
