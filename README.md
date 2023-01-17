@@ -8,7 +8,7 @@ It is a native iOS app written in **Swift** using **UIKit**.
 
 - **[Firebase](https://github.com/firebase/firebase-ios-sdk)** is used for authentication and databases. 
 
-- Using the [affirmations.dev](https://github.com/annthurium/affirmations) REST API, you can easily get affirmations in the app to make you feel better.
+- Using the [affirmations.dev](https://github.com/annthurium/affirmations) API, you can easily get affirmations in the app to make you feel better.
 
 - UPDATE: Animated pie charts to help visually analyse your day
 
