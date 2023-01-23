@@ -32,10 +32,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     let emailTF: UITextField = {
        let tf = UITextField()
-        tf.attributedPlaceholder = NSAttributedString(
-            string: "Email",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
-        )
+        tf.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor(gray: 200)])
         tf.textContentType = .emailAddress
         tf.layer.cornerRadius = 15
         tf.layer.borderColor = UIColor.gray.cgColor
@@ -60,10 +57,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     let passwordTF: UITextField = {
        let tf = UITextField()
-        tf.attributedPlaceholder = NSAttributedString(
-            string: "Password",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
-        )
+        tf.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor(gray: 200)])
         tf.textContentType = .password
         tf.isSecureTextEntry = true
         tf.layer.cornerRadius = 15

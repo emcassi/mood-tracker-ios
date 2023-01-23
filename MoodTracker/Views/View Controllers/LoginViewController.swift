@@ -25,7 +25,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     let emailTF: UITextField = {
        let tf = UITextField()
-        tf.placeholder = "Email"
+        tf.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor(gray: 200)])
         tf.textContentType = .emailAddress
         tf.layer.cornerRadius = 15
         tf.layer.borderColor = UIColor.gray.cgColor
@@ -39,13 +39,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     let passwordTF: UITextField = {
        let tf = UITextField()
-        tf.placeholder = "Password"
         tf.textContentType = .password
         tf.isSecureTextEntry = true
         tf.layer.cornerRadius = 15
         tf.layer.borderColor = UIColor.gray.cgColor
         tf.layer.borderWidth = 1
         tf.textColor = .black
+        tf.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor(gray: 200)])
         tf.setLeftPaddingPoints(10)
         tf.setRightPaddingPoints(10)
         tf.translatesAutoresizingMaskIntoConstraints = false
