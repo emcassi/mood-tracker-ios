@@ -49,8 +49,6 @@
     </ul>
     <br/>   
     Hope you like it! -Alex
-    <br/>
-    <a href="https://github.com/emcassi/mood-tracker-ios"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     ·
@@ -141,11 +139,6 @@ Alex Wayne - [@emcassi_](https://twitter.com/emcassi_) - alex.wayne.dev@gmail.co
 Project Link: [https://github.com/emcassi/mood-tracker-ios](https://github.com/emcassi/mood-tracker-ios)
 
 Download Link: [https://apps.apple.com/us/app/mood-tracker-log-and-journal/id6444286152](https://apps.apple.com/us/app/mood-tracker-log-and-journal/id6444286152)
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
