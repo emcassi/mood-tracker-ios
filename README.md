@@ -16,7 +16,6 @@ It is a native iOS app written in **Swift** using **UIKit**.
 - [Firebase - FirebaseAuth and Firestore](https://github.com/firebase/firebase-ios-sdk)
 - [Charts](https://github.com/danielgindi/Charts)
 
-## Screenshots 
 Easily log exactly how you feel by tapping any of the 75+ choices
 
 Keep track of how you've been feeling with a nice UI with color coded mood cells for 6 categories of feelings - Sad, Mad, Scared, Peaceful, Powerful, and Joyful
