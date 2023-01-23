@@ -12,6 +12,7 @@ import FirebaseFirestore
 class AffirmationsViewController: UIViewController {
     
     var lastAff = ""
+    var gettingAff = false
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -33,6 +34,21 @@ class AffirmationsViewController: UIViewController {
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    let indicatorContainer: UIView = {
+        let v = UIView()
+        v.backgroundColor = .white
+        v.translatesAutoresizingMaskIntoConstraints = false
+        return v
+    }()
+    
+    let activityIndicator: UIActivityIndicatorView = {
+        let ai = UIActivityIndicatorView(style: .large)
+        ai.style = .large
+        ai.color = .white
+        ai.hidesWhenStopped = true
+        return ai
     }()
     
     let affirmationLabel: UILabel = {
@@ -76,6 +92,7 @@ class AffirmationsViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
         view.addSubview(affirmationLabel)
+        view.addSubview(activityIndicator)
         view.addSubview(getButton)
         view.addSubview(undoButton)
         setupSubviews()
@@ -89,11 +106,18 @@ class AffirmationsViewController: UIViewController {
         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25).isActive = true
         descriptionLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
+
         affirmationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         affirmationLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         affirmationLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         affirmationLabel.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        
+//        indicatorContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        indicatorContainer.topAnchor.constraint(equalTo: affirmationLabel.bottomAnchor, constant: 50).isActive = true
+//        indicatorContainer.widthAnchor.constraint(equalToConstant: 64).isActive = true
+//        indicatorContainer.heightAnchor.constraint(equalToConstant: 64).isActive = true
+//
+        activityIndicator.center = CGPoint(x: view.center.x, y: view.center.y + 250)
         
         getButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         getButton.bottomAnchor.constraint(equalTo: undoButton.topAnchor, constant: -15).isActive = true
@@ -107,7 +131,11 @@ class AffirmationsViewController: UIViewController {
     }
     
     @objc func getButtonPressed(){
-        getAffirmation()
+        if(!gettingAff){
+            gettingAff = true
+            getAffirmation()
+            self.activityIndicator.startAnimating()
+        }
     }
     
     @objc func undoPressed(){
@@ -146,6 +174,8 @@ class AffirmationsViewController: UIViewController {
                 if self.lastAff != "" {
                     self.undoButton.isHidden = false
                 }
+                self.gettingAff = false
+                self.activityIndicator.stopAnimating()
             }
         } catch {
             print(error)
