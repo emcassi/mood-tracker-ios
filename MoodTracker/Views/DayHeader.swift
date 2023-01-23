@@ -101,6 +101,7 @@ class DayHeader: UIView {
     
     func customizeChart(dataPoints: [String], values: [Double]) {
         chartView.legend.enabled = false
+        chartView.isUserInteractionEnabled = false
         chartView.animate(xAxisDuration: 1, yAxisDuration: 1, easingOption: .easeOutCirc)
         chartView.drawHoleEnabled = false
         // 1. Set ChartDataEntry

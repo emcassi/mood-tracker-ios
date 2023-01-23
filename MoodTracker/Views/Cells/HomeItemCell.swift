@@ -10,14 +10,15 @@ import UIKit
 
 class HomeItemCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    
-    func updateCellWith(row: [Mood]) {
-        self.moods = row
+    var item: MoodsItem? = nil
+        
+    func updateCellWith(item: MoodsItem) {
+        self.item = item
         self.moodsView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.moods.count
+        return self.item!.moods.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -29,7 +30,7 @@ class HomeItemCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "home-mood", for: indexPath) as? HomeMoodCell {
             
-            switch self.moods[indexPath.item].section {
+            switch self.item!.moods[indexPath.item].section {
             case "Sad":
                 cell.backgroundColor = UIColor(named: "mood-blue")
             case "Peaceful":
@@ -46,7 +47,7 @@ class HomeItemCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
                 cell.backgroundColor = .gray
             }
             
-            cell.moodLabel.text = self.moods[indexPath.item].name
+            cell.moodLabel.text = self.item!.moods[indexPath.item].name
             return cell
         }
         return UICollectionViewCell()
@@ -60,9 +61,6 @@ class HomeItemCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
-
-    var moods: [Mood] = []
-    
     
     let timeLabel: UILabel = {
         let label = UILabel()
@@ -128,12 +126,19 @@ class HomeItemCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
         
         self.moodsView.register(HomeMoodCell.self, forCellWithReuseIdentifier: "home-mood")
         
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(viewPressed))
+        self.addGestureRecognizer(tapGR)
+        
         contentView.addSubview(timeLabel)
 //        addSubview(moodsLabel)
         contentView.addSubview(moodsView)
         contentView.addSubview(detailsLabel)
         
         setupSubviews()
+    }
+    
+    @objc func viewPressed(){
+        ((self.next?.next) as? UITableViewController)?.navigationController?.pushViewController(EditItemViewController(item: item!), animated: true)
     }
     
     required init?(coder: NSCoder) {

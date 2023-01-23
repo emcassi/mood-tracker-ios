@@ -13,6 +13,7 @@ import StoreKit
 
 class HomeViewController: UITableViewController {
     
+    var hasAskedForReview = false
     var grouped: [Date: [MoodsItem]]?
     var groupedKeys: [Date]?
     let df = DateFormatter()
@@ -126,7 +127,8 @@ class HomeViewController: UITableViewController {
                     
                     self.tableView.reloadData()
                     
-                    if items.count > 5 {
+                    if items.count > 5 && !self.hasAskedForReview {
+                        self.hasAskedForReview = true
                         if let windowScene = self.view.window?.windowScene {
                                      SKStoreReviewController.requestReview(in: windowScene)
                                 }
@@ -165,7 +167,7 @@ class HomeViewController: UITableViewController {
                 df.pmSymbol = "PM"
                 let itemTime = df.string(from: itemForCell.timestamp)
                 
-                cell.updateCellWith(row: itemForCell.moods)
+                cell.updateCellWith(item: itemForCell)
                 
                 cell.timeLabel.text = itemTime
                 cell.detailsLabel.text = itemForCell.details

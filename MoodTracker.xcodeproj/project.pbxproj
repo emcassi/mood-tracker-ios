@@ -43,6 +43,8 @@
 		FA492AAB291951D900E92F9A /* MoodCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */; };
 		FA7F42D0291D756D00C6EA2C /* GetAffirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F42CF291D756D00C6EA2C /* GetAffirmationView.swift */; };
 		FA7F42D3291D78E300C6EA2C /* Affirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F42D2291D78E300C6EA2C /* Affirmation.swift */; };
+		FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */; };
+		FAFA448B297E89760068B4A8 /* EditMoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA448A297E89760068B4A8 /* EditMoodCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,8 @@
 		FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCollectionCell.swift; sourceTree = "<group>"; };
 		FA7F42CF291D756D00C6EA2C /* GetAffirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAffirmationView.swift; sourceTree = "<group>"; };
 		FA7F42D2291D78E300C6EA2C /* Affirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Affirmation.swift; sourceTree = "<group>"; };
+		FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
+		FAFA448A297E89760068B4A8 /* EditMoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMoodCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +212,7 @@
 				FA492A902917DD2400E92F9A /* SelectMoodsViewController.swift */,
 				FA492A8C2917AC7600E92F9A /* HomeViewController.swift */,
 				FA1CC9BF292692A400CDA101 /* DayOverviewViewController.swift */,
+				FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -236,6 +241,7 @@
 				FA492AA8291951A800E92F9A /* HomeItemCell.swift */,
 				FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */,
 				FA1630F9291A58FC0092721A /* HomeMoodCell.swift */,
+				FAFA448A297E89760068B4A8 /* EditMoodCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -405,7 +411,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA7F42D0291D756D00C6EA2C /* GetAffirmationView.swift in Sources */,
+				FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */,
 				FA492A8B2917AB4200E92F9A /* NavVC.swift in Sources */,
+				FAFA448B297E89760068B4A8 /* EditMoodCell.swift in Sources */,
 				FA492A9E2918C21700E92F9A /* MoodsItem.swift in Sources */,
 				FA1CC9C0292692A400CDA101 /* DayOverviewViewController.swift in Sources */,
 				FA492A9C2918A22F00E92F9A /* AuthManager.swift in Sources */,

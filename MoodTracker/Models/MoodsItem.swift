@@ -8,7 +8,7 @@
 import Foundation
 
 struct MoodsItem {
-    let moods: [Mood]
-    let details: String
+    var moods: [Mood]
+    var details: String
     let timestamp: Date
 }
