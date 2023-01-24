@@ -19,20 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        var keys: NSDictionary?
 
-        if let path = Bundle.main.path(forResource: "Keys", ofType: "plist") {
-            keys = NSDictionary(contentsOfFile: path)
-        }
-        if let dict = keys {
-            let applicationId = dict["parseApplicationId"] as? String
-            let clientKey = dict["parseClientKey"] as? String
-
-            // Initialize Parse.
-            Parse.setApplicationId(applicationId!, clientKey: clientKey!)
-        }
-        
         return true
     }
 
