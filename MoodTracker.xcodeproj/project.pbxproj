@@ -48,6 +48,7 @@
 		FAFA448E297F75590068B4A8 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = FAFA448D297F75590068B4A8 /* FacebookCore */; };
 		FAFA4490297F75590068B4A8 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = FAFA448F297F75590068B4A8 /* FacebookLogin */; };
 		FAFA4494297F89B20068B4A8 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FAFA4493297F89B20068B4A8 /* GoogleSignIn */; };
+		FAFA4496297FA9570068B4A8 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAFA4495297FA9570068B4A8 /* keys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		FAFA448A297E89760068B4A8 /* EditMoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMoodCell.swift; sourceTree = "<group>"; };
 		FAFA4491297F76940068B4A8 /* MoodTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoodTracker.entitlements; sourceTree = "<group>"; };
+		FAFA4495297FA9570068B4A8 /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				FA492A922917DDF600E92F9A /* Moods.md */,
 				FA20D5E7290B9FA60068332C /* LaunchScreen.storyboard */,
 				FA20D5EA290B9FA60068332C /* Info.plist */,
+				FAFA4495297FA9570068B4A8 /* keys.plist */,
 				FA3B5661290BB48A00FBA068 /* GoogleService-Info.plist */,
 				FA3B5660290BB0A800FBA068 /* Fonts */,
 			);
@@ -395,6 +398,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAFA4496297FA9570068B4A8 /* keys.plist in Resources */,
 				FA20D5E9290B9FA60068332C /* LaunchScreen.storyboard in Resources */,
 				FA20D5E6290B9FA60068332C /* Assets.xcassets in Resources */,
 				FA3B5662290BB48A00FBA068 /* GoogleService-Info.plist in Resources */,
