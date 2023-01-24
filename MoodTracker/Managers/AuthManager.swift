@@ -9,10 +9,11 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import CryptoKit
+import AuthenticationServices
 
-class AuthManager {
-    
-    private var currentUser: User?
+class AuthManager  {
+
     
     func setListener(navVC: NavVC){
         Auth.auth().addStateDidChangeListener { auth, user in

@@ -110,7 +110,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         button.setImage(UIImage(named: "apple"), for: .normal)
         button.backgroundColor = UIColor(gray: 240)
         button.layer.cornerRadius = 32
-//        button.addTarget(self, action: #selector(handleApple), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleApple), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -293,6 +293,10 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @objc func handleApple(){
+        AuthManager().startSignInWithAppleFlow()
+    }
+    
     @objc func handleGoogle(){
         
         print("asd;lfkjasdf;lkj")
@@ -316,6 +320,8 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                 if let err = err {
                     print(err)
                 }
+                
+                self.dismiss(animated: true)
             }
         }
         
@@ -331,11 +337,16 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                 }
                 
                 if result!.grantedPermissions.contains("email") {
-                    if AccessToken.current != nil {
-                        GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(){ connection, res, err in
-                            if err != nil {
-                                print(res)
+                    if let token = AccessToken.current {
+                        let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
+                        
+                        Auth.auth().signIn(with: credential) { res, err in
+                            if let err = err {
+                                print(err)
                             }
+                            
+                            print("SCUESSSSSS")
+                            self.dismiss(animated: true)
                         }
                     }
                 }
