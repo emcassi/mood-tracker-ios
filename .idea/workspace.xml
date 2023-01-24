@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fb8f5799-6f34-4731-a6f1-d471e593ea4f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/MoodTracker/Assets.xcassets/apple.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MoodTracker/Assets.xcassets/apple.imageset/apple.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MoodTracker/Assets.xcassets/facebook.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MoodTracker/Assets.xcassets/facebook.imageset/icons8-facebook-48.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MoodTracker/Assets.xcassets/google.imageset/icons8-google-48.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoodTracker.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoodTracker.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoodTracker.xcodeproj/xcuserdata/alex.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker.xcodeproj/xcuserdata/alex.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoodTracker/Assets.xcassets/google.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/Assets.xcassets/google.imageset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoodTracker/Assets.xcassets/google.imageset/btn_google_light_normal_ios.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoodTracker/Views/View Controllers/CreateAccountViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/Views/View Controllers/CreateAccountViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoodTracker/Views/View Controllers/LoginViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/Views/View Controllers/LoginViewController.swift" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="AppCode" />
+    <option name="majorVersion" value="2022" />
+    <option name="minorVersion" value="2.5" />
+  </component>
+  <component name="ProjectId" id="2KkkXZUkz2WNPokIqGnLWKHrEwH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "/Users/alex/Programming/iOS/MoodTracker/MoodTracker.xcodeproj"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fb8f5799-6f34-4731-a6f1-d471e593ea4f" name="Changes" comment="" />
+      <created>1674526012856</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1674526012856</updated>
+      <workItem from="1674526016405" duration="173000" />
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
