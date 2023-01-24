@@ -121,11 +121,13 @@
 <!-- Screenshots -->
 ## Screenshots
 
-<img src="images/home.png" alt="Logo" width="200">
+<img src="images/home.png" alt="Home Screen" width="200">
 <br>
-<img src="images/moods.png" alt="Logo" width="200">
+<img src="images/moods.png" alt="Screen where you can select moods" width="200">
 <br>
-<img src="images/affirmation.png" alt="Logo" width="200">
+<img src="images/edit.png" alt="Screen where you can edit your posts" width="200">
+<br>
+<img src="images/affirmation.png" alt="Screen where you can view affirmations" width="200">
 
 
 
