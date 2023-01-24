@@ -25,4 +25,16 @@ class MoodsManager {
         
         return moodsString
     }
+    
+    func prepareMoodsForFirebase(moods: [Mood]) -> [[String: String]]{
+        var preparedMoods: [[String: String]] = []
+        for mood in moods {
+            preparedMoods.append([
+                "name": mood.name,
+                "section": mood.section
+            ])
+        }
+        
+        return preparedMoods
+    }
 }

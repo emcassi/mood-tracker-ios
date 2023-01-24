@@ -105,7 +105,7 @@ class HomeViewController: UITableViewController {
                             
                             if let details = data["details"] as? String, let timestamp = data["timestamp"] as? Timestamp {
                                 let date = timestamp.dateValue()
-                                let item = MoodsItem(moods: itemMoods, details: details, timestamp: date)
+                                let item = MoodsItem(id: document.documentID, moods: itemMoods, details: details, timestamp: date)
                                 items.append(item)
                             } else {
                                 print("error with deets or dates")

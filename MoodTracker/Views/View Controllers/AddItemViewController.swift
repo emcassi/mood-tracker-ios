@@ -144,7 +144,7 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
                 details = ""
             }
             
-            let preparedMoods = prepareMoodsForFirebase(moods: moods)
+            let preparedMoods = MoodsManager().prepareMoodsForFirebase(moods: moods)
                         
             Firestore.firestore().collection("users").document(user.uid).collection("items").addDocument(data: [
                 "user": user.uid,
@@ -163,17 +163,7 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
         }
     }
     
-    func prepareMoodsForFirebase(moods: [Mood]) -> [[String: String]]{
-        var preparedMoods: [[String: String]] = []
-        for mood in moods {
-            preparedMoods.append([
-                "name": mood.name,
-                "section": mood.section
-            ])
-        }
-        
-        return preparedMoods
-    }
+    
     
     @objc func keyboardWillShow(notification: Notification){
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
