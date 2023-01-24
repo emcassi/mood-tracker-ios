@@ -60,7 +60,6 @@ class EditMoodsViewController: UICollectionViewController, UICollectionViewDeleg
         let mood = Moods[indexPath.item]
         cell.nameLabel.text = mood.name
         cell.checkmark.isHidden = !selectedMoods.contains(where: { $0.name == mood.name })
-        cell.checked = !cell.checkmark.isHidden
         
         return cell
     }
