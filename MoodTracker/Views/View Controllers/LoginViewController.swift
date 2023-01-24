@@ -73,6 +73,43 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
+    let orLabel: UILabel = {
+       let label = UILabel()
+        label.text = "OR"
+        label.textColor = .lightGray
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let appleButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(named: "apple"), for: .normal)
+        button.backgroundColor = UIColor(gray: 240)
+        button.layer.cornerRadius = 32
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let googleButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(named: "google"), for: .normal)
+        button.backgroundColor = UIColor(gray: 240)
+        button.layer.cornerRadius = 32
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let facebookButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(named: "facebook"), for: .normal)
+        button.imageView?.frame = CGRectMake(0, 0, 32, 32)
+        button.backgroundColor = UIColor(gray: 240)
+        button.layer.cornerRadius = 32
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     @objc func keyboardWillShow(notification: Notification){
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + keyboardSize.height)
@@ -102,6 +139,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         scrollView.addSubview(passwordTF)
         scrollView.addSubview(errorLabel )
         scrollView.addSubview(button)
+        scrollView.addSubview(orLabel)
+        scrollView.addSubview(appleButton)
+        scrollView.addSubview(googleButton)
+        scrollView.addSubview(facebookButton)
         setupViews()
         
         emailTF.delegate = self
@@ -132,6 +173,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         setupPasswordTF()
         setupErrorLabel()
         setupButton()
+        setupOrLabel()
+        setupAppleButton()
+        setupGoogleButton()
+        setupFacebookButton()
     }
     
     func setupScrollView(){
@@ -173,6 +218,32 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         button.topAnchor.constraint(equalTo: errorLabel.bottomAnchor, constant: 35).isActive = true
         button.widthAnchor.constraint(equalTo: passwordTF.widthAnchor, multiplier: 0.8).isActive = true
         button.heightAnchor.constraint(equalToConstant: 45).isActive = true
+    }
+    
+    func setupOrLabel(){
+        orLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        orLabel.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 25).isActive = true
+    }
+    
+    func setupAppleButton(){
+        appleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -view.frame.width / 4).isActive = true
+        appleButton.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 25).isActive = true
+        appleButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        appleButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
+    }
+    
+    func setupGoogleButton(){
+        googleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        googleButton.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 25).isActive = true
+        googleButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        googleButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
+    }
+    
+    func setupFacebookButton(){
+        facebookButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: view.frame.width / 4).isActive = true
+        facebookButton.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 25).isActive = true
+        facebookButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        facebookButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
     }
     
     // Sign in button functionality

@@ -45,6 +45,9 @@
 		FA7F42D3291D78E300C6EA2C /* Affirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F42D2291D78E300C6EA2C /* Affirmation.swift */; };
 		FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */; };
 		FAFA448B297E89760068B4A8 /* EditMoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA448A297E89760068B4A8 /* EditMoodCell.swift */; };
+		FAFA448E297F75590068B4A8 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = FAFA448D297F75590068B4A8 /* FacebookCore */; };
+		FAFA4490297F75590068B4A8 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = FAFA448F297F75590068B4A8 /* FacebookLogin */; };
+		FAFA4494297F89B20068B4A8 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = FAFA4493297F89B20068B4A8 /* GoogleSignIn */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +107,7 @@
 		FA7F42D2291D78E300C6EA2C /* Affirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Affirmation.swift; sourceTree = "<group>"; };
 		FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		FAFA448A297E89760068B4A8 /* EditMoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMoodCell.swift; sourceTree = "<group>"; };
+		FAFA4491297F76940068B4A8 /* MoodTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoodTracker.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,9 +116,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA3B5665290BB6EC00FBA068 /* FirebaseAnalytics in Frameworks */,
+				FAFA448E297F75590068B4A8 /* FacebookCore in Frameworks */,
+				FAFA4490297F75590068B4A8 /* FacebookLogin in Frameworks */,
 				FA3B5667290BB6EC00FBA068 /* FirebaseAuth in Frameworks */,
 				FA3B5669290BB6EC00FBA068 /* FirebaseFirestore in Frameworks */,
 				FA1CC9C329269FEA00CDA101 /* Charts in Frameworks */,
+				FAFA4494297F89B20068B4A8 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +165,7 @@
 		FA20D5DB290B9F8F0068332C /* MoodTracker */ = {
 			isa = PBXGroup;
 			children = (
+				FAFA4491297F76940068B4A8 /* MoodTracker.entitlements */,
 				FA7F42D1291D785C00C6EA2C /* Models */,
 				FA7F42CE291D755500C6EA2C /* Views */,
 				FA492AA3291950CB00E92F9A /* Managers */,
@@ -289,6 +297,9 @@
 				FA3B5666290BB6EC00FBA068 /* FirebaseAuth */,
 				FA3B5668290BB6EC00FBA068 /* FirebaseFirestore */,
 				FA1CC9C229269FEA00CDA101 /* Charts */,
+				FAFA448D297F75590068B4A8 /* FacebookCore */,
+				FAFA448F297F75590068B4A8 /* FacebookLogin */,
+				FAFA4493297F89B20068B4A8 /* GoogleSignIn */,
 			);
 			productName = MoodTracker;
 			productReference = FA20D5D9290B9F8F0068332C /* MoodTracker.app */;
@@ -365,6 +376,8 @@
 			packageReferences = (
 				FA3B5663290BB6EC00FBA068 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				FA1CC9C129269FEA00CDA101 /* XCRemoteSwiftPackageReference "Charts" */,
+				FAFA448C297F75590068B4A8 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				FAFA4492297F89B20068B4A8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = FA20D5DA290B9F8F0068332C /* Products */;
 			projectDirPath = "";
@@ -603,6 +616,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MoodTracker/MoodTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TX4WW8TVSW;
@@ -636,6 +650,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MoodTracker/MoodTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TX4WW8TVSW;
@@ -798,6 +813,22 @@
 				kind = branch;
 			};
 		};
+		FAFA448C297F75590068B4A8 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		FAFA4492297F89B20068B4A8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -820,6 +851,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FA3B5663290BB6EC00FBA068 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		FAFA448D297F75590068B4A8 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAFA448C297F75590068B4A8 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		FAFA448F297F75590068B4A8 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAFA448C297F75590068B4A8 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		FAFA4493297F89B20068B4A8 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAFA4492297F89B20068B4A8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

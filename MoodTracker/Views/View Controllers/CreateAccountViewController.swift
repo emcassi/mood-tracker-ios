@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import FBSDKCoreKit
+import FBSDKLoginKit
+import GoogleSignIn
 
 class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
@@ -93,6 +96,47 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
+    let orLabel: UILabel = {
+       let label = UILabel()
+        label.text = "OR"
+        label.textColor = .lightGray
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let appleButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(named: "apple"), for: .normal)
+        button.backgroundColor = UIColor(gray: 240)
+        button.layer.cornerRadius = 32
+//        button.addTarget(self, action: #selector(handleApple), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let googleButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(named: "google"), for: .normal)
+        button.backgroundColor = UIColor(gray: 240)
+        button.layer.cornerRadius = 32
+        button.addTarget(self, action: #selector(handleGoogle), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let facebookButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(named: "facebook"), for: .normal)
+        button.imageView?.frame = CGRectMake(0, 0, 32, 32)
+        button.backgroundColor = UIColor(gray: 240)
+        button.layer.cornerRadius = 32
+        button.addTarget(self, action: #selector(handleFacebook), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    
     // viewDidLoad
     
     override func viewDidLoad(){
@@ -113,6 +157,11 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         scrollView.addSubview(passwordTF)
         scrollView.addSubview(passwordErrorLabel)
         scrollView.addSubview(button)
+        scrollView.addSubview(orLabel)
+        scrollView.addSubview(appleButton)
+        scrollView.addSubview(googleButton)
+        scrollView.addSubview(facebookButton)
+
         
         setupSubviews()
         
@@ -146,6 +195,11 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         setupPasswordTF()
         setupPasswordErrorLabel()
         setupButton()
+        setupOrLabel()
+        setupAppleButton()
+        setupGoogleButton()
+        setupFacebookButton()
+
     }
     
     func setupScrollView(){
@@ -195,6 +249,32 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         button.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
     
+    func setupOrLabel(){
+        orLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        orLabel.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 25).isActive = true
+    }
+    
+    func setupAppleButton(){
+        appleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -view.frame.width / 4).isActive = true
+        appleButton.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 25).isActive = true
+        appleButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        appleButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
+    }
+    
+    func setupGoogleButton(){
+        googleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        googleButton.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 25).isActive = true
+        googleButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        googleButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
+    }
+    
+    func setupFacebookButton(){
+        facebookButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: view.frame.width / 4).isActive = true
+        facebookButton.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 25).isActive = true
+        facebookButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        facebookButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
+    }
+    
     // Sign in button functionality
     
     @objc func createAccount(){
@@ -207,6 +287,56 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                         return
                     } else if let result = result {
                         self.dismiss(animated: true)
+                    }
+                }
+            }
+        }
+    }
+    
+    @objc func handleGoogle(){
+        
+        print("asd;lfkjasdf;lkj")
+        
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { result, error in
+            
+            print("IN")
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            guard let accessToken = result?.user.accessToken, let idToken = result?.user.idToken else {
+                return
+            }
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: accessToken.tokenString)
+            
+            Auth.auth().signIn(with: credential) { res, err in
+                if let err = err {
+                    print(err)
+                }
+            }
+        }
+        
+    }
+    
+    @objc func handleFacebook(){
+        let fbManager = LoginManager()
+        fbManager.logIn(permissions: ["email"], from: self) { result, error in
+            if error == nil {
+                
+                if result!.isCancelled {
+                    return
+                }
+                
+                if result!.grantedPermissions.contains("email") {
+                    if AccessToken.current != nil {
+                        GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).start(){ connection, res, err in
+                            if err != nil {
+                                print(res)
+                            }
+                        }
                     }
                 }
             }
