@@ -21,8 +21,7 @@ class DeleteAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Delete Account"
-        label.font = UIFont(name: "FredokaOne-Regular", size: 48
-        )
+        label.font = UIFont(name: "FredokaOne-Regular", size: 42)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

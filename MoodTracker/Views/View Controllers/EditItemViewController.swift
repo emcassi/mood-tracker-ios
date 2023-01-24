@@ -47,8 +47,22 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         flowLayout.minimumInteritemSpacing = 2
         let cv = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         cv.backgroundColor = .clear
+        cv.showsHorizontalScrollIndicator = false
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
+    }()
+    
+    let addMoodsButton: UIButton = {
+        let button = UIButton()
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular, scale: .large)
+        button.setImage(UIImage(systemName: "plus.circle", withConfiguration: largeConfig), for: .normal)
+        button.imageView?.tintColor = .white
+        button.layer.cornerRadius = 25
+        button.backgroundColor = UIColor(named: "purple")
+        button.isHidden = true
+        button.addTarget(self, action: #selector(addMoodsTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     let detailsTF: UITextView = {
@@ -91,6 +105,10 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         return button
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        moodsView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -101,12 +119,14 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(screenPressed))
         scrollView.addGestureRecognizer(tapGR)
+        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height)
         
         if let item = item {
             dateLabel.text = item.timestamp.formatted(date: .abbreviated, time: .omitted)
             timeLabel.text = item.timestamp.formatted(date: .omitted, time: .shortened)
             detailsTF.text = item.details
         }
+        
         
         moods = item!.moods
         
@@ -121,6 +141,7 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         scrollView.addSubview(dateLabel)
         scrollView.addSubview(timeLabel)
         scrollView.addSubview(moodsView)
+        scrollView.addSubview(addMoodsButton)
         scrollView.addSubview(detailsTF)
         scrollView.addSubview(topButton)
         scrollView.addSubview(bottomButton)
@@ -134,7 +155,11 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
         let spacing = layout.minimumInteritemSpacing
         
-        return UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        if bEditing {
+            return UIEdgeInsets(top: 15, left: 20, bottom: 15, right: 75)
+        } else {
+            return UIEdgeInsets(top: 15, left: 20, bottom: 15, right: 20)
+        }
     }
     
     
@@ -145,7 +170,7 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         return 0
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if(bEditing){
@@ -222,12 +247,17 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         moodsView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         moodsView.heightAnchor.constraint(equalToConstant: 105).isActive = true
         
+        addMoodsButton.rightAnchor.constraint(equalTo: moodsView.rightAnchor, constant: -15).isActive = true
+        addMoodsButton.centerYAnchor.constraint(equalTo: moodsView.centerYAnchor).isActive = true
+        addMoodsButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        addMoodsButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
         detailsTF.topAnchor.constraint(equalTo: moodsView.bottomAnchor, constant: 15).isActive = true
         detailsTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         detailsTF.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.9).isActive = true
-        detailsTF.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        detailsTF.heightAnchor.constraint(equalToConstant: 250).isActive = true
         
-        topButton.topAnchor.constraint(equalTo: detailsTF.bottomAnchor, constant: 50).isActive = true
+        topButton.topAnchor.constraint(equalTo: detailsTF.bottomAnchor, constant: 25).isActive = true
         topButton.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.6).isActive = true
         topButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
         topButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -270,6 +300,7 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func startEditing() {
         bEditing = true
+        addMoodsButton.isHidden = false
         topButton.setTitle("Cancel", for: .normal)
         topButton.setTitleColor(.red, for: .normal)
         
@@ -282,7 +313,7 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func stopEditing() {
         bEditing = false
-        
+        addMoodsButton.isHidden = true
         topButton.setTitle("Edit", for: .normal)
         topButton.setTitleColor(.white, for: .normal)
         
@@ -336,6 +367,13 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     @objc func screenPressed(){
         scrollView.endEditing(true)
+    }
+    
+    @objc func addMoodsTapped(){
+        let emvc = EditMoodsViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        emvc.selectedMoods = moods
+        emvc.parentVC = self
+        self.navigationController?.pushViewController(emvc, animated: true)
     }
     
     @objc func topPressed(){

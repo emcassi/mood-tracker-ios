@@ -1,16 +1,18 @@
 //
-//  AddItemViewController.swift
+//  EditMoodsViewController.swift
 //  MoodTracker
 //
-//  Created by Alex Wayne on 11/6/22.
+//  Created by Alex Wayne on 1/24/23.
 //
+
 
 import Foundation
 import UIKit
 
-class SelectMoodsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class EditMoodsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var selectedMoods: [String] = []
+    var parentVC: EditItemViewController! 
+    var selectedMoods: [Mood] = []
     
     let topLabel: UILabel = {
         let label = UILabel()
@@ -23,13 +25,12 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
     
     let nextButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Next", for: .normal)
+        button.setTitle("Save", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(named: "purple")
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 2
         button.layer.borderColor = UIColor.black.cgColor
-        button.isHidden = true
         button.addTarget(self, action: #selector(nextPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -53,12 +54,12 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "editmoods-cell", for: indexPath) as! MoodCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mood-cell", for: indexPath) as! MoodCollectionCell
         cell.contentView.backgroundColor = getColorForMood(section: Moods[indexPath.item].section)
         
-        let mood = Moods[indexPath.item].name
-        cell.nameLabel.text = mood
-        cell.checkmark.isHidden = !selectedMoods.contains(where: { $0 == mood })
+        let mood = Moods[indexPath.item]
+        cell.nameLabel.text = mood.name
+        cell.checkmark.isHidden = !selectedMoods.contains(where: { $0.name == mood.name })
         
         return cell
     }
@@ -71,11 +72,11 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let mood = Moods[indexPath.item].name
+        let mood = Moods[indexPath.item]
         if (collectionView.cellForItem(at: indexPath) as! MoodCollectionCell).check() {
             selectedMoods.append(mood)
         } else {
-            selectedMoods.removeAll(where: { $0 == mood})
+            selectedMoods.removeAll(where: { $0.name == mood.name})
         }
             
         nextButton.isHidden = selectedMoods.count < 1
@@ -89,7 +90,7 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
         
         navigationItem.title = "How do you feel?"
         collectionView.backgroundColor = UIColor(r: 50, g: 66, b: 92)
-        collectionView.register(MoodCollectionCell.self, forCellWithReuseIdentifier: "editmoods-cell")
+        collectionView.register(MoodCollectionCell.self, forCellWithReuseIdentifier: "mood-cell")
         
         collectionView.addSubview(nextButton)
         setupNextButton()
@@ -107,15 +108,10 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
     @objc func nextPressed(){
         if selectedMoods.count > 0 {
             
-            var moods: [Mood] = []
+            parentVC.moods = selectedMoods
             
-            for mood in Moods {
-                if selectedMoods.contains(where: { $0 == mood.name }) {
-                    moods.append(mood)
-                }
-            }
+            navigationController?.popViewController(animated: true)
             
-            navigationController?.pushViewController(AddItemViewController(moods: moods), animated: true)
         }
     }
     

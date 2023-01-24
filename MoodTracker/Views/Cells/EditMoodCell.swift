@@ -47,7 +47,7 @@ class EditMoodCell : UICollectionViewCell, UIGestureRecognizerDelegate {
     }
     
     func setupSubviews(){
-        moodLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 5).isActive = true
+        moodLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
         moodLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
         deleteButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -5).isActive = true

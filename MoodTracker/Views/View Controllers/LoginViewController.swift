@@ -21,7 +21,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Sign in"
-        label.font = UIFont(name: "FredokaOne-Regular", size: 48)
+        label.font = UIFont(name: "FredokaOne-Regular", size: 42)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

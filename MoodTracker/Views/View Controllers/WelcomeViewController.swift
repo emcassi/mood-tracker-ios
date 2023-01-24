@@ -13,7 +13,7 @@ class WelcomeViewController: UIViewController {
     let titleLabel:UILabel = {
         let label = UILabel()
         label.text = "Mood Tracker"
-        label.font = UIFont(name: "FredokaOne-Regular", size: 48)
+        label.font = UIFont(name: "FredokaOne-Regular", size: 42)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
