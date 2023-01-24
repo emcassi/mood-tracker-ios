@@ -9,8 +9,13 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import FBSDKCoreKit
+import FBSDKLoginKit
+import GoogleSignIn
+import AuthenticationServices
 
-class CreateAccountViewController: UIViewController, UITextFieldDelegate {
+class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuthorizationControllerPresentationContextProviding {
+    
     
     // Subviews
     
@@ -93,6 +98,47 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
+    let orLabel: UILabel = {
+       let label = UILabel()
+        label.text = "OR"
+        label.textColor = .lightGray
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let appleButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(named: "apple"), for: .normal)
+        button.backgroundColor = UIColor(gray: 240)
+        button.layer.cornerRadius = 32
+        button.addTarget(self, action: #selector(handleApple), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let googleButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(named: "google"), for: .normal)
+        button.backgroundColor = UIColor(gray: 240)
+        button.layer.cornerRadius = 32
+        button.addTarget(self, action: #selector(handleGoogle), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let facebookButton: UIButton = {
+       let button = UIButton()
+        button.setImage(UIImage(named: "facebook"), for: .normal)
+        button.imageView?.frame = CGRectMake(0, 0, 32, 32)
+        button.backgroundColor = UIColor(gray: 240)
+        button.layer.cornerRadius = 32
+        button.addTarget(self, action: #selector(handleFacebook), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    
     // viewDidLoad
     
     override func viewDidLoad(){
@@ -113,6 +159,11 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         scrollView.addSubview(passwordTF)
         scrollView.addSubview(passwordErrorLabel)
         scrollView.addSubview(button)
+        scrollView.addSubview(orLabel)
+        scrollView.addSubview(appleButton)
+        scrollView.addSubview(googleButton)
+        scrollView.addSubview(facebookButton)
+
         
         setupSubviews()
         
@@ -122,6 +173,11 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     @objc func tappedScreen(){
         resignFirstResponder()
+    }
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        let presAnchor = ASPresentationAnchor(frame: .zero)
+        return presAnchor
     }
     
     // Text field delegate methods
@@ -146,6 +202,11 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         setupPasswordTF()
         setupPasswordErrorLabel()
         setupButton()
+        setupOrLabel()
+        setupAppleButton()
+        setupGoogleButton()
+        setupFacebookButton()
+
     }
     
     func setupScrollView(){
@@ -162,9 +223,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     func setupEmailTF(){
         emailTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        emailTF.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 75).isActive = true
         emailTF.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
-        emailTF.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        emailTF.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 75).isActive = true
+        emailTF.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     
     func setupEmailErrorLabel(){
@@ -178,7 +239,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         passwordTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         passwordTF.widthAnchor.constraint(equalTo: emailTF.widthAnchor).isActive = true
         passwordTF.topAnchor.constraint(equalTo: emailErrorLabel.bottomAnchor).isActive = true
-        passwordTF.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        passwordTF.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     
     func setupPasswordErrorLabel(){
@@ -195,6 +256,32 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         button.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
     
+    func setupOrLabel(){
+        orLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        orLabel.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 25).isActive = true
+    }
+    
+    func setupAppleButton(){
+        appleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -view.frame.width / 4).isActive = true
+        appleButton.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 25).isActive = true
+        appleButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        appleButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
+    }
+    
+    func setupGoogleButton(){
+        googleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        googleButton.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 25).isActive = true
+        googleButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        googleButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
+    }
+    
+    func setupFacebookButton(){
+        facebookButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: view.frame.width / 4).isActive = true
+        facebookButton.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 25).isActive = true
+        facebookButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        facebookButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
+    }
+    
     // Sign in button functionality
     
     @objc func createAccount(){
@@ -207,6 +294,80 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                         return
                     } else if let result = result {
                         self.dismiss(animated: true)
+                    }
+                }
+            }
+        }
+    }
+    
+    fileprivate var currentNonce: String?
+
+    @available(iOS 13, *)
+    func startSignInWithAppleFlow() {
+      let nonce = AuthManager().randomNonceString()
+      currentNonce = nonce
+      let appleIDProvider = ASAuthorizationAppleIDProvider()
+      let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        request.nonce = AuthManager().sha256(nonce)
+
+      let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+      authorizationController.delegate = self
+      authorizationController.presentationContextProvider = self
+      authorizationController.performRequests()
+    }
+    
+    @objc func handleApple(){
+        startSignInWithAppleFlow()
+    }
+    
+    @objc func handleGoogle(){
+        
+        
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { result, error in
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            guard let accessToken = result?.user.accessToken, let idToken = result?.user.idToken else {
+                return
+            }
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: accessToken.tokenString)
+            
+            Auth.auth().signIn(with: credential) { res, err in
+                if let err = err {
+                    print(err)
+                }
+                
+                self.dismiss(animated: true)
+            }
+        }
+        
+    }
+    
+    @objc func handleFacebook(){
+        let fbManager = LoginManager()
+        fbManager.logIn(permissions: ["email"], from: self) { result, error in
+            if error == nil {
+                
+                if result!.isCancelled {
+                    return
+                }
+                
+                if result!.grantedPermissions.contains("email") {
+                    if let token = AccessToken.current {
+                        let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
+                        
+                        Auth.auth().signIn(with: credential) { res, err in
+                            if let err = err {
+                                print(err)
+                            }
+                            
+                            self.dismiss(animated: true)
+                        }
                     }
                 }
             }
@@ -272,4 +433,49 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     @objc func keyboardWillHide(notification: Notification){
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height)
     }
+}
+
+
+@available(iOS 13.0, *)
+extension CreateAccountViewController: ASAuthorizationControllerDelegate {
+
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+      guard let nonce = currentNonce else {
+        fatalError("Invalid state: A login callback was received, but no login request was sent.")
+      }
+      guard let appleIDToken = appleIDCredential.identityToken else {
+        print("Unable to fetch identity token")
+        return
+      }
+      guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+        print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+        return
+      }
+      // Initialize a Firebase credential.
+      let credential = OAuthProvider.credential(withProviderID: "apple.com",
+                                                idToken: idTokenString,
+                                                rawNonce: nonce)
+      // Sign in with Firebase.
+      Auth.auth().signIn(with: credential) { (authResult, error) in
+          if error != nil {
+              // Error. If error.code == .MissingOrInvalidNonce, make sure
+              // you're sending the SHA256-hashed nonce as a hex string with
+              // your request to Apple.
+              print(error!.localizedDescription)
+              return
+            }
+        // User is signed in to Firebase with Apple.
+        // ...
+          
+          self.dismiss(animated: true)
+      }
+    }
+  }
+
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    // Handle error.
+    print("Sign in with Apple errored: \(error)")
+  }
+
 }
