@@ -12,8 +12,10 @@ import FirebaseFirestore
 import FBSDKCoreKit
 import FBSDKLoginKit
 import GoogleSignIn
+import AuthenticationServices
 
-class CreateAccountViewController: UIViewController, UITextFieldDelegate {
+class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuthorizationControllerPresentationContextProviding {
+    
     
     // Subviews
     
@@ -173,6 +175,11 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         resignFirstResponder()
     }
     
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        let presAnchor = ASPresentationAnchor(frame: .zero)
+        return presAnchor
+    }
+    
     // Text field delegate methods
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -216,9 +223,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     func setupEmailTF(){
         emailTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        emailTF.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 75).isActive = true
         emailTF.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
-        emailTF.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        emailTF.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 75).isActive = true
+        emailTF.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     
     func setupEmailErrorLabel(){
@@ -232,7 +239,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         passwordTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         passwordTF.widthAnchor.constraint(equalTo: emailTF.widthAnchor).isActive = true
         passwordTF.topAnchor.constraint(equalTo: emailErrorLabel.bottomAnchor).isActive = true
-        passwordTF.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        passwordTF.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     
     func setupPasswordErrorLabel(){
@@ -293,17 +300,31 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    fileprivate var currentNonce: String?
+
+    @available(iOS 13, *)
+    func startSignInWithAppleFlow() {
+      let nonce = AuthManager().randomNonceString()
+      currentNonce = nonce
+      let appleIDProvider = ASAuthorizationAppleIDProvider()
+      let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        request.nonce = AuthManager().sha256(nonce)
+
+      let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+      authorizationController.delegate = self
+      authorizationController.presentationContextProvider = self
+      authorizationController.performRequests()
+    }
+    
     @objc func handleApple(){
-        AuthManager().startSignInWithAppleFlow()
+        startSignInWithAppleFlow()
     }
     
     @objc func handleGoogle(){
         
-        print("asd;lfkjasdf;lkj")
         
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { result, error in
-            
-            print("IN")
             
             if let error = error {
                 print(error)
@@ -345,7 +366,6 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                                 print(err)
                             }
                             
-                            print("SCUESSSSSS")
                             self.dismiss(animated: true)
                         }
                     }
@@ -413,4 +433,49 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     @objc func keyboardWillHide(notification: Notification){
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height)
     }
+}
+
+
+@available(iOS 13.0, *)
+extension CreateAccountViewController: ASAuthorizationControllerDelegate {
+
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+      guard let nonce = currentNonce else {
+        fatalError("Invalid state: A login callback was received, but no login request was sent.")
+      }
+      guard let appleIDToken = appleIDCredential.identityToken else {
+        print("Unable to fetch identity token")
+        return
+      }
+      guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+        print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+        return
+      }
+      // Initialize a Firebase credential.
+      let credential = OAuthProvider.credential(withProviderID: "apple.com",
+                                                idToken: idTokenString,
+                                                rawNonce: nonce)
+      // Sign in with Firebase.
+      Auth.auth().signIn(with: credential) { (authResult, error) in
+          if error != nil {
+              // Error. If error.code == .MissingOrInvalidNonce, make sure
+              // you're sending the SHA256-hashed nonce as a hex string with
+              // your request to Apple.
+              print(error!.localizedDescription)
+              return
+            }
+        // User is signed in to Firebase with Apple.
+        // ...
+          
+          self.dismiss(animated: true)
+      }
+    }
+  }
+
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    // Handle error.
+    print("Sign in with Apple errored: \(error)")
+  }
+
 }

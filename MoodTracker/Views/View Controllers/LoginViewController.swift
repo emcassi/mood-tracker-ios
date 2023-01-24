@@ -8,8 +8,13 @@
 import Foundation
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
+import FBSDKCoreKit
+import FBSDKLoginKit
+import AuthenticationServices
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizationControllerPresentationContextProviding {
+
     
     let scrollView = UIScrollView()
     
@@ -87,6 +92,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         button.setImage(UIImage(named: "apple"), for: .normal)
         button.backgroundColor = UIColor(gray: 240)
         button.layer.cornerRadius = 32
+        button.addTarget(self, action: #selector(handleApple), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -96,6 +102,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         button.setImage(UIImage(named: "google"), for: .normal)
         button.backgroundColor = UIColor(gray: 240)
         button.layer.cornerRadius = 32
+        button.addTarget(self, action: #selector(handleGoogle), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -106,6 +113,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         button.imageView?.frame = CGRectMake(0, 0, 32, 32)
         button.backgroundColor = UIColor(gray: 240)
         button.layer.cornerRadius = 32
+        button.addTarget(self, action: #selector(handleFacebook), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -119,6 +127,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @objc func keyboardWillHide(notification: Notification){
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height)
     }
+    
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        let presAnchor = ASPresentationAnchor(frame: .zero)
+        return presAnchor
+    }
+    
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -270,4 +285,125 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
+    
+    fileprivate var currentNonce: String?
+
+    @available(iOS 13, *)
+    func startSignInWithAppleFlow() {
+      let nonce = AuthManager().randomNonceString()
+      currentNonce = nonce
+      let appleIDProvider = ASAuthorizationAppleIDProvider()
+      let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        request.nonce = AuthManager().sha256(nonce)
+
+      let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+      authorizationController.delegate = self
+      authorizationController.presentationContextProvider = self
+      authorizationController.performRequests()
+    }
+    
+    @objc func handleApple(){
+        startSignInWithAppleFlow()
+    }
+    
+    @objc func handleGoogle(){
+        
+        
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { result, error in
+            
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            guard let accessToken = result?.user.accessToken, let idToken = result?.user.idToken else {
+                return
+            }
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: accessToken.tokenString)
+            
+            Auth.auth().signIn(with: credential) { res, err in
+                if let err = err {
+                    print(err)
+                }
+                
+                self.dismiss(animated: true)
+            }
+        }
+        
+    }
+    
+    @objc func handleFacebook(){
+        let fbManager = LoginManager()
+        fbManager.logIn(permissions: ["email"], from: self) { result, error in
+            if error == nil {
+                
+                if result!.isCancelled {
+                    return
+                }
+                
+                if result!.grantedPermissions.contains("email") {
+                    if let token = AccessToken.current {
+                        let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
+                        
+                        Auth.auth().signIn(with: credential) { res, err in
+                            if let err = err {
+                                print(err)
+                            }
+                            self.dismiss(animated: true)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+@available(iOS 13.0, *)
+extension LoginViewController: ASAuthorizationControllerDelegate {
+
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+      guard let nonce = currentNonce else {
+        fatalError("Invalid state: A login callback was received, but no login request was sent.")
+      }
+      guard let appleIDToken = appleIDCredential.identityToken else {
+        print("Unable to fetch identity token")
+        return
+      }
+      guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+        print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+        return
+      }
+      // Initialize a Firebase credential.
+      let credential = OAuthProvider.credential(withProviderID: "apple.com",
+                                                idToken: idTokenString,
+                                                rawNonce: nonce)
+      // Sign in with Firebase.
+      Auth.auth().signIn(with: credential) { (authResult, error) in
+          if error != nil {
+              // Error. If error.code == .MissingOrInvalidNonce, make sure
+              // you're sending the SHA256-hashed nonce as a hex string with
+              // your request to Apple.
+              print(error!.localizedDescription)
+              return
+            }
+        // User is signed in to Firebase with Apple.
+        // ...
+          
+          self.dismiss(animated: true)
+      }
+    }
+  }
+
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    // Handle error.
+    print("Sign in with Apple errored: \(error)")
+  }
+
 }
