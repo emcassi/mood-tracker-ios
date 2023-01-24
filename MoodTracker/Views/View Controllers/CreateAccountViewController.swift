@@ -28,9 +28,8 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Create Account"
-        label.font = .systemFont(ofSize: 48)
+        label.font = UIFont(name: "FredokaOne-Regular", size: 48)
         label.textColor = .black
-        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -172,7 +171,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     }
     
     @objc func tappedScreen(){
-        resignFirstResponder()
+        scrollView.endEditing(true)
     }
     
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
@@ -217,14 +216,15 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     }
     
     func setupTitleLabel(){
-        titleLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        titleLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
         titleLabel.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 75).isActive = true
     }
     
     func setupEmailTF(){
         emailTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         emailTF.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
-        emailTF.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 75).isActive = true
+        emailTF.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25).isActive = true
         emailTF.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     

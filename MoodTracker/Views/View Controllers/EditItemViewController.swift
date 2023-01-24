@@ -335,7 +335,7 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     @objc func screenPressed(){
-        resignFirstResponder()
+        scrollView.endEditing(true)
     }
     
     @objc func topPressed(){

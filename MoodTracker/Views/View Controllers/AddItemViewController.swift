@@ -133,7 +133,7 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
     }
     
     @objc func screenTapped(){
-        detailsTF.resignFirstResponder()
+        scrollView.endEditing(true)
     }
     
     // add button functionality
