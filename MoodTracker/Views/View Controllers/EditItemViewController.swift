@@ -9,12 +9,14 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import Charts
 
 class EditItemViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var item: MoodsItem? = nil
     var moods: [Mood] = []
     var bEditing = false
+    
     
     let scrollView: UIScrollView = {
         let sv = UIScrollView()
@@ -37,6 +39,23 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         label.textColor = UIColor(gray: 180)
         label.translatesAutoresizingMaskIntoConstraints = false;
         return label
+    }()
+    
+    let categories = ["Sad", "Mad", "Joyful", "Powerful", "Scared", "Peaceful"]
+    var moodCounters: [Double] = []
+
+    var chartView: PieChartView!
+    
+    let deleteButton: UIButton = {
+       let button = UIButton()
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 32, weight: .bold, scale: .large)
+        button.setImage(UIImage(systemName: "trash", withConfiguration: largeConfig), for: .normal)
+        button.backgroundColor = UIColor(named: "cancel")
+        button.layer.cornerRadius = 32
+        button.isHidden = true
+        button.addTarget(self, action: #selector(deleteTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     let moodsView: UICollectionView = {
@@ -107,6 +126,9 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewWillAppear(_ animated: Bool) {
         moodsView.reloadData()
+        initMoodCounters()
+        getAllMoods()
+        customizeChart(dataPoints: categories, values: moodCounters)
     }
     
     override func viewDidLoad() {
@@ -120,6 +142,7 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(screenPressed))
         scrollView.addGestureRecognizer(tapGR)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height)
+        
         
         if let item = item {
             dateLabel.text = item.timestamp.formatted(date: .abbreviated, time: .omitted)
@@ -137,9 +160,15 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         moodsView.dataSource = self
         moodsView.delegate = self
         
+        chartView = PieChartView(frame: CGRect(x: view.frame.width - 150, y: 0 ,width: 128 ,height:128))
+        chartView.drawEntryLabelsEnabled = false
+
+        
         view.addSubview(scrollView)
         scrollView.addSubview(dateLabel)
         scrollView.addSubview(timeLabel)
+        scrollView.addSubview(chartView)
+        scrollView.addSubview(deleteButton)
         scrollView.addSubview(moodsView)
         scrollView.addSubview(addMoodsButton)
         scrollView.addSubview(detailsTF)
@@ -242,7 +271,12 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         timeLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 15).isActive = true
         timeLabel.leftAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leftAnchor, constant: 15).isActive = true
         
-        moodsView.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 5).isActive = true
+        deleteButton.rightAnchor.constraint(equalTo: scrollView.contentLayoutGuide.rightAnchor, constant: -15).isActive = true
+        deleteButton.centerYAnchor.constraint(equalTo: dateLabel.bottomAnchor).isActive = true
+        deleteButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        deleteButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
+        
+        moodsView.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 25).isActive = true
         moodsView.leftAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leftAnchor).isActive = true
         moodsView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         moodsView.heightAnchor.constraint(equalToConstant: 105).isActive = true
@@ -267,6 +301,88 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         bottomButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
         bottomButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
+    }
+    
+    func initMoodCounters(){
+        for _ in 0...categories.count {
+            moodCounters.append(0)
+        }
+    }
+    
+    func getAllMoods(){
+        
+        if let item = item {
+            for mood in item.moods {
+                switch mood.section {
+                case categories[0]:
+                    moodCounters[0] += 1
+                case categories[1]:
+                    moodCounters[1] += 1
+                case categories[2]:
+                    moodCounters[2] += 1
+                case categories[3]:
+                    moodCounters[3] += 1
+                case categories[4]:
+                    moodCounters[4] += 1
+                case categories[5]:
+                    moodCounters[5] += 1
+                default:
+                    break
+                }
+            }
+        }
+        
+    }
+    
+    func customizeChart(dataPoints: [String], values: [Double]) {
+        chartView.legend.enabled = false
+        chartView.animate(xAxisDuration: 1, yAxisDuration: 1, easingOption: .easeOutCirc)
+        chartView.drawHoleEnabled = false
+        // 1. Set ChartDataEntry
+      var dataEntries: [ChartDataEntry] = []
+      for i in 0..<dataPoints.count {
+        let dataEntry = PieChartDataEntry(value: values[i], label: dataPoints[i], data: dataPoints[i] as AnyObject)
+        dataEntries.append(dataEntry)
+      }
+      // 2. Set ChartDataSet
+        let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: dataPoints[0])
+      pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
+        pieChartDataSet.drawValuesEnabled = false
+      // 3. Set ChartData
+      let pieChartData = PieChartData(dataSet: pieChartDataSet)
+      let format = NumberFormatter()
+        format.numberStyle = .decimal
+        format.maximumFractionDigits = 0
+      let formatter = DefaultValueFormatter(formatter: format)
+      pieChartData.setValueFormatter(formatter)
+      // 4. Assign it to the chart’s data
+      chartView.data = pieChartData
+    }
+    
+    private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
+        
+        var colors: [UIColor] = []
+        for category in categories {
+            
+            switch category {
+            case "Sad":
+                colors.append(UIColor(named: "mood-blue")!)
+            case "Peaceful":
+                colors.append(UIColor(named: "mood-aqua")!)
+            case "Powerful":
+                colors.append(UIColor(named: "mood-yellow")!)
+            case "Joyful":
+                colors.append(UIColor(named: "mood-orange")!)
+            case "Mad":
+                colors.append(UIColor(named: "mood-red")!)
+            case "Scared":
+                colors.append(UIColor(named: "mood-purple")!)
+            default:
+                break
+            }
+        }
+     
+      return colors
     }
     
     func deleteMood(mood: Mood){
@@ -309,6 +425,9 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         moodsView.reloadData()
         
         detailsTF.isEditable = true
+        
+        chartView.isHidden = true
+        deleteButton.isHidden = false
     }
     
     func stopEditing() {
@@ -327,6 +446,9 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         detailsTF.isEditable = false
         
         moodsView.reloadData()
+        
+        chartView.isHidden = false
+        deleteButton.isHidden = true
     }
     
     func save(){
@@ -367,6 +489,10 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     @objc func screenPressed(){
         scrollView.endEditing(true)
+    }
+    
+    @objc func deleteTapped(){
+        
     }
     
     @objc func addMoodsTapped(){
