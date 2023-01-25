@@ -111,13 +111,8 @@ class AffirmationsViewController: UIViewController {
         affirmationLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         affirmationLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         affirmationLabel.heightAnchor.constraint(equalToConstant: 300).isActive = true
-        
-//        indicatorContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        indicatorContainer.topAnchor.constraint(equalTo: affirmationLabel.bottomAnchor, constant: 50).isActive = true
-//        indicatorContainer.widthAnchor.constraint(equalToConstant: 64).isActive = true
-//        indicatorContainer.heightAnchor.constraint(equalToConstant: 64).isActive = true
-//
-        activityIndicator.center = CGPoint(x: view.center.x, y: view.center.y + 250)
+
+        activityIndicator.center = CGPoint(x: view.center.x, y: view.center.y + 200)
         
         getButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         getButton.bottomAnchor.constraint(equalTo: undoButton.topAnchor, constant: -15).isActive = true
@@ -155,10 +150,11 @@ class AffirmationsViewController: UIViewController {
                 }
                 if let data = data {
                     self.parseJSON(data)
+
                 }
+                Firestore.firestore().collection("analytics").document("affirmations").updateData(["sent": FieldValue.increment(Int64(1))])
             }
             task.resume()
-            Firestore.firestore().collection("analytics").document("affirmations").setData(["sent": FieldValue.increment(1.0)])
         }
     }
     

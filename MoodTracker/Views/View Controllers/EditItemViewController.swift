@@ -473,6 +473,8 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
                 
                 self.navigationController?.popViewController(animated: true)
             })
+            
+
         }
     }
     
