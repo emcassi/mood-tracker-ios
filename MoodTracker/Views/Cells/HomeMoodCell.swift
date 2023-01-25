@@ -22,8 +22,6 @@ class HomeMoodCell : UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         layer.cornerRadius = 15
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.white.cgColor
         addSubview(moodLabel)
         
         setupSubviews()

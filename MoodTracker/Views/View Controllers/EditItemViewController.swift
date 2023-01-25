@@ -75,7 +75,7 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     let addMoodsButton: UIButton = {
         let button = UIButton()
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular, scale: .large)
-        button.setImage(UIImage(systemName: "plus.circle", withConfiguration: largeConfig), for: .normal)
+        button.setImage(UIImage(systemName: "plus", withConfiguration: largeConfig), for: .normal)
         button.imageView?.tintColor = .white
         button.layer.cornerRadius = 25
         button.backgroundColor = UIColor(named: "purple")

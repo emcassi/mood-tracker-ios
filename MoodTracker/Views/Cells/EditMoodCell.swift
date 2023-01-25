@@ -32,8 +32,6 @@ class EditMoodCell : UICollectionViewCell, UIGestureRecognizerDelegate {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         layer.cornerRadius = 15
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.white.cgColor
         
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(deletePressed))
         tapGR.delegate = self

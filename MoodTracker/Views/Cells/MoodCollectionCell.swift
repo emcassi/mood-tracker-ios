@@ -40,8 +40,6 @@ class MoodCollectionCell: UICollectionViewCell {
         super.init(frame: .zero)
         
         contentView.layer.cornerRadius = 15
-        contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor.white.cgColor
         contentView.clipsToBounds = true
         
         
