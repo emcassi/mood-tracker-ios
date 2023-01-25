@@ -8,6 +8,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="FredokaOne-Regular.ttf">
+            <string>FredokaOne-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -18,23 +23,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="emcassi" translatesAutoresizingMaskIntoConstraints="NO" id="CEr-VD-Vcl">
-                                <rect key="frame" x="153.66666666666666" y="717" width="86" height="86"/>
+                                <rect key="frame" x="166.66666666666666" y="743" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="86" id="A4V-If-Dxz"/>
-                                    <constraint firstAttribute="width" constant="86" id="VjB-Qw-wuS"/>
+                                    <constraint firstAttribute="height" constant="60" id="A4V-If-Dxz"/>
+                                    <constraint firstAttribute="width" constant="60" id="VjB-Qw-wuS"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="logo-alpha" translatesAutoresizingMaskIntoConstraints="NO" id="35R-Dm-OgY">
-                                <rect key="frame" x="25" y="301" width="343" height="250"/>
+                                <rect key="frame" x="118" y="301" width="250" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="SQo-lz-RRH"/>
                                     <constraint firstAttribute="width" constant="250" id="yeN-rB-bCv"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" text="Mood Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBp-re-eB6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" text="Mood Tracker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBp-re-eB6">
                                 <rect key="frame" x="77" y="569" width="238" height="42"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="FredokaOne-Regular" family="Fredoka One" pointSize="35"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -51,6 +56,9 @@
                             <constraint firstItem="xBp-re-eB6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="oj3-qg-02P"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="xBp-re-eB6" id="Iiq-Yh-mKP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,7 +69,7 @@
         <image name="emcassi" width="946" height="946"/>
         <image name="logo-alpha" width="718" height="716"/>
         <namedColor name="purple">
-            <color red="0.56470588235294117" green="0.13296708460000001" blue="0.45165985819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.56499999761581421" green="0.13300000131130219" blue="0.45199999213218689" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

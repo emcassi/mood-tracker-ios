@@ -47,11 +47,12 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     var chartView: PieChartView!
     
     let deleteButton: UIButton = {
-       let button = UIButton()
-        let largeConfig = UIImage.SymbolConfiguration(pointSize: 32, weight: .bold, scale: .large)
+        let button = UIButton()
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .bold, scale: .large)
         button.setImage(UIImage(systemName: "trash", withConfiguration: largeConfig), for: .normal)
+        button.tintColor = .white
         button.backgroundColor = UIColor(named: "cancel")
-        button.layer.cornerRadius = 32
+        button.layer.cornerRadius = 24
         button.isHidden = true
         button.addTarget(self, action: #selector(deleteTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -264,6 +265,11 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         scrollView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        scrollView.contentLayoutGuide.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.contentLayoutGuide.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        scrollView.contentLayoutGuide.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        scrollView.contentLayoutGuide.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
 
         dateLabel.leftAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leftAnchor, constant: 15).isActive = true
         dateLabel.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 15).isActive = true
@@ -272,9 +278,9 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         timeLabel.leftAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leftAnchor, constant: 15).isActive = true
         
         deleteButton.rightAnchor.constraint(equalTo: scrollView.contentLayoutGuide.rightAnchor, constant: -15).isActive = true
-        deleteButton.centerYAnchor.constraint(equalTo: dateLabel.bottomAnchor).isActive = true
-        deleteButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
-        deleteButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
+        deleteButton.topAnchor.constraint(equalTo: dateLabel.topAnchor).isActive = true
+        deleteButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        deleteButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         
         moodsView.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 25).isActive = true
         moodsView.leftAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leftAnchor).isActive = true
@@ -418,7 +424,6 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         bEditing = true
         addMoodsButton.isHidden = false
         topButton.setTitle("Cancel", for: .normal)
-        topButton.setTitleColor(.red, for: .normal)
         
         bottomButton.setTitle("Save", for: .normal)
         
@@ -493,6 +498,23 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     @objc func deleteTapped(){
         
+        let alert = UIAlertController(title: "Delete", message: "Are you sure you want to delete this post?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
+            if let user = Auth.auth().currentUser, let item = self.item {
+                Firestore.firestore().collection("users").document(user.uid).collection("items").document(item.id).delete(){ error in
+                    alert.dismiss(animated: true)
+                    if let error = error {
+                        print(error)
+                    } else {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { action in
+            alert.dismiss(animated: true)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func addMoodsTapped(){
