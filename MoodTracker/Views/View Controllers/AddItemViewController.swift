@@ -12,6 +12,8 @@ import FirebaseFirestore
 
 class AddItemViewController : UIViewController, UITextViewDelegate {
     
+    var isAdding: Bool = false
+    
     let moods: [Mood]
     var moodsString: String = ""
     
@@ -139,25 +141,28 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
     // add button functionality
     
     @objc func addPressed(){
-        if let user = Auth.auth().currentUser, var details = detailsTF.text {
-            if details == detailsPlaceholder {
-                details = ""
-            }
+        if(!isAdding){
+            isAdding = true
             
-            let preparedMoods = MoodsManager().prepareMoodsForFirebase(moods: moods)
-                        
-            Firestore.firestore().collection("users").document(user.uid).collection("items").addDocument(data: [
-                "user": user.uid,
-                "moods": preparedMoods,
-                "details": details,
-                "timestamp": Date.now
-            ]) { error in
-                if let error = error {
-                    
-                    
-                    print(error)
-                } else {
-                    self.navigationController?.popToRootViewController(animated: true)
+            if let user = Auth.auth().currentUser, var details = detailsTF.text {
+                if details == detailsPlaceholder {
+                    details = ""
+                }
+                
+                let preparedMoods = MoodsManager().prepareMoodsForFirebase(moods: moods)
+                
+                Firestore.firestore().collection("users").document(user.uid).collection("items").addDocument(data: [
+                    "user": user.uid,
+                    "moods": preparedMoods,
+                    "details": details,
+                    "timestamp": Date.now
+                ]) { error in
+                    if let error = error {
+                        print(error)
+                        self.isAdding = false
+                    } else {
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
                 }
             }
         }
