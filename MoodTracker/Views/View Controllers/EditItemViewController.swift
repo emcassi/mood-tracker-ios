@@ -91,6 +91,7 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         tv.textColor = .white
         tv.font = .systemFont(ofSize: 14)
         tv.backgroundColor = .clear
+        tv.contentInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         tv.isEditable = false
         tv.layer.borderWidth = 1
         tv.layer.cornerRadius = 15
@@ -101,12 +102,11 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     let topButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Edit", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .gray
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.black.cgColor
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular, scale: .large)
+        button.setImage(UIImage(systemName: "pencil", withConfiguration: largeConfig), for: .normal)
+        button.imageView?.tintColor = .white
+        button.layer.cornerRadius = 32
+        button.backgroundColor = UIColor.gray
         button.addTarget(self, action: #selector(topPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -114,15 +114,15 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     let bottomButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Done", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor(named: "purple")
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.black.cgColor
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular, scale: .large)
+        button.setImage(UIImage(systemName: "checkmark", withConfiguration: largeConfig), for: .normal)
+        button.imageView?.tintColor = .white
+        button.layer.cornerRadius = 32
+        button.backgroundColor = UIColor(named: "done")
         button.addTarget(self, action: #selector(bottomPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
+
     }()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -297,15 +297,15 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         detailsTF.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.9).isActive = true
         detailsTF.heightAnchor.constraint(equalToConstant: 250).isActive = true
         
-        topButton.topAnchor.constraint(equalTo: detailsTF.bottomAnchor, constant: 25).isActive = true
-        topButton.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.6).isActive = true
-        topButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        topButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        topButton.topAnchor.constraint(equalTo: detailsTF.bottomAnchor, constant: 30).isActive = true
+        topButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -view.frame.width / 6).isActive = true
+        topButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        topButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
         
-        bottomButton.topAnchor.constraint(equalTo: topButton.bottomAnchor, constant: 15).isActive = true
-        bottomButton.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 0.6).isActive = true
-        bottomButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        bottomButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        bottomButton.topAnchor.constraint(equalTo: topButton.topAnchor).isActive = true
+        bottomButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: view.frame.width / 6).isActive = true
+        bottomButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        bottomButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
 
     }
     
@@ -423,9 +423,10 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     func startEditing() {
         bEditing = true
         addMoodsButton.isHidden = false
-        topButton.setTitle("Cancel", for: .normal)
         
-        bottomButton.setTitle("Save", for: .normal)
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular, scale: .large)
+        
+        topButton.setImage(UIImage(systemName: "x.circle.fill", withConfiguration: largeConfig), for: .normal)
         
         moodsView.reloadData()
         
@@ -438,10 +439,11 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     func stopEditing() {
         bEditing = false
         addMoodsButton.isHidden = true
-        topButton.setTitle("Edit", for: .normal)
         topButton.setTitleColor(.white, for: .normal)
         
-        bottomButton.setTitle("Done", for: .normal)
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular, scale: .large)
+        
+        topButton.setImage(UIImage(systemName: "pencil", withConfiguration: largeConfig), for: .normal)
         
         if let item = item {
             detailsTF.text = item.details
