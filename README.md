@@ -45,7 +45,7 @@
     <ul>
         <li>Sign in with your Apple, Google, or Facebook account</li>
         <li><a href="https://github.com/firebase/firebase-ios-sdk">Firebase</a> is used for authentication and databases. </li>
-        <li>Using the <a href="https://github.com/annthurium/affirmations">affirmations.dev</a> API, you can easily get affirmations in the app to make you feel better. </li>
+        <li>With the <a href="https://github.com/annthurium/affirmations">affirmations.dev</a> API, you can easily get affirmations in the app to make you feel better. </li>
         <li>Animated pie charts to help visually analyse your day</li>
         <li>UPDATE: Edit your posts!</li>
     </ul>
