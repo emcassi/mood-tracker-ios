@@ -43,9 +43,11 @@
     Keep track of how you've been feeling with a nice UI with color coded mood cells for 6 categories of feelings - Sad, Mad, Scared, Peaceful, Powerful, and Joyful
     <br/>
     <ul>
+        <li>Sign in with your Apple, Google, or Facebook account</li>
         <li><a href="https://github.com/firebase/firebase-ios-sdk">Firebase</a> is used for authentication and databases. </li>
         <li>Using the <a href="https://github.com/annthurium/affirmations">affirmations.dev</a> API, you can easily get affirmations in the app to make you feel better. </li>
-        <li>UPDATE: Animated pie charts to help visually analyse your day</li>
+        <li>Animated pie charts to help visually analyse your day</li>
+        <li>UPDATE: Edit your posts!</li>
     </ul>
     <br/>   
     Hope you like it! -Alex
