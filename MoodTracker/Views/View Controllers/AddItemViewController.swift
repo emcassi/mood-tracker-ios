@@ -38,14 +38,6 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
-
-    let moodsLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.textColor = .white
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    } ()
     
     let moodsView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -92,9 +84,7 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
         
         moodsView.dataSource = self
         moodsView.delegate = self
-        
-        moodsLabel.text = MoodsManager().makeMoodsString(moods: moods)
-        
+                
         view.addSubview(scrollView)
         scrollView.addSubview(detailsTF)
         scrollView.addSubview(moodsView)
@@ -131,7 +121,7 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
     }
     
     func setupAddButton(){
-        addButton.bottomAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.bottomAnchor, constant: 25).isActive = true
+        addButton.topAnchor.constraint(equalTo: moodsView.bottomAnchor, constant: 25).isActive = true
         addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         addButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
         addButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
