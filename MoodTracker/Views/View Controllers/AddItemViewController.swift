@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class AddItemViewController : UIViewController, UITextViewDelegate {
+class AddItemViewController : UIViewController, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     var isAdding: Bool = false
     
@@ -32,7 +32,9 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
         tv.font = .systemFont(ofSize: 14)
         tv.backgroundColor = .clear
         tv.layer.borderWidth = 1
+        tv.layer.cornerRadius = 15
         tv.layer.borderColor = UIColor.white.cgColor
+        tv.contentInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
@@ -45,17 +47,30 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
         return label
     } ()
     
+    let moodsView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.itemSize = CGSize(width: 110, height: 30)
+        flowLayout.minimumLineSpacing = 5.0
+        flowLayout.minimumInteritemSpacing = 2
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        cv.backgroundColor = .clear
+        cv.showsHorizontalScrollIndicator = false
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        return cv
+    }()
+    
     let addButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Add", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor(named: "purple")
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.black.cgColor
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular, scale: .large)
+        button.setImage(UIImage(systemName: "checkmark", withConfiguration: largeConfig), for: .normal)
+        button.imageView?.tintColor = .white
+        button.layer.cornerRadius = 32
+        button.backgroundColor = UIColor(named: "done")
         button.addTarget(self, action: #selector(addPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
+
     }()
     
     override func viewDidLoad() {
@@ -73,11 +88,16 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
         detailsTF.delegate = self
         detailsTF.text = detailsPlaceholder
         
+        moodsView.register(HomeMoodCell.self, forCellWithReuseIdentifier: "confirm-mood")
+        
+        moodsView.dataSource = self
+        moodsView.delegate = self
+        
         moodsLabel.text = MoodsManager().makeMoodsString(moods: moods)
         
         view.addSubview(scrollView)
         scrollView.addSubview(detailsTF)
-        scrollView.addSubview(moodsLabel)
+        scrollView.addSubview(moodsView)
         view.addSubview(addButton)
         setupSubviews()
     }
@@ -85,7 +105,7 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
     func setupSubviews(){
         setupScrollView()
         setupDetailsTF()
-        setupMoodsLabel()
+        setupMoodsView()
         setupAddButton()
     }
     
@@ -103,20 +123,62 @@ class AddItemViewController : UIViewController, UITextViewDelegate {
         detailsTF.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
     }
     
-    func setupMoodsLabel(){
-        moodsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        moodsLabel.topAnchor.constraint(equalTo: detailsTF.bottomAnchor, constant: 25).isActive = true
-        moodsLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
+    func setupMoodsView(){
+        moodsView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        moodsView.topAnchor.constraint(equalTo: detailsTF.bottomAnchor, constant: 15).isActive = true
+        moodsView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        moodsView.heightAnchor.constraint(equalToConstant: 105).isActive = true
     }
     
     func setupAddButton(){
-        addButton.topAnchor.constraint(equalTo: moodsLabel.bottomAnchor, constant: 25).isActive = true
-        addButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
-        addButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        addButton.bottomAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.bottomAnchor, constant: 25).isActive = true
         addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        addButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        addButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
+    }
+    
+    // Collection view delegate methods
+    
+    // Add spaces at the beginning and the end of the collection view
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        let spacing = layout.minimumInteritemSpacing
+        
+        return UIEdgeInsets(top: 15, left: 20, bottom: 15, right: 20)
     }
     
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return moods.count
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "confirm-mood", for: indexPath) as? HomeMoodCell {
+            
+            switch moods[indexPath.item].section {
+            case "Sad":
+                cell.backgroundColor = UIColor(named: "mood-blue")
+            case "Peaceful":
+                cell.backgroundColor = UIColor(named: "mood-aqua")
+            case "Powerful":
+                cell.backgroundColor = UIColor(named: "mood-yellow")
+            case "Joyful":
+                cell.backgroundColor = UIColor(named: "mood-orange")
+            case "Mad":
+                cell.backgroundColor = UIColor(named: "mood-red")
+            case "Scared":
+                cell.backgroundColor = UIColor(named: "mood-purple")
+            default:
+                cell.backgroundColor = .gray
+            }
+            
+            cell.moodLabel.text = self.moods[indexPath.item].name
+            return cell
+        }
+        return UICollectionViewCell()
+    }
     
     // Text view delegate methods
     
