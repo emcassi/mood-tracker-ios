@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import FirebaseAuth
+import FirebaseAnalytics
 import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
@@ -280,6 +281,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
                         print(error.localizedDescription)
                     }
                 } else {
+                    Analytics.logEvent(AnalyticsEventLogin, parameters: [
+                        AnalyticsParameterMethod: "Email"
+                    ])
                     self.dismiss(animated: true)
                 }
             }
@@ -329,7 +333,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
                 if let err = err {
                     print(err)
                 }
-                
+                Analytics.logEvent(AnalyticsEventLogin, parameters: [
+                    AnalyticsParameterMethod: "Google"
+                ])
                 self.dismiss(animated: true)
             }
         }
@@ -353,6 +359,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
                             if let err = err {
                                 print(err)
                             }
+                            Analytics.logEvent(AnalyticsEventLogin, parameters: [
+                                AnalyticsParameterMethod: "Facebook"
+                            ])
                             self.dismiss(animated: true)
                         }
                     }
@@ -395,7 +404,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             }
         // User is signed in to Firebase with Apple.
         // ...
-          
+          Analytics.logEvent(AnalyticsEventLogin, parameters: [
+              AnalyticsParameterMethod: "Apple"
+          ])
           self.dismiss(animated: true)
       }
     }

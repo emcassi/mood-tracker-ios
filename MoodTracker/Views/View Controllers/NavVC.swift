@@ -16,7 +16,6 @@ class NavVC: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         authManager.setListener(navVC: self)
-        
         navigationBar.tintColor = UIColor(named: "lighter")
     }
     

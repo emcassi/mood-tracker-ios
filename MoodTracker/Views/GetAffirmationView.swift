@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 import FirebaseFirestore
 
 class AffirmationsViewController: UIViewController {
@@ -150,9 +151,12 @@ class AffirmationsViewController: UIViewController {
                 }
                 if let data = data {
                     self.parseJSON(data)
-
+                    
                 }
                 Firestore.firestore().collection("analytics").document("affirmations").updateData(["sent": FieldValue.increment(Int64(1))])
+                if let user = Auth.auth().currentUser{
+                    Firestore.firestore().collection("users").document(user.uid).updateData(["affirmations": FieldValue.increment(Int64(1))])
+                }
             }
             task.resume()
         }

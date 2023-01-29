@@ -43,6 +43,7 @@
 		FA492AAB291951D900E92F9A /* MoodCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */; };
 		FA7F42D0291D756D00C6EA2C /* GetAffirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F42CF291D756D00C6EA2C /* GetAffirmationView.swift */; };
 		FA7F42D3291D78E300C6EA2C /* Affirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F42D2291D78E300C6EA2C /* Affirmation.swift */; };
+		FAB46A252986503100959A7E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB46A242986503100959A7E /* AdSupport.framework */; };
 		FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */; };
 		FAFA448B297E89760068B4A8 /* EditMoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA448A297E89760068B4A8 /* EditMoodCell.swift */; };
 		FAFA448E297F75590068B4A8 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = FAFA448D297F75590068B4A8 /* FacebookCore */; };
@@ -105,6 +106,7 @@
 		FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCollectionCell.swift; sourceTree = "<group>"; };
 		FA7F42CF291D756D00C6EA2C /* GetAffirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAffirmationView.swift; sourceTree = "<group>"; };
 		FA7F42D2291D78E300C6EA2C /* Affirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Affirmation.swift; sourceTree = "<group>"; };
+		FAB46A242986503100959A7E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		FAFA448A297E89760068B4A8 /* EditMoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMoodCell.swift; sourceTree = "<group>"; };
 		FAFA4491297F76940068B4A8 /* MoodTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoodTracker.entitlements; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA3B5665290BB6EC00FBA068 /* FirebaseAnalytics in Frameworks */,
+				FAB46A252986503100959A7E /* AdSupport.framework in Frameworks */,
 				FAFA448E297F75590068B4A8 /* FacebookCore in Frameworks */,
 				FAFA4490297F75590068B4A8 /* FacebookLogin in Frameworks */,
 				FA3B5667290BB6EC00FBA068 /* FirebaseAuth in Frameworks */,
@@ -151,6 +154,7 @@
 				FA20D5F2290B9FA90068332C /* MoodTrackerTests */,
 				FA20D5FC290B9FAA0068332C /* MoodTrackerUITests */,
 				FA20D5DA290B9F8F0068332C /* Products */,
+				FAB46A232986503000959A7E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -277,6 +281,14 @@
 				FA492A992918964400E92F9A /* Mood.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FAB46A232986503000959A7E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAB46A242986503100959A7E /* AdSupport.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -637,7 +649,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.emcassi.MoodTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -671,7 +683,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.emcassi.MoodTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

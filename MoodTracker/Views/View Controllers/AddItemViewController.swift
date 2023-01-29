@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseAnalytics
 
 class AddItemViewController : UIViewController, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
@@ -202,17 +203,21 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
                 }
                 
                 let preparedMoods = MoodsManager().prepareMoodsForFirebase(moods: moods)
-                
+                let timestamp = Date.now
                 Firestore.firestore().collection("users").document(user.uid).collection("items").addDocument(data: [
                     "user": user.uid,
                     "moods": preparedMoods,
                     "details": details,
-                    "timestamp": Date.now
+                    "timestamp": timestamp
                 ]) { error in
                     if let error = error {
                         print(error)
                         self.isAdding = false
                     } else {
+                        Firestore.firestore().collection("users").document(user.uid).updateData([
+                            "numPosts": FieldValue.increment(Int64(1)),
+                            "lastPostTimestamp": timestamp
+                        ])
                         self.navigationController?.popToRootViewController(animated: true)
                     }
                 }

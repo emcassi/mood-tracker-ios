@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FirebaseAnalytics
 import FirebaseAuth
 import FirebaseFirestore
 import FBSDKCoreKit
@@ -293,6 +294,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
                         print(error)
                         return
                     } else if let result = result {
+                        Analytics.logEvent(AnalyticsEventSignUp, parameters: [
+                            AnalyticsParameterMethod: "Email"
+                        ])
                         self.dismiss(animated: true)
                     }
                 }
@@ -341,7 +345,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
                 if let err = err {
                     print(err)
                 }
-                
+                Analytics.logEvent(AnalyticsEventLogin, parameters: [
+                    AnalyticsParameterMethod: "Google"
+                ])
                 self.dismiss(animated: true)
             }
         }
@@ -365,7 +371,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
                             if let err = err {
                                 print(err)
                             }
-                            
+                            Analytics.logEvent(AnalyticsEventLogin, parameters: [
+                                AnalyticsParameterMethod: "Facebook"
+                            ])
                             self.dismiss(animated: true)
                         }
                     }
@@ -467,7 +475,9 @@ extension CreateAccountViewController: ASAuthorizationControllerDelegate {
             }
         // User is signed in to Firebase with Apple.
         // ...
-          
+          Analytics.logEvent(AnalyticsEventLogin, parameters: [
+              AnalyticsParameterMethod: "Apple"
+          ])
           self.dismiss(animated: true)
       }
     }
