@@ -182,9 +182,6 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     // Add spaces at the beginning and the end of the collection view
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        let layout = collectionViewLayout as! UICollectionViewFlowLayout
-        let spacing = layout.minimumInteritemSpacing
-        
         if bEditing {
             return UIEdgeInsets(top: 15, left: 20, bottom: 15, right: 75)
         } else {

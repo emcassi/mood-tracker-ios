@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class HomeItemCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
+class HomeItemCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var item: MoodsItem? = nil
         
@@ -55,7 +55,7 @@ class HomeItemCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
     
     // Add spaces at the beginning and the end of the collection view
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -102,8 +102,8 @@ class HomeItemCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
 //        moodsLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
         
         moodsView.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 10).isActive = true
-        moodsView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
-        moodsView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10).isActive = true
+        moodsView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        moodsView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         moodsView.heightAnchor.constraint(equalToConstant: 75).isActive = true
         
         detailsLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
