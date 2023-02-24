@@ -13,11 +13,11 @@ class SettingsViewController: UIViewController {
     let privacyButton: UIButton = {
         let button = UIButton()
         button.setTitle("Privacy Policy", for: .normal)
-        button.backgroundColor = .clear
+        button.backgroundColor = .white
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.white.cgColor
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(UIColor(named: "bg-color"), for: .normal)
         button.addTarget(self, action: #selector(privacyPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -26,11 +26,11 @@ class SettingsViewController: UIViewController {
     let signOutButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign Out", for: .normal)
-        button.backgroundColor = .clear
+        button.backgroundColor = .white
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.white.cgColor
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(UIColor(named: "bg-color"), for: .normal)
         button.addTarget(self, action: #selector(signOutPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -39,7 +39,7 @@ class SettingsViewController: UIViewController {
     let deleteAccountButton: UIButton = {
         let button = UIButton()
         button.setTitle("Delete Account", for: .normal)
-        button.backgroundColor = .clear
+        button.backgroundColor = .white
         button.layer.cornerRadius = 15
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.white.cgColor
