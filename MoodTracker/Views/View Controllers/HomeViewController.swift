@@ -118,7 +118,7 @@ class HomeViewController: UITableViewController {
                     let calendar = Calendar(identifier: .gregorian)
                     
                     var grouped = Dictionary(grouping: items.sorted(by: { ($0.timestamp ) < ( $1.timestamp ) }), by: { calendar.startOfDay(for: $0.timestamp ) })
-                    
+                    print(grouped)
                     self.grouped = grouped
                     
                     self.emptyLabel.isHidden = grouped.count > 0
@@ -160,7 +160,8 @@ class HomeViewController: UITableViewController {
         if let grouped = grouped, let groupedKeys = groupedKeys {
             
             if let itemsForDay = grouped.first(where: { $0.key == groupedKeys[indexPath.section] }) {
-                let itemForCell = itemsForDay.value[indexPath.row]
+                                
+                let itemForCell = itemsForDay.value.sorted(by: {$0.timestamp > $1.timestamp } )[indexPath.row]
                 let moodsString = MoodsManager().makeMoodsString(moods: itemForCell.moods )
                 
                 df.dateFormat = "h:mm a"
