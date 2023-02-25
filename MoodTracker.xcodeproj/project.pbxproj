@@ -634,11 +634,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MoodTracker/MoodTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = TX4WW8TVSW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MoodTracker/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Mood Tracker";
+				INFOPLIST_KEY_CFBundleDisplayName = Mudi;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -668,11 +668,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MoodTracker/MoodTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = TX4WW8TVSW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MoodTracker/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Mood Tracker";
+				INFOPLIST_KEY_CFBundleDisplayName = Mudi;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";

@@ -40,6 +40,8 @@ class MoodCollectionCell: UICollectionViewCell {
         super.init(frame: .zero)
         
         contentView.layer.cornerRadius = 15
+        contentView.layer.borderWidth = 2
+        contentView.layer.borderColor = UIColor.clear.cgColor
         contentView.clipsToBounds = true
         
         
@@ -69,6 +71,7 @@ class MoodCollectionCell: UICollectionViewCell {
     func check() -> Bool{
         checked = !checked
         checkmark.isHidden = !checked
+        contentView.layer.borderColor = checked ? UIColor.white.cgColor : UIColor.clear.cgColor
         return checked
     }
  

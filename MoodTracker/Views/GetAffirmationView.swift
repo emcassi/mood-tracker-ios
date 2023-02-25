@@ -50,6 +50,7 @@ class AffirmationsViewController: UIViewController {
         ai.style = .large
         ai.color = .white
         ai.hidesWhenStopped = true
+        ai.translatesAutoresizingMaskIntoConstraints = false
         return ai
     }()
     
@@ -125,7 +126,6 @@ class AffirmationsViewController: UIViewController {
         authorLabel.rightAnchor.constraint(equalTo: quoteLabel.rightAnchor).isActive = true
         authorLabel.topAnchor.constraint(equalTo: quoteLabel.bottomAnchor, constant: 25).isActive = true
 
-        activityIndicator.center = CGPoint(x: view.center.x, y: view.frame.height - 150)
         
         getButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         getButton.bottomAnchor.constraint(equalTo: undoButton.topAnchor, constant: -15).isActive = true
@@ -136,6 +136,8 @@ class AffirmationsViewController: UIViewController {
         undoButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25).isActive = true
         undoButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.bottomAnchor.constraint(equalTo: getButton.topAnchor, constant: -50).isActive = true
     }
     
     @objc func getButtonPressed(){

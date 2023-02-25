@@ -21,7 +21,7 @@ class HomeViewController: UITableViewController {
     
     let emptyLabel: UILabel = {
         let label = UILabel()
-        label.text = "You haven't logged any moods yet? Add now?"
+        label.text = "You haven't logged anything yet? Start now?"
         label.textColor = .white
         label.numberOfLines = 2
         label.textAlignment = .center
@@ -32,7 +32,7 @@ class HomeViewController: UITableViewController {
     
     let emptyButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Add", for: .normal)
+        button.setTitle("Start", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .clear
         button.layer.borderWidth = 1
@@ -55,7 +55,7 @@ class HomeViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(settingsPressed))
-        navigationItem.title = "Mood Tracker"
+        navigationItem.title = "Mudi"
         navigationController?.navigationBar.tintColor = UIColor(named: "lighter")
         navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addPressed)), UIBarButtonItem(image: UIImage(systemName: "quote.opening"), style: .plain, target: self, action: #selector(affirmationPressed))]
         df.timeZone = calendar.timeZone
