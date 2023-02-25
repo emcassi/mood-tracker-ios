@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct Affirmation: Decodable {
-    let affirmation: String
+struct Quote: Decodable {
+    let q: String
+    let a: String
 }

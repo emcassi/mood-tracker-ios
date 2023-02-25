@@ -12,13 +12,14 @@ import FirebaseFirestore
 
 class AffirmationsViewController: UIViewController {
     
-    var lastAff = ""
+    var quote: Quote?
+    var lastAff: Quote?
     var gettingAff = false
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 32)
-        label.text = "Get an Affirmation"
+        label.font = .systemFont(ofSize: 28)
+        label.text = "Need Encouragement?"
         label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -29,7 +30,7 @@ class AffirmationsViewController: UIViewController {
     let descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
-        label.text = "Tap below the button to get an affirmation to help you feel better"
+        label.text = "Tap below the button to get a quote to help you feel better"
         label.textAlignment = .center
         label.textColor = .white
         label.numberOfLines = 0
@@ -52,7 +53,7 @@ class AffirmationsViewController: UIViewController {
         return ai
     }()
     
-    let affirmationLabel: UILabel = {
+    let quoteLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18)
         label.textColor = .white
@@ -62,9 +63,17 @@ class AffirmationsViewController: UIViewController {
         return label
     }()
     
+    let authorLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .semibold)
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     let getButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Get Affirmation", for: .normal)
+        button.setTitle("Get Quote", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(named: "purple")
         button.layer.borderColor = UIColor.clear.cgColor
@@ -92,7 +101,8 @@ class AffirmationsViewController: UIViewController {
         
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
-        view.addSubview(affirmationLabel)
+        view.addSubview(quoteLabel)
+        view.addSubview(authorLabel)
         view.addSubview(activityIndicator)
         view.addSubview(getButton)
         view.addSubview(undoButton)
@@ -108,10 +118,12 @@ class AffirmationsViewController: UIViewController {
         descriptionLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 
-        affirmationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        affirmationLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        affirmationLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
-        affirmationLabel.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        quoteLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        quoteLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        quoteLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+        
+        authorLabel.rightAnchor.constraint(equalTo: quoteLabel.rightAnchor).isActive = true
+        authorLabel.topAnchor.constraint(equalTo: quoteLabel.bottomAnchor, constant: 25).isActive = true
 
         activityIndicator.center = CGPoint(x: view.center.x, y: view.center.y + 200)
         
@@ -135,14 +147,17 @@ class AffirmationsViewController: UIViewController {
     }
     
     @objc func undoPressed(){
-        if lastAff != "" {
-            affirmationLabel.text = lastAff
+        if lastAff != nil {
+            quote = lastAff
+            
+            quoteLabel.text = quote?.q
+            authorLabel.text = "- \(quote?.a ?? "Unknown")"
         }
         undoButton.isHidden = true
     }
     
     func getAffirmation() {
-        if let url = URL(string: "https://www.affirmations.dev") {
+        if let url = URL(string: "https://zenquotes.io/api/random") {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { data, response, error in
                 if let error = error {
@@ -155,7 +170,7 @@ class AffirmationsViewController: UIViewController {
                 }
                 Firestore.firestore().collection("analytics").document("affirmations").updateData(["sent": FieldValue.increment(Int64(1))])
                 if let user = Auth.auth().currentUser{
-                    Firestore.firestore().collection("users").document(user.uid).updateData(["affirmations": FieldValue.increment(Int64(1))])
+                    Firestore.firestore().collection("users").document(user.uid).updateData(["quotesRequested": FieldValue.increment(Int64(1))])
                 }
             }
             task.resume()
@@ -165,14 +180,27 @@ class AffirmationsViewController: UIViewController {
     func parseJSON(_ data: Data) {
         let decoder = JSONDecoder()
         do {
-            let decodedData = try decoder.decode(Affirmation.self, from: data)
+            let decodedData = try decoder.decode([Quote].self, from: data)
             DispatchQueue.main.async {
-                if let aff = self.affirmationLabel.text {
-                    self.lastAff = self.affirmationLabel.text!
+                
+                self.lastAff = self.quote
+                self.quote = decodedData[0]
+                
+                if self.quote?.a == "zenquotes.io" {
+                    self.quoteLabel.text = "Too many requests. Please try again later"
+                    self.authorLabel.text = ""
+                } else {
+                    self.quoteLabel.text = self.quote?.q
+                    self.authorLabel.text = "- \(self.quote?.a ?? "Unknown")"
                 }
-                self.affirmationLabel.text = decodedData.affirmation
-                if self.lastAff != "" {
-                    self.undoButton.isHidden = false
+
+                if self.lastAff != nil {
+                    
+                    if self.lastAff?.a == "zenquotes.io" {
+                        self.undoButton.isHidden = true
+                    } else {
+                        self.undoButton.isHidden = false
+                    }
                 }
                 self.gettingAff = false
                 self.activityIndicator.stopAnimating()

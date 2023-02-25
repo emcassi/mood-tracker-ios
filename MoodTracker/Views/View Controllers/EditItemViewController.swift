@@ -191,8 +191,7 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let item = item {
-            print(moods.count)
+        if item != nil {
             return moods.count
         }
         return 0

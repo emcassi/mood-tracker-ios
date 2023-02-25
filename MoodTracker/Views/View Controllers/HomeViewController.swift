@@ -57,8 +57,7 @@ class HomeViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(settingsPressed))
         navigationItem.title = "Mood Tracker"
         navigationController?.navigationBar.tintColor = UIColor(named: "lighter")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addPressed))
-        navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addPressed)), UIBarButtonItem(image: UIImage(systemName: "a.circle"), style: .plain, target: self, action: #selector(affirmationPressed))]
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addPressed)), UIBarButtonItem(image: UIImage(systemName: "quote.opening"), style: .plain, target: self, action: #selector(affirmationPressed))]
         df.timeZone = calendar.timeZone
         
         view.backgroundColor = UIColor(named: "bg-color")
@@ -118,7 +117,6 @@ class HomeViewController: UITableViewController {
                     let calendar = Calendar(identifier: .gregorian)
                     
                     var grouped = Dictionary(grouping: items.sorted(by: { ($0.timestamp ) < ( $1.timestamp ) }), by: { calendar.startOfDay(for: $0.timestamp ) })
-                    print(grouped)
                     self.grouped = grouped
                     
                     self.emptyLabel.isHidden = grouped.count > 0
