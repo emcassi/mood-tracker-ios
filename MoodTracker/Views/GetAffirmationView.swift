@@ -19,7 +19,7 @@ class AffirmationsViewController: UIViewController {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 28)
-        label.text = "Need Encouragement?"
+        label.text = "Quotes of Wisdom"
         label.textColor = .white
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -30,7 +30,7 @@ class AffirmationsViewController: UIViewController {
     let descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
-        label.text = "Tap below the button to get a quote to help you feel better"
+        label.text = "Tap below to see some famous words of wisdom"
         label.textAlignment = .center
         label.textColor = .white
         label.numberOfLines = 0
@@ -111,8 +111,8 @@ class AffirmationsViewController: UIViewController {
     
     func setupSubviews(){
         titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 25).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 100).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -100).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 25).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -25).isActive = true
         
         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25).isActive = true
         descriptionLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
@@ -125,7 +125,7 @@ class AffirmationsViewController: UIViewController {
         authorLabel.rightAnchor.constraint(equalTo: quoteLabel.rightAnchor).isActive = true
         authorLabel.topAnchor.constraint(equalTo: quoteLabel.bottomAnchor, constant: 25).isActive = true
 
-        activityIndicator.center = CGPoint(x: view.center.x, y: view.center.y + 200)
+        activityIndicator.center = CGPoint(x: view.center.x, y: view.frame.height - 150)
         
         getButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         getButton.bottomAnchor.constraint(equalTo: undoButton.topAnchor, constant: -15).isActive = true
@@ -133,7 +133,7 @@ class AffirmationsViewController: UIViewController {
         getButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
         
         undoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        undoButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
+        undoButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25).isActive = true
         undoButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
     }
@@ -187,7 +187,7 @@ class AffirmationsViewController: UIViewController {
                 self.quote = decodedData[0]
                 
                 if self.quote?.a == "zenquotes.io" {
-                    self.quoteLabel.text = "Too many requests. Please try again later"
+                    self.quoteLabel.text = "Too many requests. Please wait a moment before trying again"
                     self.authorLabel.text = ""
                 } else {
                     self.quoteLabel.text = self.quote?.q
