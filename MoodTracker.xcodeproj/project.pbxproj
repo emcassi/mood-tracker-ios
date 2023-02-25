@@ -42,7 +42,7 @@
 		FA492AA9291951A800E92F9A /* HomeItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492AA8291951A800E92F9A /* HomeItemCell.swift */; };
 		FA492AAB291951D900E92F9A /* MoodCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */; };
 		FA7F42D0291D756D00C6EA2C /* GetAffirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F42CF291D756D00C6EA2C /* GetAffirmationView.swift */; };
-		FA7F42D3291D78E300C6EA2C /* Affirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F42D2291D78E300C6EA2C /* Affirmation.swift */; };
+		FA7F42D3291D78E300C6EA2C /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F42D2291D78E300C6EA2C /* Quote.swift */; };
 		FAB46A252986503100959A7E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB46A242986503100959A7E /* AdSupport.framework */; };
 		FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */; };
 		FAFA448B297E89760068B4A8 /* EditMoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA448A297E89760068B4A8 /* EditMoodCell.swift */; };
@@ -105,7 +105,7 @@
 		FA492AA8291951A800E92F9A /* HomeItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItemCell.swift; sourceTree = "<group>"; };
 		FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCollectionCell.swift; sourceTree = "<group>"; };
 		FA7F42CF291D756D00C6EA2C /* GetAffirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAffirmationView.swift; sourceTree = "<group>"; };
-		FA7F42D2291D78E300C6EA2C /* Affirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Affirmation.swift; sourceTree = "<group>"; };
+		FA7F42D2291D78E300C6EA2C /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		FAB46A242986503100959A7E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		FAFA448A297E89760068B4A8 /* EditMoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMoodCell.swift; sourceTree = "<group>"; };
@@ -277,7 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				FA492A9D2918C21700E92F9A /* MoodsItem.swift */,
-				FA7F42D2291D78E300C6EA2C /* Affirmation.swift */,
+				FA7F42D2291D78E300C6EA2C /* Quote.swift */,
 				FA492A992918964400E92F9A /* Mood.swift */,
 			);
 			path = Models;
@@ -453,7 +453,7 @@
 				FA3B566B290BBCDE00FBA068 /* CustomViews.swift in Sources */,
 				FA492AA9291951A800E92F9A /* HomeItemCell.swift in Sources */,
 				FA20D5DD290B9F8F0068332C /* AppDelegate.swift in Sources */,
-				FA7F42D3291D78E300C6EA2C /* Affirmation.swift in Sources */,
+				FA7F42D3291D78E300C6EA2C /* Quote.swift in Sources */,
 				FA492A9A2918964400E92F9A /* Mood.swift in Sources */,
 				FA492A98291822FE00E92F9A /* AddItemViewController.swift in Sources */,
 				FA1630FA291A58FC0092721A /* HomeMoodCell.swift in Sources */,

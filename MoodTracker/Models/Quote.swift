@@ -1,5 +1,5 @@
 //
-//  Affirmation.swift
+//  Quote.swift
 //  MoodTracker
 //
 //  Created by Alex Wayne on 11/10/22.
