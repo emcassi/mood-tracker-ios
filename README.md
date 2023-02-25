@@ -119,7 +119,7 @@
 
 ## Installation
 
-[Download it here](https://apps.apple.com/us/app/mood-tracker-log-and-journal/id6444286152)
+[Download it here](https://apps.apple.com/us/app/mudi/id6444286152)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -146,7 +146,7 @@ Alex Wayne - [@emcassi_](https://twitter.com/emcassi_) - alex.wayne.dev@gmail.co
 
 Project Link: [https://github.com/emcassi/mood-tracker-ios](https://github.com/emcassi/mood-tracker-ios)
 
-Download Link: [https://apps.apple.com/us/app/mood-tracker-log-and-journal/id6444286152](https://apps.apple.com/us/app/mood-tracker-log-and-journal/id6444286152)
+Download Link: [https://apps.apple.com/us/app/mudi/id6444286152](https://apps.apple.com/us/app/mudi/id6444286152)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
