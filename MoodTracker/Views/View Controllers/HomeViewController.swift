@@ -259,5 +259,51 @@ class HomeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if let grouped = grouped, let groupedKeys = groupedKeys {
+            
+            if let itemsForDay = grouped.first(where: { $0.key == groupedKeys[indexPath.section] }) {
+                
+                let itemForCell = itemsForDay.value.sorted(by: {$0.timestamp > $1.timestamp } )[indexPath.row]
+                
+                let deleteAction = UISwipeActionsConfiguration(actions: [ UIContextualAction(style: .destructive, title: "Delete", handler: { action, view, completionHandler in
+                    if let user = Auth.auth().currentUser {
+                        
+                        let confirmAlert = UIAlertController(title: "Delete?", message: "Are you sure you want to delete this post?", preferredStyle: .alert)
+                        confirmAlert.addAction(UIAlertAction(title: "Yes", style: .destructive) { action in
+                            Firestore.firestore().collection("users").document(user.uid).collection("items").document(itemForCell.id).delete { error in
+                                if let error = error {
+                                    print(error)
+                                    
+                                    let errAlert = UIAlertController(title: "An error occurred", message: "Please try again later", preferredStyle: .alert)
+                                    errAlert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                                        errAlert.dismiss(animated: true)
+                                    })
+                                    
+                                    self.present(errAlert, animated: true)
+                                } else {
+                                    self.getItems()
+                                    confirmAlert.dismiss(animated: true)
+
+                                }
+                            }
+                        })
+                        confirmAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
+                            confirmAlert.dismiss(animated: true)
+                        })
+
+                        self.present(confirmAlert, animated: true)
+                    }
+                })])
+                
+                return deleteAction
+                
+            }
+            
+        }
+        
+        return nil
+    }
 }
 

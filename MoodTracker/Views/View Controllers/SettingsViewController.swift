@@ -93,7 +93,7 @@ class SettingsViewController: UIViewController {
 
     
     @objc func privacyPressed(){
-        if let url = URL(string: "http://emcassi.com/apps/mood-tracker/privacy-policy.html") {
+        if let url = URL(string: "https://alexwayne.org/apps/mood-tracker/privacypolicy.html") {
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
