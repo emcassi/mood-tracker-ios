@@ -34,10 +34,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Mood Tracker</h3>
+<h3 align="center">Mudi</h3>
 
   <p align="center">
-    Mood Tracker is an iOS app that allows users to log their mood throughout the week based on the “Feelings Wheel” created by Dr. Gloria Willcox.
+    Mudi is an iOS app that allows users to log their mood throughout the week based on the “Feelings Wheel” created by Dr. Gloria Willcox.
     <br />
     Easily log exactly how you feel by tapping any of the 75+ choices
     Keep track of how you've been feeling with a nice UI with color coded mood cells for 6 categories of feelings - Sad, Mad, Scared, Peaceful, Powerful, and Joyful
