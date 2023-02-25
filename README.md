@@ -133,7 +133,7 @@
 <br>
 <img src="images/edit.png" alt="Screen where you can edit your posts" width="200">
 <br>
-<img src="images/affirmation.png" alt="Screen where you can view affirmations" width="200">
+<img src="images/quote.png" alt="Screen where you can view affirmations" width="200">
 
 
 
