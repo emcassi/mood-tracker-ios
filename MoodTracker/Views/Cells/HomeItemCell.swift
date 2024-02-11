@@ -32,17 +32,17 @@ class HomeItemCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
             
             switch self.item!.moods[indexPath.item].section {
             case "Sad":
-                cell.backgroundColor = UIColor(named: "mood-blue")
-            case "Peaceful":
-                cell.backgroundColor = UIColor(named: "mood-aqua")
-            case "Powerful":
-                cell.backgroundColor = UIColor(named: "mood-yellow")
-            case "Joyful":
-                cell.backgroundColor = UIColor(named: "mood-orange")
-            case "Mad":
-                cell.backgroundColor = UIColor(named: "mood-red")
-            case "Scared":
-                cell.backgroundColor = UIColor(named: "mood-purple")
+                cell.backgroundColor = UIColor(named: "mood-sad")
+            case "Fearful":
+                cell.backgroundColor = UIColor(named: "mood-fearful")
+            case "Disgusted":
+                cell.backgroundColor = UIColor(named: "mood-disgusted")
+            case "Angry":
+                cell.backgroundColor = UIColor(named: "mood-angry")
+            case "Happy":
+                cell.backgroundColor = UIColor(named: "mood-happy")
+            case "Surprised":
+                cell.backgroundColor = UIColor(named: "mood-surprised")
             default:
                 cell.backgroundColor = .gray
             }
@@ -65,7 +65,7 @@ class HomeItemCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
     let timeLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18)
-        label.textColor = UIColor(gray: 200)
+        label.textColor = UIColor(named: "info")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -86,7 +86,7 @@ class HomeItemCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         label.numberOfLines = 0
-        label.textColor = .white
+        label.textColor = UIColor(named: "label")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -115,9 +115,9 @@ class HomeItemCell: UITableViewCell, UICollectionViewDataSource, UICollectionVie
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = UIColor(gray: 100)
-        layer.borderColor = UIColor(gray: 200).cgColor
-        layer.borderWidth = 0.5
+        backgroundColor = UIColor(named: "panel-color")
+        layer.borderColor = UIColor(named: "panel-color")?.cgColor
+        layer.borderWidth = 0.0
         selectionStyle = .none
         self.moodsView.showsHorizontalScrollIndicator = false
         

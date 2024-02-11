@@ -19,8 +19,8 @@ class AffirmationsViewController: UIViewController {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 28)
-        label.text = "Quotes of Wisdom"
-        label.textColor = .white
+        label.text = "Words of Wisdom"
+        label.textColor = UIColor(named: "label")
         label.numberOfLines = 0
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -32,7 +32,7 @@ class AffirmationsViewController: UIViewController {
         label.font = .systemFont(ofSize: 14)
         label.text = "Tap below to see some famous words of wisdom"
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = UIColor(named: "info")
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -48,7 +48,7 @@ class AffirmationsViewController: UIViewController {
     let activityIndicator: UIActivityIndicatorView = {
         let ai = UIActivityIndicatorView(style: .large)
         ai.style = .large
-        ai.color = .white
+        ai.color = UIColor(named: "info")
         ai.hidesWhenStopped = true
         ai.translatesAutoresizingMaskIntoConstraints = false
         return ai
@@ -57,7 +57,7 @@ class AffirmationsViewController: UIViewController {
     let quoteLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18)
-        label.textColor = .white
+        label.textColor = UIColor(named: "label")
         label.numberOfLines = 0
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -67,7 +67,7 @@ class AffirmationsViewController: UIViewController {
     let authorLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .semibold)
-        label.textColor = .white
+        label.textColor = UIColor(named: "label")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -75,8 +75,8 @@ class AffirmationsViewController: UIViewController {
     let getButton: UIButton = {
         let button = UIButton()
         button.setTitle("Get Quote", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor(named: "purple")
+        button.setTitleColor(UIColor(named: "label"), for: .normal)
+        button.backgroundColor = UIColor(named: "panel-color")
         button.layer.borderColor = UIColor.clear.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 15
@@ -88,7 +88,7 @@ class AffirmationsViewController: UIViewController {
     let undoButton: UIButton = {
         let button = UIButton()
         button.setTitle("Go back", for: .normal)
-        button.setTitleColor(.gray, for: .normal)
+        button.setTitleColor(UIColor(named: "info"), for: .normal)
         button.isHidden = true
         button.addTarget(self, action: #selector(undoPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -97,6 +97,7 @@ class AffirmationsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         view.backgroundColor = UIColor(named: "bg-color")
         

@@ -17,7 +17,6 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     var moods: [Mood] = []
     var bEditing = false
     
-    
     let scrollView: UIScrollView = {
         let sv = UIScrollView()
         sv.backgroundColor = UIColor(named: "bg-color")
@@ -26,25 +25,25 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     }()
     
     let dateLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.font = .systemFont(ofSize: 32, weight: .bold)
-        label.textColor = .white
+        label.textColor = UIColor(named: "label")
         label.translatesAutoresizingMaskIntoConstraints = false;
         return label
     }()
     
     let timeLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.font = .systemFont(ofSize: 22)
-        label.textColor = UIColor(gray: 180)
+        label.textColor = UIColor(named: "info")
         label.translatesAutoresizingMaskIntoConstraints = false;
         return label
     }()
     
-    let categories = ["Sad", "Mad", "Joyful", "Powerful", "Scared", "Peaceful"]
     var moodCounters: [Double] = []
-
+    
     var chartView: PieChartView!
+    let chartTapper = UITapGestureRecognizer(target: self, action: #selector(chartPressed))
     
     let deleteButton: UIButton = {
         let button = UIButton()
@@ -58,6 +57,16 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    let legendButton: UIButton = {
+       let button = UIButton()
+        button.setTitle("Show Legend", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .semibold)
+        button.titleLabel?.textColor = UIColor(named: "panel-color")
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     
     let moodsView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -88,14 +97,14 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
     let detailsTF: UITextView = {
         let tv = UITextView()
         tv.isEditable = true
-        tv.textColor = .white
+        tv.textColor = UIColor(named: "info")
         tv.font = .systemFont(ofSize: 14)
         tv.backgroundColor = .clear
         tv.contentInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         tv.isEditable = false
         tv.layer.borderWidth = 1
         tv.layer.cornerRadius = 15
-        tv.layer.borderColor = UIColor.white.cgColor
+        tv.layer.borderColor = UIColor(named: "info")?.cgColor
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
@@ -122,14 +131,14 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         button.addTarget(self, action: #selector(bottomPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
-
+        
     }()
     
     override func viewWillAppear(_ animated: Bool) {
         moodsView.reloadData()
         initMoodCounters()
         getAllMoods()
-        customizeChart(dataPoints: categories, values: moodCounters)
+        customizeChart(dataPoints: MoodsManager.categories, values: moodCounters)
     }
     
     override func viewDidLoad() {
@@ -155,15 +164,15 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         moods = item!.moods
         
         moodsView.register(HomeMoodCell.self, forCellWithReuseIdentifier: "nonedit-mood")
-
+        
         moodsView.register(EditMoodCell.self, forCellWithReuseIdentifier: "edit-mood")
         
         moodsView.dataSource = self
         moodsView.delegate = self
         
-        chartView = PieChartView(frame: CGRect(x: view.frame.width - 150, y: 0 ,width: 128 ,height:128))
-        chartView.drawEntryLabelsEnabled = false
-
+        chartView = PieChartView(frame: CGRect(x: view.frame.width - 200, y: 0 ,width: 200 ,height: 200))
+        chartView.drawEntryLabelsEnabled = true
+        
         
         view.addSubview(scrollView)
         scrollView.addSubview(dateLabel)
@@ -196,7 +205,7 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         return 0
     }
-        
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if(bEditing){
@@ -205,17 +214,17 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
                 
                 switch moods[indexPath.item].section {
                 case "Sad":
-                    cell.backgroundColor = UIColor(named: "mood-blue")
-                case "Peaceful":
-                    cell.backgroundColor = UIColor(named: "mood-aqua")
-                case "Powerful":
-                    cell.backgroundColor = UIColor(named: "mood-yellow")
-                case "Joyful":
-                    cell.backgroundColor = UIColor(named: "mood-orange")
-                case "Mad":
-                    cell.backgroundColor = UIColor(named: "mood-red")
-                case "Scared":
-                    cell.backgroundColor = UIColor(named: "mood-purple")
+                    cell.backgroundColor = UIColor(named: "mood-sad")
+                case "Fearful":
+                    cell.backgroundColor = UIColor(named: "mood-fearful")
+                case "Disgusted":
+                    cell.backgroundColor = UIColor(named: "mood-disgusted")
+                case "Angry":
+                    cell.backgroundColor = UIColor(named: "mood-angry")
+                case "Happy":
+                    cell.backgroundColor = UIColor(named: "mood-happy")
+                case "Surprised":
+                    cell.backgroundColor = UIColor(named: "mood-surprised")
                 default:
                     cell.backgroundColor = .gray
                 }
@@ -231,17 +240,17 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
                 
                 switch moods[indexPath.item].section {
                 case "Sad":
-                    cell.backgroundColor = UIColor(named: "mood-blue")
-                case "Peaceful":
-                    cell.backgroundColor = UIColor(named: "mood-aqua")
-                case "Powerful":
-                    cell.backgroundColor = UIColor(named: "mood-yellow")
-                case "Joyful":
-                    cell.backgroundColor = UIColor(named: "mood-orange")
-                case "Mad":
-                    cell.backgroundColor = UIColor(named: "mood-red")
-                case "Scared":
-                    cell.backgroundColor = UIColor(named: "mood-purple")
+                    cell.backgroundColor = UIColor(named: "mood-sad")
+                case "Fearful":
+                    cell.backgroundColor = UIColor(named: "mood-fearful")
+                case "Disgusted":
+                    cell.backgroundColor = UIColor(named: "mood-disgusted")
+                case "Angry":
+                    cell.backgroundColor = UIColor(named: "mood-angry")
+                case "Happy":
+                    cell.backgroundColor = UIColor(named: "mood-happy")
+                case "Surprised":
+                    cell.backgroundColor = UIColor(named: "mood-surprised")
                 default:
                     cell.backgroundColor = .gray
                 }
@@ -266,7 +275,7 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         scrollView.contentLayoutGuide.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         scrollView.contentLayoutGuide.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         scrollView.contentLayoutGuide.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-
+        
         dateLabel.leftAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leftAnchor, constant: 15).isActive = true
         dateLabel.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 15).isActive = true
         
@@ -278,7 +287,7 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         deleteButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
         deleteButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         
-        moodsView.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 25).isActive = true
+        moodsView.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 100).isActive = true
         moodsView.leftAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leftAnchor).isActive = true
         moodsView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         moodsView.heightAnchor.constraint(equalToConstant: 105).isActive = true
@@ -302,11 +311,11 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         bottomButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: view.frame.width / 6).isActive = true
         bottomButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
         bottomButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
-
+        
     }
     
     func initMoodCounters(){
-        for _ in 0...categories.count {
+        for _ in 0...MoodsManager.categories.count {
             moodCounters.append(0)
         }
     }
@@ -316,17 +325,17 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         if let item = item {
             for mood in item.moods {
                 switch mood.section {
-                case categories[0]:
+                case MoodsManager.categories[0]:
                     moodCounters[0] += 1
-                case categories[1]:
+                case MoodsManager.categories[1]:
                     moodCounters[1] += 1
-                case categories[2]:
+                case MoodsManager.categories[2]:
                     moodCounters[2] += 1
-                case categories[3]:
+                case MoodsManager.categories[3]:
                     moodCounters[3] += 1
-                case categories[4]:
+                case MoodsManager.categories[4]:
                     moodCounters[4] += 1
-                case categories[5]:
+                case MoodsManager.categories[5]:
                     moodCounters[5] += 1
                 default:
                     break
@@ -340,51 +349,22 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         chartView.legend.enabled = false
         chartView.animate(xAxisDuration: 1, yAxisDuration: 1, easingOption: .easeOutCirc)
         chartView.drawHoleEnabled = false
-        // 1. Set ChartDataEntry
-      var dataEntries: [ChartDataEntry] = []
-      for i in 0..<dataPoints.count {
-        let dataEntry = PieChartDataEntry(value: values[i], label: dataPoints[i], data: dataPoints[i] as AnyObject)
-        dataEntries.append(dataEntry)
-      }
-      // 2. Set ChartDataSet
+        chartView.addGestureRecognizer(chartTapper)
+        var dataEntries: [ChartDataEntry] = []
+        for i in 0..<dataPoints.count {
+            let dataEntry = PieChartDataEntry(value: values[i], label: dataPoints[i], data: dataPoints[i] as AnyObject)
+            dataEntries.append(dataEntry)
+        }
         let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: dataPoints[0])
-      pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
+        pieChartDataSet.colors = ChartManager.colorsOfCharts(numbersOfColor: dataPoints.count)
         pieChartDataSet.drawValuesEnabled = false
-      // 3. Set ChartData
-      let pieChartData = PieChartData(dataSet: pieChartDataSet)
-      let format = NumberFormatter()
+        let pieChartData = PieChartData(dataSet: pieChartDataSet)
+        let format = NumberFormatter()
         format.numberStyle = .decimal
         format.maximumFractionDigits = 0
-      let formatter = DefaultValueFormatter(formatter: format)
-      pieChartData.setValueFormatter(formatter)
-      // 4. Assign it to the chart’s data
-      chartView.data = pieChartData
-    }
-    
-    private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
-        
-        var colors: [UIColor] = []
-        for category in categories {
-            
-            switch category {
-            case "Sad":
-                colors.append(UIColor(named: "mood-blue")!)
-            case "Peaceful":
-                colors.append(UIColor(named: "mood-aqua")!)
-            case "Powerful":
-                colors.append(UIColor(named: "mood-yellow")!)
-            case "Joyful":
-                colors.append(UIColor(named: "mood-orange")!)
-            case "Mad":
-                colors.append(UIColor(named: "mood-red")!)
-            case "Scared":
-                colors.append(UIColor(named: "mood-purple")!)
-            default:
-                break
-            }
-        }
-     
-      return colors
+        let formatter = DefaultValueFormatter(formatter: format)
+        pieChartData.setValueFormatter(formatter)
+        chartView.data = pieChartData
     }
     
     func deleteMood(mood: Mood){
@@ -461,16 +441,16 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
             let preparedMoods = MoodsManager().prepareMoodsForFirebase(moods: moods)
             
             Firestore.firestore().collection("users").document(user.uid).collection("items").document(item.id).updateData([
-            
+                
                 "moods": preparedMoods,
                 "details": detailsTF.text!
-            
+                
             ], completion: { error in
                 
                 self.navigationController?.popViewController(animated: true)
             })
             
-
+            
         }
     }
     
@@ -538,6 +518,11 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         } else {
             navigationController?.popViewController(animated: true)
         }
+    }
+    
+    @objc func chartPressed() {
+        let details = MoodDetailsViewController(values: moodCounters)
+        navigationController?.pushViewController(details, animated: true)
     }
     
     @objc func keyboardWillShow(notification: Notification){

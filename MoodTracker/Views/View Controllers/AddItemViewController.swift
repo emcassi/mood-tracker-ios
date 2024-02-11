@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseAnalytics
+import StoreKit
 
 class AddItemViewController : UIViewController, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
@@ -63,7 +64,7 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
         button.addTarget(self, action: #selector(addPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
-
+        
     }()
     
     override func viewDidLoad() {
@@ -85,7 +86,7 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
         
         moodsView.dataSource = self
         moodsView.delegate = self
-                
+        
         view.addSubview(scrollView)
         scrollView.addSubview(detailsTF)
         scrollView.addSubview(moodsView)
@@ -143,24 +144,24 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return moods.count
     }
-        
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "confirm-mood", for: indexPath) as? HomeMoodCell {
             
             switch moods[indexPath.item].section {
             case "Sad":
-                cell.backgroundColor = UIColor(named: "mood-blue")
-            case "Peaceful":
-                cell.backgroundColor = UIColor(named: "mood-aqua")
-            case "Powerful":
-                cell.backgroundColor = UIColor(named: "mood-yellow")
-            case "Joyful":
-                cell.backgroundColor = UIColor(named: "mood-orange")
-            case "Mad":
-                cell.backgroundColor = UIColor(named: "mood-red")
-            case "Scared":
-                cell.backgroundColor = UIColor(named: "mood-purple")
+                cell.backgroundColor = UIColor(named: "mood-sad")
+            case "Fearful":
+                cell.backgroundColor = UIColor(named: "mood-fearful")
+            case "Disgusted":
+                cell.backgroundColor = UIColor(named: "mood-disgusted")
+            case "Angry":
+                cell.backgroundColor = UIColor(named: "mood-angry")
+            case "Happy":
+                cell.backgroundColor = UIColor(named: "mood-happy")
+            case "Surprised":
+                cell.backgroundColor = UIColor(named: "mood-surprised")
             default:
                 cell.backgroundColor = .gray
             }
@@ -218,13 +219,24 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
                             "numPosts": FieldValue.increment(Int64(1)),
                             "lastPostTimestamp": timestamp
                         ])
-                        self.navigationController?.popToRootViewController(animated: true)
                     }
+                    let numAdded = UserDefaults.standard.integer(forKey: "moodsAdded") + 1
+                    UserDefaults.standard.set(numAdded, forKey: "moodsAdded")
+                    if numAdded > 0 && numAdded % 10 == 0 {
+                        if let windowScene = self.view.window?.windowScene {
+                            SKStoreReviewController.requestReview(in: windowScene)
+                        }
+                    }
+                    
+                    self.navigationController?.popToRootViewController(animated: true)
                 }
             }
         }
     }
     
+    func tryForReview() {
+        
+    }
     
     
     @objc func keyboardWillShow(notification: Notification){

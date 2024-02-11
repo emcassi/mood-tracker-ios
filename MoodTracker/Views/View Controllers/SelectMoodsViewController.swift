@@ -23,12 +23,15 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
     
     let nextButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Next", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor(named: "purple")
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.black.cgColor
+        button.tintColor = UIColor(named: "bg-color")
+        button.setImage(UIImage(systemName: "chevron.right", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30)), for: .normal)
+        button.backgroundColor = UIColor(named: "info")
+        button.layer.cornerRadius = 40
+        button.layer.zPosition = 100
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowRadius = 3
         button.isHidden = true
         button.addTarget(self, action: #selector(nextPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -88,9 +91,10 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
         super.viewDidLoad()
         
         navigationItem.title = "How do you feel?"
-        collectionView.backgroundColor = UIColor(r: 50, g: 66, b: 92)
+        collectionView.backgroundColor = UIColor(named: "bg-color")
         collectionView.register(MoodCollectionCell.self, forCellWithReuseIdentifier: "editmoods-cell")
         
+        collectionView.contentInset.bottom = 100
         collectionView.addSubview(nextButton)
         setupNextButton()
     }
@@ -98,10 +102,10 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
     // Next button
     
     func setupNextButton(){
-        nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        nextButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -25).isActive = true
         nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15).isActive = true
-        nextButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        nextButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75).isActive = true
+        nextButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        nextButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
     }
     
     @objc func nextPressed(){
@@ -124,17 +128,17 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
     func getColorForMood(section: String) -> UIColor {
         switch section {
         case "Sad":
-            return UIColor(named: "mood-blue")!
-        case "Peaceful":
-            return UIColor(named: "mood-aqua")!
-        case "Powerful":
-            return UIColor(named: "mood-yellow")!
-        case "Joyful":
-            return UIColor(named: "mood-orange")!
-        case "Scared":
-            return UIColor(named: "mood-purple")!
-        case "Mad":
-            return UIColor(named: "mood-red")!
+            return UIColor(named: "mood-sad")!
+        case "Surprised":
+            return UIColor(named: "mood-surprised")!
+        case "Happy":
+            return UIColor(named: "mood-happy")!
+        case "Angry":
+            return UIColor(named: "mood-angry")!
+        case "Disgusted":
+            return UIColor(named: "mood-disgusted")!
+        case "Fearful":
+            return UIColor(named: "mood-fearful")!
         default:
             return UIColor(gray: 117)
         }

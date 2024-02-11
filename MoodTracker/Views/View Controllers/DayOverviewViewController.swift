@@ -117,22 +117,23 @@ class DayOverviewViewController: UIViewController {
         var colors: [UIColor] = []
         for category in categories {
             
-            switch category {
+        switch category {
             case "Sad":
-                colors.append(UIColor(named: "mood-blue")!)
-            case "Peaceful":
-                colors.append(UIColor(named: "mood-aqua")!)
-            case "Powerful":
-                colors.append(UIColor(named: "mood-yellow")!)
-            case "Joyful":
-                colors.append(UIColor(named: "mood-orange")!)
-            case "Mad":
-                colors.append(UIColor(named: "mood-red")!)
-            case "Scared":
-                colors.append(UIColor(named: "mood-purple")!)
+                colors.append(UIColor(named: "mood-sad")!)
+            case "Fearful":
+                colors.append(UIColor(named: "mood-fearful")!)
+            case "Disgusted":
+                colors.append(UIColor(named: "mood-disgusted")!)
+            case "Angry":
+                colors.append(UIColor(named: "mood-angry")!)
+            case "Happy":
+                colors.append(UIColor(named: "mood-happy")!)
+            case "Surprised":
+                colors.append(UIColor(named: "mood-surprised")!)
             default:
                 break
             }
+
         }
      
       return colors

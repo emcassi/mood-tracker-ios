@@ -9,11 +9,9 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
-import StoreKit
 
 class HomeViewController: UITableViewController {
     
-    var hasAskedForReview = false
     var grouped: [Date: [MoodsItem]]?
     var groupedKeys: [Date]?
     let df = DateFormatter()
@@ -43,7 +41,22 @@ class HomeViewController: UITableViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
+    
+    let addButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = UIColor(named: "bg-color")
+        button.setImage(UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30)), for: .normal)
+        button.backgroundColor = UIColor(named: "info")
+        button.layer.cornerRadius = 40
+        button.layer.zPosition = 100
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowRadius = 3
+        button.addTarget(self, action: #selector(addPressed), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -57,14 +70,16 @@ class HomeViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .plain, target: self, action: #selector(settingsPressed))
         navigationItem.title = "Mudi"
         navigationController?.navigationBar.tintColor = UIColor(named: "lighter")
-        navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addPressed)), UIBarButtonItem(image: UIImage(systemName: "quote.opening"), style: .plain, target: self, action: #selector(affirmationPressed))]
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addPressed))]
         df.timeZone = calendar.timeZone
         
         view.backgroundColor = UIColor(named: "bg-color")
         view.addSubview(emptyLabel)
         view.addSubview(emptyButton)
+        view.addSubview(addButton)
         setupSubviews()
         
+        tableView.contentInset.bottom = 100
         tableView.register(HomeItemCell.self, forCellReuseIdentifier: "moods-item")
     }
     
@@ -78,6 +93,11 @@ class HomeViewController: UITableViewController {
         emptyButton.topAnchor.constraint(equalTo: emptyLabel.bottomAnchor, constant: 10).isActive = true
         emptyButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4).isActive = true
         emptyButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        addButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -25).isActive = true
+        addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15).isActive = true
+        addButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        addButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
     }
     
     func getItems() {
@@ -126,12 +146,6 @@ class HomeViewController: UITableViewController {
                     
                     self.tableView.reloadData()
                     
-                    if items.count > 5 && !self.hasAskedForReview {
-                        self.hasAskedForReview = true
-                        if let windowScene = self.view.window?.windowScene {
-                                     SKStoreReviewController.requestReview(in: windowScene)
-                                }
-                    }
                 }
             }
         } else {
@@ -233,7 +247,7 @@ class HomeViewController: UITableViewController {
         if let headerView = view as? UITableViewHeaderFooterView {
             headerView.contentView.backgroundColor = UIColor(named: "bg-color")
             headerView.backgroundView?.backgroundColor = .black
-            headerView.textLabel?.textColor = .white
+            headerView.textLabel?.textColor = UIColor(named: "label")
         }
     }
     

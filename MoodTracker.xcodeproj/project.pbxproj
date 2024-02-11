@@ -43,6 +43,14 @@
 		FA492AAB291951D900E92F9A /* MoodCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */; };
 		FA7F42D0291D756D00C6EA2C /* GetAffirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F42CF291D756D00C6EA2C /* GetAffirmationView.swift */; };
 		FA7F42D3291D78E300C6EA2C /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F42D2291D78E300C6EA2C /* Quote.swift */; };
+		FAB21B582B77C20400395E6A /* TabbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB21B572B77C20400395E6A /* TabbedViewController.swift */; };
+		FAB21B5A2B77C58F00395E6A /* CopeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB21B592B77C58F00395E6A /* CopeViewController.swift */; };
+		FAB21B5C2B77D0ED00395E6A /* BreatheViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB21B5B2B77D0ED00395E6A /* BreatheViewController.swift */; };
+		FAB21B5E2B784B1800395E6A /* ChartLegendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB21B5D2B784B1800395E6A /* ChartLegendCell.swift */; };
+		FAB21B602B7854A500395E6A /* MoodDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB21B5F2B7854A500395E6A /* MoodDetailsViewController.swift */; };
+		FAB21B622B7856B400395E6A /* ChartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB21B612B7856B400395E6A /* ChartManager.swift */; };
+		FAB21B642B785CF900395E6A /* ChartLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB21B632B785CF900395E6A /* ChartLegend.swift */; };
+		FAB21B662B78C64B00395E6A /* SenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB21B652B78C64B00395E6A /* SenseViewController.swift */; };
 		FAB46A252986503100959A7E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB46A242986503100959A7E /* AdSupport.framework */; };
 		FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */; };
 		FAFA448B297E89760068B4A8 /* EditMoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA448A297E89760068B4A8 /* EditMoodCell.swift */; };
@@ -106,6 +114,14 @@
 		FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCollectionCell.swift; sourceTree = "<group>"; };
 		FA7F42CF291D756D00C6EA2C /* GetAffirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAffirmationView.swift; sourceTree = "<group>"; };
 		FA7F42D2291D78E300C6EA2C /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		FAB21B572B77C20400395E6A /* TabbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedViewController.swift; sourceTree = "<group>"; };
+		FAB21B592B77C58F00395E6A /* CopeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopeViewController.swift; sourceTree = "<group>"; };
+		FAB21B5B2B77D0ED00395E6A /* BreatheViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreatheViewController.swift; sourceTree = "<group>"; };
+		FAB21B5D2B784B1800395E6A /* ChartLegendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartLegendCell.swift; sourceTree = "<group>"; };
+		FAB21B5F2B7854A500395E6A /* MoodDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodDetailsViewController.swift; sourceTree = "<group>"; };
+		FAB21B612B7856B400395E6A /* ChartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartManager.swift; sourceTree = "<group>"; };
+		FAB21B632B785CF900395E6A /* ChartLegend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartLegend.swift; sourceTree = "<group>"; };
+		FAB21B652B78C64B00395E6A /* SenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenseViewController.swift; sourceTree = "<group>"; };
 		FAB46A242986503100959A7E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		FAFA448A297E89760068B4A8 /* EditMoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMoodCell.swift; sourceTree = "<group>"; };
@@ -221,13 +237,18 @@
 				FA492A882917845A00E92F9A /* LoginViewController.swift */,
 				FA1630F5291A1CE00092721A /* SettingsViewController.swift */,
 				FA1630F7291A351B0092721A /* DeleteAccountViewController.swift */,
+				FAB21B5B2B77D0ED00395E6A /* BreatheViewController.swift */,
 				FA492A8E2917B91800E92F9A /* CreateAccountViewController.swift */,
 				FA492A97291822FE00E92F9A /* AddItemViewController.swift */,
+				FAB21B652B78C64B00395E6A /* SenseViewController.swift */,
 				FA492A902917DD2400E92F9A /* SelectMoodsViewController.swift */,
 				FA492A8C2917AC7600E92F9A /* HomeViewController.swift */,
+				FAB21B5F2B7854A500395E6A /* MoodDetailsViewController.swift */,
 				FA1CC9BF292692A400CDA101 /* DayOverviewViewController.swift */,
+				FAB21B592B77C58F00395E6A /* CopeViewController.swift */,
 				FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */,
 				FAFA449C297FEE460068B4A8 /* EditMoodsViewController.swift */,
+				FAB21B572B77C20400395E6A /* TabbedViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -237,6 +258,7 @@
 			children = (
 				FA492A9F2919506F00E92F9A /* MoodsManager.swift */,
 				FA492A9B2918A22F00E92F9A /* AuthManager.swift */,
+				FAB21B612B7856B400395E6A /* ChartManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -256,6 +278,7 @@
 				FA492AA8291951A800E92F9A /* HomeItemCell.swift */,
 				FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */,
 				FA1630F9291A58FC0092721A /* HomeMoodCell.swift */,
+				FAB21B5D2B784B1800395E6A /* ChartLegendCell.swift */,
 				FAFA448A297E89760068B4A8 /* EditMoodCell.swift */,
 			);
 			path = Cells;
@@ -269,6 +292,7 @@
 				FA7F42CF291D756D00C6EA2C /* GetAffirmationView.swift */,
 				FA3B566A290BBCDE00FBA068 /* CustomViews.swift */,
 				FA1CC9BD29268F6A00CDA101 /* DayHeader.swift */,
+				FAB21B632B785CF900395E6A /* ChartLegend.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -441,11 +465,13 @@
 				FA7F42D0291D756D00C6EA2C /* GetAffirmationView.swift in Sources */,
 				FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */,
 				FA492A8B2917AB4200E92F9A /* NavVC.swift in Sources */,
+				FAB21B582B77C20400395E6A /* TabbedViewController.swift in Sources */,
 				FAFA449D297FEE460068B4A8 /* EditMoodsViewController.swift in Sources */,
 				FAFA448B297E89760068B4A8 /* EditMoodCell.swift in Sources */,
 				FA492A9E2918C21700E92F9A /* MoodsItem.swift in Sources */,
 				FA1CC9C0292692A400CDA101 /* DayOverviewViewController.swift in Sources */,
 				FA492A9C2918A22F00E92F9A /* AuthManager.swift in Sources */,
+				FAB21B662B78C64B00395E6A /* SenseViewController.swift in Sources */,
 				FA20D5E1290B9F8F0068332C /* WelcomeViewController.swift in Sources */,
 				FA492A942917E23100E92F9A /* Moods.swift in Sources */,
 				FA1630F8291A351B0092721A /* DeleteAccountViewController.swift in Sources */,
@@ -455,13 +481,19 @@
 				FA20D5DD290B9F8F0068332C /* AppDelegate.swift in Sources */,
 				FA7F42D3291D78E300C6EA2C /* Quote.swift in Sources */,
 				FA492A9A2918964400E92F9A /* Mood.swift in Sources */,
+				FAB21B622B7856B400395E6A /* ChartManager.swift in Sources */,
 				FA492A98291822FE00E92F9A /* AddItemViewController.swift in Sources */,
 				FA1630FA291A58FC0092721A /* HomeMoodCell.swift in Sources */,
 				FA492AAB291951D900E92F9A /* MoodCollectionCell.swift in Sources */,
 				FA492A8F2917B91800E92F9A /* CreateAccountViewController.swift in Sources */,
 				FA1CC9BE29268F6A00CDA101 /* DayHeader.swift in Sources */,
+				FAB21B5E2B784B1800395E6A /* ChartLegendCell.swift in Sources */,
+				FAB21B5C2B77D0ED00395E6A /* BreatheViewController.swift in Sources */,
 				FA492AA02919506F00E92F9A /* MoodsManager.swift in Sources */,
 				FA492A912917DD2400E92F9A /* SelectMoodsViewController.swift in Sources */,
+				FAB21B642B785CF900395E6A /* ChartLegend.swift in Sources */,
+				FAB21B5A2B77C58F00395E6A /* CopeViewController.swift in Sources */,
+				FAB21B602B7854A500395E6A /* MoodDetailsViewController.swift in Sources */,
 				FA492A892917845A00E92F9A /* LoginViewController.swift in Sources */,
 				FA492A8D2917AC7600E92F9A /* HomeViewController.swift in Sources */,
 				FA492A962917F80E00E92F9A /* Colors.swift in Sources */,
