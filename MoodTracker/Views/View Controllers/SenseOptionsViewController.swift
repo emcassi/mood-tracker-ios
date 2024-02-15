@@ -30,6 +30,7 @@ class SenseOptionsViewController : UIViewController, UITableViewDelegate, UITabl
     let senseImage: UIImageView = {
         let view = UIImageView()
         view.tintColor = UIColor(named: "info")
+        view.contentMode = .scaleAspectFit
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -356,6 +357,7 @@ class SenseOptionsViewController : UIViewController, UITableViewDelegate, UITabl
     func getItems() {
         SenseManager.getSenseItemsForUser() { senseItems in
             self.items = senseItems
+            self.changeSense(sense: self.currentSense)
         }
     }
 }
