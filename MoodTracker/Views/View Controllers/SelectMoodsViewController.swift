@@ -56,12 +56,14 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "editmoods-cell", for: indexPath) as! MoodCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "moods-cell", for: indexPath) as! MoodCollectionCell
         cell.contentView.backgroundColor = getColorForMood(section: Moods[indexPath.item].section)
         
         let mood = Moods[indexPath.item].name
         cell.nameLabel.text = mood
         cell.checkmark.isHidden = !selectedMoods.contains(where: { $0 == mood })
+        cell.contentView.layer.borderColor = selectedMoods.contains(where: { $0 == mood }) ? UIColor.white.cgColor : UIColor.clear.cgColor
+        cell.contentView.layer.borderWidth = selectedMoods.contains(where: { $0 == mood }) ? 2 : 0
         
         return cell
     }
@@ -92,7 +94,7 @@ class SelectMoodsViewController: UICollectionViewController, UICollectionViewDel
         
         navigationItem.title = "How do you feel?"
         collectionView.backgroundColor = UIColor(named: "bg-color")
-        collectionView.register(MoodCollectionCell.self, forCellWithReuseIdentifier: "editmoods-cell")
+        collectionView.register(MoodCollectionCell.self, forCellWithReuseIdentifier: "moods-cell")
         
         collectionView.contentInset.bottom = 100
         collectionView.addSubview(nextButton)

@@ -72,6 +72,7 @@ class MoodCollectionCell: UICollectionViewCell {
         checked = !checked
         checkmark.isHidden = !checked
         contentView.layer.borderColor = checked ? UIColor.white.cgColor : UIColor.clear.cgColor
+        contentView.layer.borderWidth = checked ? 2 : 0
         return checked
     }
  
