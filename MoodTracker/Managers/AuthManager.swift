@@ -121,7 +121,7 @@ class AuthManager  {
         guard let user = Auth.auth().currentUser else {
             return
         }
-        let collectionName: String!
+        var collectionName = ""
         switch sense {
         case Sense.Sight:
             collectionName = "sight"
