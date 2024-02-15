@@ -63,6 +63,16 @@
 		FABDC4C42B7DD36400970BDF /* BreathManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4C32B7DD36400970BDF /* BreathManager.swift */; };
 		FABDC4C62B7DE22800970BDF /* ModalPullBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4C52B7DE22800970BDF /* ModalPullBar.swift */; };
 		FABDC4C92B7DF21B00970BDF /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = FABDC4C82B7DF21B00970BDF /* MarkdownKit */; };
+		FABDC4CC2B7DF2FE00970BDF /* LearnControlCircleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4CB2B7DF2FE00970BDF /* LearnControlCircleViewController.swift */; };
+		FABDC4CE2B7DF3B900970BDF /* LearnManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4CD2B7DF3B900970BDF /* LearnManager.swift */; };
+		FABDC4D02B7E07BA00970BDF /* LearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4CF2B7E07BA00970BDF /* LearnViewController.swift */; };
+		FABDC4D22B7E089300970BDF /* LearnItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4D12B7E089300970BDF /* LearnItemCell.swift */; };
+		FABDC4E12B7E151300970BDF /* Radical-Acceptance.md in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4DB2B7E151100970BDF /* Radical-Acceptance.md */; };
+		FABDC4E22B7E151300970BDF /* Be-Mindful.md in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4DC2B7E151100970BDF /* Be-Mindful.md */; };
+		FABDC4E32B7E151300970BDF /* Window-of-Tolerance.md in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4DD2B7E151200970BDF /* Window-of-Tolerance.md */; };
+		FABDC4E42B7E151300970BDF /* GIVE.md in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4DE2B7E151200970BDF /* GIVE.md */; };
+		FABDC4E52B7E151300970BDF /* FAST.md in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4DF2B7E151200970BDF /* FAST.md */; };
+		FABDC4E62B7E151300970BDF /* Wise-Mind.md in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4E02B7E151200970BDF /* Wise-Mind.md */; };
 		FADEC5182B7BA84A00197E8D /* SenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADEC5172B7BA84A00197E8D /* SenseView.swift */; };
 		FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */; };
 		FAFA448B297E89760068B4A8 /* EditMoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA448A297E89760068B4A8 /* EditMoodCell.swift */; };
@@ -145,6 +155,16 @@
 		FABDC4C12B7DD1AE00970BDF /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		FABDC4C32B7DD36400970BDF /* BreathManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathManager.swift; sourceTree = "<group>"; };
 		FABDC4C52B7DE22800970BDF /* ModalPullBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPullBar.swift; sourceTree = "<group>"; };
+		FABDC4CB2B7DF2FE00970BDF /* LearnControlCircleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnControlCircleViewController.swift; sourceTree = "<group>"; };
+		FABDC4CD2B7DF3B900970BDF /* LearnManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnManager.swift; sourceTree = "<group>"; };
+		FABDC4CF2B7E07BA00970BDF /* LearnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnViewController.swift; sourceTree = "<group>"; };
+		FABDC4D12B7E089300970BDF /* LearnItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnItemCell.swift; sourceTree = "<group>"; };
+		FABDC4DB2B7E151100970BDF /* Radical-Acceptance.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Radical-Acceptance.md"; sourceTree = "<group>"; };
+		FABDC4DC2B7E151100970BDF /* Be-Mindful.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Be-Mindful.md"; sourceTree = "<group>"; };
+		FABDC4DD2B7E151200970BDF /* Window-of-Tolerance.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Window-of-Tolerance.md"; sourceTree = "<group>"; };
+		FABDC4DE2B7E151200970BDF /* GIVE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = GIVE.md; sourceTree = "<group>"; };
+		FABDC4DF2B7E151200970BDF /* FAST.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = FAST.md; sourceTree = "<group>"; };
+		FABDC4E02B7E151200970BDF /* Wise-Mind.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Wise-Mind.md"; sourceTree = "<group>"; };
 		FADEC5172B7BA84A00197E8D /* SenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenseView.swift; sourceTree = "<group>"; };
 		FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		FAFA448A297E89760068B4A8 /* EditMoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMoodCell.swift; sourceTree = "<group>"; };
@@ -261,6 +281,7 @@
 				FA20D5E0290B9F8F0068332C /* WelcomeViewController.swift */,
 				FA492A882917845A00E92F9A /* LoginViewController.swift */,
 				FA1630F5291A1CE00092721A /* SettingsViewController.swift */,
+				FABDC4CA2B7DF2ED00970BDF /* Learn */,
 				FA1630F7291A351B0092721A /* DeleteAccountViewController.swift */,
 				FAB21B5B2B77D0ED00395E6A /* BreatheViewController.swift */,
 				FABDC4BB2B7DB52800970BDF /* BreatheOptionsViewController.swift */,
@@ -272,6 +293,7 @@
 				FA492A8C2917AC7600E92F9A /* HomeViewController.swift */,
 				FAB21B5F2B7854A500395E6A /* MoodDetailsViewController.swift */,
 				FA1CC9BF292692A400CDA101 /* DayOverviewViewController.swift */,
+				FABDC4CF2B7E07BA00970BDF /* LearnViewController.swift */,
 				FAB21B592B77C58F00395E6A /* CopeViewController.swift */,
 				FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */,
 				FAFA449C297FEE460068B4A8 /* EditMoodsViewController.swift */,
@@ -285,6 +307,7 @@
 			children = (
 				FA492A9F2919506F00E92F9A /* MoodsManager.swift */,
 				FA492A9B2918A22F00E92F9A /* AuthManager.swift */,
+				FABDC4CD2B7DF3B900970BDF /* LearnManager.swift */,
 				FAA414AE2B791C6F004EEA57 /* SenseManager.swift */,
 				FABDC4C32B7DD36400970BDF /* BreathManager.swift */,
 				FAB21B612B7856B400395E6A /* ChartManager.swift */,
@@ -305,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				FA492AA8291951A800E92F9A /* HomeItemCell.swift */,
+				FABDC4D12B7E089300970BDF /* LearnItemCell.swift */,
 				FA17A1D02B78EAC7004C294E /* SenseSkillCell.swift */,
 				FA492AAA291951D900E92F9A /* MoodCollectionCell.swift */,
 				FA1630F9291A58FC0092721A /* HomeMoodCell.swift */,
@@ -348,6 +372,28 @@
 				FAB46A242986503100959A7E /* AdSupport.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FABDC4CA2B7DF2ED00970BDF /* Learn */ = {
+			isa = PBXGroup;
+			children = (
+				FABDC4D32B7E0F5D00970BDF /* Markdown */,
+				FABDC4CB2B7DF2FE00970BDF /* LearnControlCircleViewController.swift */,
+			);
+			path = Learn;
+			sourceTree = "<group>";
+		};
+		FABDC4D32B7E0F5D00970BDF /* Markdown */ = {
+			isa = PBXGroup;
+			children = (
+				FABDC4DC2B7E151100970BDF /* Be-Mindful.md */,
+				FABDC4DF2B7E151200970BDF /* FAST.md */,
+				FABDC4DE2B7E151200970BDF /* GIVE.md */,
+				FABDC4DB2B7E151100970BDF /* Radical-Acceptance.md */,
+				FABDC4DD2B7E151200970BDF /* Window-of-Tolerance.md */,
+				FABDC4E02B7E151200970BDF /* Wise-Mind.md */,
+			);
+			path = Markdown;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -472,8 +518,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA20D5E9290B9FA60068332C /* LaunchScreen.storyboard in Resources */,
+				FABDC4E42B7E151300970BDF /* GIVE.md in Resources */,
+				FABDC4E62B7E151300970BDF /* Wise-Mind.md in Resources */,
+				FABDC4E22B7E151300970BDF /* Be-Mindful.md in Resources */,
 				FA20D5E6290B9FA60068332C /* Assets.xcassets in Resources */,
 				FA3B5662290BB48A00FBA068 /* GoogleService-Info.plist in Resources */,
+				FABDC4E12B7E151300970BDF /* Radical-Acceptance.md in Resources */,
+				FABDC4E52B7E151300970BDF /* FAST.md in Resources */,
+				FABDC4E32B7E151300970BDF /* Window-of-Tolerance.md in Resources */,
 				FA3B565F290BB0A300FBA068 /* FredokaOne-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,6 +551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FABDC4CE2B7DF3B900970BDF /* LearnManager.swift in Sources */,
 				FA7F42D0291D756D00C6EA2C /* GetAffirmationView.swift in Sources */,
 				FABDC4C42B7DD36400970BDF /* BreathManager.swift in Sources */,
 				FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */,
@@ -518,10 +571,13 @@
 				FA1630F8291A351B0092721A /* DeleteAccountViewController.swift in Sources */,
 				FA1630F6291A1CE00092721A /* SettingsViewController.swift in Sources */,
 				FA3B566B290BBCDE00FBA068 /* CustomViews.swift in Sources */,
+				FABDC4D22B7E089300970BDF /* LearnItemCell.swift in Sources */,
 				FA492AA9291951A800E92F9A /* HomeItemCell.swift in Sources */,
 				FAB21B682B78D0DF00395E6A /* SenseOptionsViewController.swift in Sources */,
+				FABDC4CC2B7DF2FE00970BDF /* LearnControlCircleViewController.swift in Sources */,
 				FA20D5DD290B9F8F0068332C /* AppDelegate.swift in Sources */,
 				FA7F42D3291D78E300C6EA2C /* Quote.swift in Sources */,
+				FABDC4D02B7E07BA00970BDF /* LearnViewController.swift in Sources */,
 				FA492A9A2918964400E92F9A /* Mood.swift in Sources */,
 				FABDC4C02B7DBC4800970BDF /* TextField.swift in Sources */,
 				FABDC4BC2B7DB52800970BDF /* BreatheOptionsViewController.swift in Sources */,
