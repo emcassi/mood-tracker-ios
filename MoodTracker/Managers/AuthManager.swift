@@ -12,7 +12,20 @@ import FirebaseFirestore
 import CryptoKit
 import AuthenticationServices
 
+class MudiUser {
+    var user: User
+    var breathOptions: BreathOptions
+    
+    init(_ user: User) {
+        self.user = user
+        self.breathOptions = BreathOptions(inhaleLength: Defaults.breathInhaleLength, exhaleLength: Defaults.breathExhaleLength, holdLength: Defaults.breathHoldLength)
+        AuthManager.getUserInfo()
+    }
+}
+
 class AuthManager  {
+    
+    static var user: MudiUser?
     
     func setListener(navVC: NavVC){
         Auth.auth().addStateDidChangeListener { auth, user in
@@ -27,6 +40,7 @@ class AuthManager  {
     func logout(){
         do {
             try Auth.auth().signOut()
+            AuthManager.user = nil
         } catch {
             print(error)
         }
@@ -45,6 +59,7 @@ class AuthManager  {
                 if let error = error {
                     print(error)
                 } else {
+                    AuthManager.user = nil
                     print("Success")
                 }
             }
@@ -113,7 +128,7 @@ class AuthManager  {
         user.reauthenticate(with: credential) { (authResult, error) in
             guard error != nil else { return }
             // Apple user successfully re-authenticated.
-            // ...
+            AuthManager.user = MudiUser(user)
         }
     }
     
@@ -154,4 +169,20 @@ class AuthManager  {
         }
     }
     
+    static func getUserInfo() {
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        
+        Firestore.firestore().collection("users").document(user.uid).getDocument() { snapshot, err in
+            if err != nil {
+                print("Error retrieving user data")
+                return
+            }
+            
+            AuthManager.user?.breathOptions.inhaleLength = snapshot!.data()!["inhale-length"] as? Int ?? Defaults.breathInhaleLength
+            AuthManager.user?.breathOptions.exhaleLength = snapshot!.data()!["exhale-length"] as? Int ?? Defaults.breathExhaleLength
+            AuthManager.user?.breathOptions.holdLength = snapshot!.data()!["hold-length"] as? Int ?? Defaults.breathHoldLength
+        }
+    }
 }

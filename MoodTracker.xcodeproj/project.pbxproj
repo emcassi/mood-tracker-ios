@@ -56,6 +56,12 @@
 		FAB21B662B78C64B00395E6A /* SenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB21B652B78C64B00395E6A /* SenseViewController.swift */; };
 		FAB21B682B78D0DF00395E6A /* SenseOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB21B672B78D0DE00395E6A /* SenseOptionsViewController.swift */; };
 		FAB46A252986503100959A7E /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAB46A242986503100959A7E /* AdSupport.framework */; };
+		FABDC4BC2B7DB52800970BDF /* BreatheOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4BB2B7DB52800970BDF /* BreatheOptionsViewController.swift */; };
+		FABDC4BE2B7DB69200970BDF /* BreatheOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4BD2B7DB69200970BDF /* BreatheOptionView.swift */; };
+		FABDC4C02B7DBC4800970BDF /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4BF2B7DBC4800970BDF /* TextField.swift */; };
+		FABDC4C22B7DD1AE00970BDF /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4C12B7DD1AE00970BDF /* Defaults.swift */; };
+		FABDC4C42B7DD36400970BDF /* BreathManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4C32B7DD36400970BDF /* BreathManager.swift */; };
+		FABDC4C62B7DE22800970BDF /* ModalPullBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4C52B7DE22800970BDF /* ModalPullBar.swift */; };
 		FADEC5182B7BA84A00197E8D /* SenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADEC5172B7BA84A00197E8D /* SenseView.swift */; };
 		FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */; };
 		FAFA448B297E89760068B4A8 /* EditMoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA448A297E89760068B4A8 /* EditMoodCell.swift */; };
@@ -132,6 +138,12 @@
 		FAB21B652B78C64B00395E6A /* SenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenseViewController.swift; sourceTree = "<group>"; };
 		FAB21B672B78D0DE00395E6A /* SenseOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenseOptionsViewController.swift; sourceTree = "<group>"; };
 		FAB46A242986503100959A7E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		FABDC4BB2B7DB52800970BDF /* BreatheOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreatheOptionsViewController.swift; sourceTree = "<group>"; };
+		FABDC4BD2B7DB69200970BDF /* BreatheOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreatheOptionView.swift; sourceTree = "<group>"; };
+		FABDC4BF2B7DBC4800970BDF /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		FABDC4C12B7DD1AE00970BDF /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		FABDC4C32B7DD36400970BDF /* BreathManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathManager.swift; sourceTree = "<group>"; };
+		FABDC4C52B7DE22800970BDF /* ModalPullBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPullBar.swift; sourceTree = "<group>"; };
 		FADEC5172B7BA84A00197E8D /* SenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenseView.swift; sourceTree = "<group>"; };
 		FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		FAFA448A297E89760068B4A8 /* EditMoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMoodCell.swift; sourceTree = "<group>"; };
@@ -204,6 +216,7 @@
 				FA492AA4291950F000E92F9A /* Delegates */,
 				FA492A932917E23100E92F9A /* Moods.swift */,
 				FA492A952917F80E00E92F9A /* Colors.swift */,
+				FABDC4C12B7DD1AE00970BDF /* Defaults.swift */,
 				FA20D5E5290B9FA60068332C /* Assets.xcassets */,
 				FA492A922917DDF600E92F9A /* Moods.md */,
 				FA20D5E7290B9FA60068332C /* LaunchScreen.storyboard */,
@@ -248,6 +261,7 @@
 				FA1630F5291A1CE00092721A /* SettingsViewController.swift */,
 				FA1630F7291A351B0092721A /* DeleteAccountViewController.swift */,
 				FAB21B5B2B77D0ED00395E6A /* BreatheViewController.swift */,
+				FABDC4BB2B7DB52800970BDF /* BreatheOptionsViewController.swift */,
 				FA492A8E2917B91800E92F9A /* CreateAccountViewController.swift */,
 				FAB21B672B78D0DE00395E6A /* SenseOptionsViewController.swift */,
 				FA492A97291822FE00E92F9A /* AddItemViewController.swift */,
@@ -270,6 +284,7 @@
 				FA492A9F2919506F00E92F9A /* MoodsManager.swift */,
 				FA492A9B2918A22F00E92F9A /* AuthManager.swift */,
 				FAA414AE2B791C6F004EEA57 /* SenseManager.swift */,
+				FABDC4C32B7DD36400970BDF /* BreathManager.swift */,
 				FAB21B612B7856B400395E6A /* ChartManager.swift */,
 			);
 			path = Managers;
@@ -307,6 +322,9 @@
 				FA1CC9BD29268F6A00CDA101 /* DayHeader.swift */,
 				FAB21B632B785CF900395E6A /* ChartLegend.swift */,
 				FADEC5172B7BA84A00197E8D /* SenseView.swift */,
+				FABDC4BD2B7DB69200970BDF /* BreatheOptionView.swift */,
+				FABDC4BF2B7DBC4800970BDF /* TextField.swift */,
+				FABDC4C52B7DE22800970BDF /* ModalPullBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -478,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA7F42D0291D756D00C6EA2C /* GetAffirmationView.swift in Sources */,
+				FABDC4C42B7DD36400970BDF /* BreathManager.swift in Sources */,
 				FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */,
 				FA492A8B2917AB4200E92F9A /* NavVC.swift in Sources */,
 				FAB21B582B77C20400395E6A /* TabbedViewController.swift in Sources */,
@@ -500,8 +519,11 @@
 				FA20D5DD290B9F8F0068332C /* AppDelegate.swift in Sources */,
 				FA7F42D3291D78E300C6EA2C /* Quote.swift in Sources */,
 				FA492A9A2918964400E92F9A /* Mood.swift in Sources */,
+				FABDC4C02B7DBC4800970BDF /* TextField.swift in Sources */,
+				FABDC4BC2B7DB52800970BDF /* BreatheOptionsViewController.swift in Sources */,
 				FAB21B622B7856B400395E6A /* ChartManager.swift in Sources */,
 				FA492A98291822FE00E92F9A /* AddItemViewController.swift in Sources */,
+				FABDC4C22B7DD1AE00970BDF /* Defaults.swift in Sources */,
 				FA1630FA291A58FC0092721A /* HomeMoodCell.swift in Sources */,
 				FA492AAB291951D900E92F9A /* MoodCollectionCell.swift in Sources */,
 				FA492A8F2917B91800E92F9A /* CreateAccountViewController.swift in Sources */,
@@ -514,7 +536,9 @@
 				FAB21B5A2B77C58F00395E6A /* CopeViewController.swift in Sources */,
 				FAB21B602B7854A500395E6A /* MoodDetailsViewController.swift in Sources */,
 				FA492A892917845A00E92F9A /* LoginViewController.swift in Sources */,
+				FABDC4BE2B7DB69200970BDF /* BreatheOptionView.swift in Sources */,
 				FA492A8D2917AC7600E92F9A /* HomeViewController.swift in Sources */,
+				FABDC4C62B7DE22800970BDF /* ModalPullBar.swift in Sources */,
 				FA492A962917F80E00E92F9A /* Colors.swift in Sources */,
 				FA20D5DF290B9F8F0068332C /* SceneDelegate.swift in Sources */,
 				FA4327F82B79A97400C8079E /* SenseItem.swift in Sources */,

@@ -9,9 +9,10 @@ import Foundation
 import UIKit
 
 class BreatheViewController : UIViewController {
-    let durationOfGrowth: TimeInterval = 12
-    let durationOfShrink: TimeInterval = 7
-    let waitDuration: TimeInterval = 3
+    var durationOfGrowth: TimeInterval = TimeInterval(Defaults.breathInhaleLength)
+    var durationOfShrink: TimeInterval = TimeInterval(Defaults.breathExhaleLength)
+    var waitDuration: TimeInterval = TimeInterval(Defaults.breathHoldLength)
+    
     let repeatCount = 5
     var currentRepeat = 0
     var isGoing = false
@@ -58,6 +59,14 @@ class BreatheViewController : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         screenShowing = true
+        
+        guard let user = AuthManager.user else {
+            AuthManager().logout()
+            return
+        }
+        self.durationOfGrowth = TimeInterval(user.breathOptions.inhaleLength)
+        self.durationOfShrink = TimeInterval(user.breathOptions.exhaleLength)
+        self.waitDuration = TimeInterval(user.breathOptions.holdLength)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,6 +77,7 @@ class BreatheViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "bg-color")
+        
         view.addSubview(heartOutline)
         view.addSubview(heartImage)
         view.addSubview(startButton)
@@ -145,6 +155,7 @@ class BreatheViewController : UIViewController {
     }
     
     @objc func settingsPressed() {
-        //navigationController?.pushViewController(BreatheSettingsViewController(), animated: true)
+        let vc = BreatheOptionsViewController()
+        navigationController?.present(vc, animated: true)
     }
 }

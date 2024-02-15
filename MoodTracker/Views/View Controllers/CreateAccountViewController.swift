@@ -21,7 +21,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     // Subviews
     
     let scrollView: UIScrollView = {
-      let sv = UIScrollView()
+        let sv = UIScrollView()
         sv.translatesAutoresizingMaskIntoConstraints = false
         return sv
     }()
@@ -36,7 +36,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     }()
     
     let emailTF: UITextField = {
-       let tf = UITextField()
+        let tf = UITextField()
         tf.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor(gray: 200)])
         tf.textContentType = .emailAddress
         tf.layer.cornerRadius = 15
@@ -61,7 +61,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     }()
     
     let passwordTF: UITextField = {
-       let tf = UITextField()
+        let tf = UITextField()
         tf.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor(gray: 200)])
         tf.textContentType = .password
         tf.isSecureTextEntry = true
@@ -99,7 +99,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     }()
     
     let orLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "OR"
         label.textColor = .lightGray
         label.font = .systemFont(ofSize: 18, weight: .bold)
@@ -108,7 +108,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     }()
     
     let appleButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setImage(UIImage(named: "apple"), for: .normal)
         button.backgroundColor = UIColor(gray: 240)
         button.layer.cornerRadius = 32
@@ -118,7 +118,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     }()
     
     let googleButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setImage(UIImage(named: "google"), for: .normal)
         button.backgroundColor = UIColor(gray: 240)
         button.layer.cornerRadius = 32
@@ -128,7 +128,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     }()
     
     let facebookButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setImage(UIImage(named: "facebook"), for: .normal)
         button.imageView?.frame = CGRectMake(0, 0, 32, 32)
         button.backgroundColor = UIColor(gray: 240)
@@ -144,7 +144,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     override func viewDidLoad(){
         super.viewDidLoad()
         view.backgroundColor = .white
-    
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
@@ -152,7 +152,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
         view.addGestureRecognizer(tg)
         
         view.addSubview(scrollView)
-    
+        
         scrollView.addSubview(titleLabel)
         scrollView.addSubview(emailTF)
         scrollView.addSubview(emailErrorLabel)
@@ -163,7 +163,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
         scrollView.addSubview(appleButton)
         scrollView.addSubview(googleButton)
         scrollView.addSubview(facebookButton)
-
+        
         
         setupSubviews()
         
@@ -196,7 +196,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     
     func setupSubviews(){
         setupScrollView()
-       setupTitleLabel()
+        setupTitleLabel()
         setupEmailTF()
         setupEmailErrorLabel()
         setupPasswordTF()
@@ -206,7 +206,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
         setupAppleButton()
         setupGoogleButton()
         setupFacebookButton()
-
+        
     }
     
     func setupScrollView(){
@@ -290,35 +290,35 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
             if isValidEmail(email) && isValidPassword(password) {
                 Auth.auth().createUser(withEmail: email, password: password) { result, error in
                     if let error = error {
-                        self.passwordErrorLabel.text = error.localizedDescription 
+                        self.passwordErrorLabel.text = error.localizedDescription
                         print(error)
                         return
-                    } else if let result = result {
-                        Analytics.logEvent(AnalyticsEventSignUp, parameters: [
-                            AnalyticsParameterMethod: "Email"
-                        ])
-                        self.dismiss(animated: true)
                     }
+                    Analytics.logEvent(AnalyticsEventSignUp, parameters: [
+                        AnalyticsParameterMethod: "Email"
+                    ])
+                    AuthManager.user = MudiUser(Auth.auth().currentUser!)
+                    self.dismiss(animated: true)
                 }
             }
         }
     }
     
     fileprivate var currentNonce: String?
-
+    
     @available(iOS 13, *)
     func startSignInWithAppleFlow() {
-      let nonce = AuthManager().randomNonceString()
-      currentNonce = nonce
-      let appleIDProvider = ASAuthorizationAppleIDProvider()
-      let request = appleIDProvider.createRequest()
+        let nonce = AuthManager().randomNonceString()
+        currentNonce = nonce
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
         request.requestedScopes = [.fullName, .email]
         request.nonce = AuthManager().sha256(nonce)
-
-      let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-      authorizationController.delegate = self
-      authorizationController.presentationContextProvider = self
-      authorizationController.performRequests()
+        
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
     }
     
     @objc func handleApple(){
@@ -348,6 +348,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
                 Analytics.logEvent(AnalyticsEventLogin, parameters: [
                     AnalyticsParameterMethod: "Google"
                 ])
+                AuthManager.user = MudiUser(Auth.auth().currentUser!)
                 self.dismiss(animated: true)
             }
         }
@@ -374,6 +375,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
                             Analytics.logEvent(AnalyticsEventLogin, parameters: [
                                 AnalyticsParameterMethod: "Facebook"
                             ])
+                            AuthManager.user = MudiUser(Auth.auth().currentUser!)
                             self.dismiss(animated: true)
                         }
                     }
@@ -386,7 +388,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         return isValidFrom(regex: emailRegEx, string: email)
     }
-
+    
     func isValidPassword(_ password: String) -> Bool {
         let passwordRegEx = "^.*(?=.{6,})(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*\\d)|(?=.*[!#$%&? \"]).*$"
         return isValidFrom(regex: passwordRegEx, string: password)
@@ -446,46 +448,47 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
 
 @available(iOS 13.0, *)
 extension CreateAccountViewController: ASAuthorizationControllerDelegate {
-
-  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-    if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-      guard let nonce = currentNonce else {
-        fatalError("Invalid state: A login callback was received, but no login request was sent.")
-      }
-      guard let appleIDToken = appleIDCredential.identityToken else {
-        print("Unable to fetch identity token")
-        return
-      }
-      guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-        print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
-        return
-      }
-      // Initialize a Firebase credential.
-      let credential = OAuthProvider.credential(withProviderID: "apple.com",
-                                                idToken: idTokenString,
-                                                rawNonce: nonce)
-      // Sign in with Firebase.
-      Auth.auth().signIn(with: credential) { (authResult, error) in
-          if error != nil {
-              // Error. If error.code == .MissingOrInvalidNonce, make sure
-              // you're sending the SHA256-hashed nonce as a hex string with
-              // your request to Apple.
-              print(error!.localizedDescription)
-              return
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            guard let nonce = currentNonce else {
+                fatalError("Invalid state: A login callback was received, but no login request was sent.")
             }
-        // User is signed in to Firebase with Apple.
-        // ...
-          Analytics.logEvent(AnalyticsEventLogin, parameters: [
-              AnalyticsParameterMethod: "Apple"
-          ])
-          self.dismiss(animated: true)
-      }
+            guard let appleIDToken = appleIDCredential.identityToken else {
+                print("Unable to fetch identity token")
+                return
+            }
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+                return
+            }
+            // Initialize a Firebase credential.
+            let credential = OAuthProvider.credential(withProviderID: "apple.com",
+                                                      idToken: idTokenString,
+                                                      rawNonce: nonce)
+            // Sign in with Firebase.
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if error != nil {
+                    // Error. If error.code == .MissingOrInvalidNonce, make sure
+                    // you're sending the SHA256-hashed nonce as a hex string with
+                    // your request to Apple.
+                    print(error!.localizedDescription)
+                    return
+                }
+                // User is signed in to Firebase with Apple.
+                // ...
+                Analytics.logEvent(AnalyticsEventLogin, parameters: [
+                    AnalyticsParameterMethod: "Apple"
+                ])
+                AuthManager.user = MudiUser(Auth.auth().currentUser!)
+                self.dismiss(animated: true)
+            }
+        }
     }
-  }
-
-  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-    // Handle error.
-    print("Sign in with Apple errored: \(error)")
-  }
-
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error.
+        print("Sign in with Apple errored: \(error)")
+    }
+    
 }
