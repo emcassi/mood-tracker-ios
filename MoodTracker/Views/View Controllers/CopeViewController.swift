@@ -45,7 +45,7 @@ class CopeViewController : UIViewController {
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowOpacity = 0.3
         button.layer.shadowRadius = 15
-        button.addTarget(self, action: #selector(breathePressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(sensePressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -65,7 +65,7 @@ class CopeViewController : UIViewController {
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowOpacity = 0.3
         button.layer.shadowRadius = 15
-        button.addTarget(self, action: #selector(breathePressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(distractPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -95,6 +95,14 @@ class CopeViewController : UIViewController {
     }
     
     @objc func breathePressed() {
+        navigationController?.pushViewController(BreatheViewController(), animated: true)
+    }
+    
+    @objc func sensePressed() {
+        navigationController?.pushViewController(SenseViewController(), animated: true)
+    }
+    
+    @objc func distractPressed() {
         navigationController?.pushViewController(BreatheViewController(), animated: true)
     }
 }

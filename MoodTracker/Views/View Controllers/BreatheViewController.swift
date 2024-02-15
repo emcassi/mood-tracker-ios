@@ -16,6 +16,9 @@ class BreatheViewController : UIViewController {
     var currentRepeat = 0
     var isGoing = false
     var currentAnimation: UIViewPropertyAnimator?
+    var screenShowing = false
+    
+    let generator = UIImpactFeedbackGenerator(style: .medium)
 
     let heartOutline: UIImageView = {
         let view = UIImageView()
@@ -52,6 +55,16 @@ class BreatheViewController : UIViewController {
         return label
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        screenShowing = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        screenShowing = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "bg-color")
@@ -79,15 +92,18 @@ class BreatheViewController : UIViewController {
     }
     
     func breathe() {
-        if !isGoing { return }
+        if !screenShowing || !isGoing { return }
         let smallSize = 25
         let bigSize = 400
+        self.generator.impactOccurred()
         label.text = "Inhale"
         UIView.animate(withDuration: durationOfGrowth, animations: {
             // Grow the view
             self.heartImage.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: bigSize, height: bigSize))
             self.heartImage.center = self.view.center
         }) { (_) in
+            if !self.screenShowing || !self.isGoing { return }
+            self.generator.impactOccurred()
             self.label.text = "Exhale"
             UIView.animate(withDuration: self.durationOfShrink, animations: {
                 // Shrink the view
@@ -95,6 +111,8 @@ class BreatheViewController : UIViewController {
                 self.heartImage.center = self.view.center
                 
             }) { (_) in
+                if !self.screenShowing || !self.isGoing { return }
+                self.generator.impactOccurred()
                 self.label.text = "Hold"
                 // Wait for a few seconds
                 DispatchQueue.main.asyncAfter(deadline: .now() + self.waitDuration) {
