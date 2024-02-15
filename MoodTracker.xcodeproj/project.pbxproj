@@ -62,6 +62,7 @@
 		FABDC4C22B7DD1AE00970BDF /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4C12B7DD1AE00970BDF /* Defaults.swift */; };
 		FABDC4C42B7DD36400970BDF /* BreathManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4C32B7DD36400970BDF /* BreathManager.swift */; };
 		FABDC4C62B7DE22800970BDF /* ModalPullBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4C52B7DE22800970BDF /* ModalPullBar.swift */; };
+		FABDC4C92B7DF21B00970BDF /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = FABDC4C82B7DF21B00970BDF /* MarkdownKit */; };
 		FADEC5182B7BA84A00197E8D /* SenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADEC5172B7BA84A00197E8D /* SenseView.swift */; };
 		FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */; };
 		FAFA448B297E89760068B4A8 /* EditMoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA448A297E89760068B4A8 /* EditMoodCell.swift */; };
@@ -161,6 +162,7 @@
 				FAB46A252986503100959A7E /* AdSupport.framework in Frameworks */,
 				FAFA448E297F75590068B4A8 /* FacebookCore in Frameworks */,
 				FAFA4490297F75590068B4A8 /* FacebookLogin in Frameworks */,
+				FABDC4C92B7DF21B00970BDF /* MarkdownKit in Frameworks */,
 				FA3B5667290BB6EC00FBA068 /* FirebaseAuth in Frameworks */,
 				FA3B5669290BB6EC00FBA068 /* FirebaseFirestore in Frameworks */,
 				FA1CC9C329269FEA00CDA101 /* Charts in Frameworks */,
@@ -372,6 +374,7 @@
 				FAFA448D297F75590068B4A8 /* FacebookCore */,
 				FAFA448F297F75590068B4A8 /* FacebookLogin */,
 				FAFA4493297F89B20068B4A8 /* GoogleSignIn */,
+				FABDC4C82B7DF21B00970BDF /* MarkdownKit */,
 			);
 			productName = MoodTracker;
 			productReference = FA20D5D9290B9F8F0068332C /* MoodTracker.app */;
@@ -450,6 +453,7 @@
 				FA1CC9C129269FEA00CDA101 /* XCRemoteSwiftPackageReference "Charts" */,
 				FAFA448C297F75590068B4A8 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 				FAFA4492297F89B20068B4A8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				FABDC4C72B7DF21B00970BDF /* XCRemoteSwiftPackageReference "MarkdownKit" */,
 			);
 			productRefGroup = FA20D5DA290B9F8F0068332C /* Products */;
 			projectDirPath = "";
@@ -909,6 +913,14 @@
 				kind = branch;
 			};
 		};
+		FABDC4C72B7DF21B00970BDF /* XCRemoteSwiftPackageReference "MarkdownKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bmoliveira/MarkdownKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.1;
+			};
+		};
 		FAFA448C297F75590068B4A8 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
@@ -947,6 +959,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FA3B5663290BB6EC00FBA068 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		FABDC4C82B7DF21B00970BDF /* MarkdownKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FABDC4C72B7DF21B00970BDF /* XCRemoteSwiftPackageReference "MarkdownKit" */;
+			productName = MarkdownKit;
 		};
 		FAFA448D297F75590068B4A8 /* FacebookCore */ = {
 			isa = XCSwiftPackageProductDependency;
