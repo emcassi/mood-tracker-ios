@@ -63,7 +63,7 @@
 		FABDC4C42B7DD36400970BDF /* BreathManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4C32B7DD36400970BDF /* BreathManager.swift */; };
 		FABDC4C62B7DE22800970BDF /* ModalPullBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4C52B7DE22800970BDF /* ModalPullBar.swift */; };
 		FABDC4C92B7DF21B00970BDF /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = FABDC4C82B7DF21B00970BDF /* MarkdownKit */; };
-		FABDC4CC2B7DF2FE00970BDF /* LearnControlCircleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4CB2B7DF2FE00970BDF /* LearnControlCircleViewController.swift */; };
+		FABDC4CC2B7DF2FE00970BDF /* LearnBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4CB2B7DF2FE00970BDF /* LearnBaseViewController.swift */; };
 		FABDC4CE2B7DF3B900970BDF /* LearnManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4CD2B7DF3B900970BDF /* LearnManager.swift */; };
 		FABDC4D02B7E07BA00970BDF /* LearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4CF2B7E07BA00970BDF /* LearnViewController.swift */; };
 		FABDC4D22B7E089300970BDF /* LearnItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4D12B7E089300970BDF /* LearnItemCell.swift */; };
@@ -155,7 +155,7 @@
 		FABDC4C12B7DD1AE00970BDF /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		FABDC4C32B7DD36400970BDF /* BreathManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathManager.swift; sourceTree = "<group>"; };
 		FABDC4C52B7DE22800970BDF /* ModalPullBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPullBar.swift; sourceTree = "<group>"; };
-		FABDC4CB2B7DF2FE00970BDF /* LearnControlCircleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnControlCircleViewController.swift; sourceTree = "<group>"; };
+		FABDC4CB2B7DF2FE00970BDF /* LearnBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnBaseViewController.swift; sourceTree = "<group>"; };
 		FABDC4CD2B7DF3B900970BDF /* LearnManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnManager.swift; sourceTree = "<group>"; };
 		FABDC4CF2B7E07BA00970BDF /* LearnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnViewController.swift; sourceTree = "<group>"; };
 		FABDC4D12B7E089300970BDF /* LearnItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnItemCell.swift; sourceTree = "<group>"; };
@@ -378,7 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				FABDC4D32B7E0F5D00970BDF /* Markdown */,
-				FABDC4CB2B7DF2FE00970BDF /* LearnControlCircleViewController.swift */,
+				FABDC4CB2B7DF2FE00970BDF /* LearnBaseViewController.swift */,
 			);
 			path = Learn;
 			sourceTree = "<group>";
@@ -574,7 +574,7 @@
 				FABDC4D22B7E089300970BDF /* LearnItemCell.swift in Sources */,
 				FA492AA9291951A800E92F9A /* HomeItemCell.swift in Sources */,
 				FAB21B682B78D0DF00395E6A /* SenseOptionsViewController.swift in Sources */,
-				FABDC4CC2B7DF2FE00970BDF /* LearnControlCircleViewController.swift in Sources */,
+				FABDC4CC2B7DF2FE00970BDF /* LearnBaseViewController.swift in Sources */,
 				FA20D5DD290B9F8F0068332C /* AppDelegate.swift in Sources */,
 				FA7F42D3291D78E300C6EA2C /* Quote.swift in Sources */,
 				FABDC4D02B7E07BA00970BDF /* LearnViewController.swift in Sources */,
