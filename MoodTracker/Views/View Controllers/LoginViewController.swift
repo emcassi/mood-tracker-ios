@@ -15,7 +15,7 @@ import FBSDKLoginKit
 import AuthenticationServices
 
 class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizationControllerPresentationContextProviding {
-
+    
     
     let scrollView = UIScrollView()
     
@@ -29,7 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     }()
     
     let emailTF: UITextField = {
-       let tf = UITextField()
+        let tf = UITextField()
         tf.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor(gray: 200)])
         tf.textContentType = .emailAddress
         tf.layer.cornerRadius = 15
@@ -43,7 +43,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     }()
     
     let passwordTF: UITextField = {
-       let tf = UITextField()
+        let tf = UITextField()
         tf.textContentType = .password
         tf.isSecureTextEntry = true
         tf.layer.cornerRadius = 15
@@ -79,7 +79,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     }()
     
     let orLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "OR"
         label.textColor = .lightGray
         label.font = .systemFont(ofSize: 18, weight: .bold)
@@ -88,7 +88,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     }()
     
     let appleButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setImage(UIImage(named: "apple"), for: .normal)
         button.backgroundColor = UIColor(gray: 240)
         button.layer.cornerRadius = 32
@@ -98,7 +98,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     }()
     
     let googleButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setImage(UIImage(named: "google"), for: .normal)
         button.backgroundColor = UIColor(gray: 240)
         button.layer.cornerRadius = 32
@@ -108,7 +108,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     }()
     
     let facebookButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton()
         button.setImage(UIImage(named: "facebook"), for: .normal)
         button.imageView?.frame = CGRectMake(0, 0, 32, 32)
         button.backgroundColor = UIColor(gray: 240)
@@ -146,8 +146,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
         
         let tg = UITapGestureRecognizer(target: self, action: #selector(tappedScreen))
         scrollView.addGestureRecognizer(tg)
-
-
+        
+        
         view.addSubview(scrollView)
         scrollView.addSubview(titleLabel)
         scrollView.addSubview(emailTF)
@@ -183,7 +183,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     
     func setupViews(){
         setupScrollView()
-       setupTitleLabel()
+        setupTitleLabel()
         setupEmailTF()
         setupPasswordTF()
         setupErrorLabel()
@@ -284,6 +284,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
                     Analytics.logEvent(AnalyticsEventLogin, parameters: [
                         AnalyticsParameterMethod: "Email"
                     ])
+                    AuthManager.user = MudiUser(Auth.auth().currentUser!)
                     self.dismiss(animated: true)
                 }
             }
@@ -292,20 +293,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     
     
     fileprivate var currentNonce: String?
-
+    
     @available(iOS 13, *)
     func startSignInWithAppleFlow() {
-      let nonce = AuthManager().randomNonceString()
-      currentNonce = nonce
-      let appleIDProvider = ASAuthorizationAppleIDProvider()
-      let request = appleIDProvider.createRequest()
+        let nonce = AuthManager().randomNonceString()
+        currentNonce = nonce
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
         request.requestedScopes = [.fullName, .email]
         request.nonce = AuthManager().sha256(nonce)
-
-      let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-      authorizationController.delegate = self
-      authorizationController.presentationContextProvider = self
-      authorizationController.performRequests()
+        
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
     }
     
     @objc func handleApple(){
@@ -336,6 +337,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
                 Analytics.logEvent(AnalyticsEventLogin, parameters: [
                     AnalyticsParameterMethod: "Google"
                 ])
+                AuthManager.user = MudiUser(Auth.auth().currentUser!)
                 self.dismiss(animated: true)
             }
         }
@@ -362,6 +364,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
                             Analytics.logEvent(AnalyticsEventLogin, parameters: [
                                 AnalyticsParameterMethod: "Facebook"
                             ])
+                            AuthManager.user = MudiUser(Auth.auth().currentUser!)
                             self.dismiss(animated: true)
                         }
                     }
@@ -375,46 +378,46 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
 
 @available(iOS 13.0, *)
 extension LoginViewController: ASAuthorizationControllerDelegate {
-
-  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-    if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-      guard let nonce = currentNonce else {
-        fatalError("Invalid state: A login callback was received, but no login request was sent.")
-      }
-      guard let appleIDToken = appleIDCredential.identityToken else {
-        print("Unable to fetch identity token")
-        return
-      }
-      guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-        print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
-        return
-      }
-      // Initialize a Firebase credential.
-      let credential = OAuthProvider.credential(withProviderID: "apple.com",
-                                                idToken: idTokenString,
-                                                rawNonce: nonce)
-      // Sign in with Firebase.
-      Auth.auth().signIn(with: credential) { (authResult, error) in
-          if error != nil {
-              // Error. If error.code == .MissingOrInvalidNonce, make sure
-              // you're sending the SHA256-hashed nonce as a hex string with
-              // your request to Apple.
-              print(error!.localizedDescription)
-              return
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            guard let nonce = currentNonce else {
+                fatalError("Invalid state: A login callback was received, but no login request was sent.")
             }
-        // User is signed in to Firebase with Apple.
-        // ...
-          Analytics.logEvent(AnalyticsEventLogin, parameters: [
-              AnalyticsParameterMethod: "Apple"
-          ])
-          self.dismiss(animated: true)
-      }
+            guard let appleIDToken = appleIDCredential.identityToken else {
+                print("Unable to fetch identity token")
+                return
+            }
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+                return
+            }
+            // Initialize a Firebase credential.
+            let credential = OAuthProvider.credential(withProviderID: "apple.com",
+                                                      idToken: idTokenString,
+                                                      rawNonce: nonce)
+            // Sign in with Firebase.
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if error != nil {
+                    // Error. If error.code == .MissingOrInvalidNonce, make sure
+                    // you're sending the SHA256-hashed nonce as a hex string with
+                    // your request to Apple.
+                    print(error!.localizedDescription)
+                    return
+                }
+                // User is signed in to Firebase with Apple.
+                Analytics.logEvent(AnalyticsEventLogin, parameters: [
+                    AnalyticsParameterMethod: "Apple"
+                ])
+                AuthManager.user = MudiUser(Auth.auth().currentUser!)
+                self.dismiss(animated: true)
+            }
+        }
     }
-  }
-
-  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-    // Handle error.
-    print("Sign in with Apple errored: \(error)")
-  }
-
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error.
+        print("Sign in with Apple errored: \(error)")
+    }
+    
 }
