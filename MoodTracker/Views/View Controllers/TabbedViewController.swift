@@ -24,6 +24,11 @@ class TabbedViewController : UITabBarController {
         
         viewControllers = [ home, cope, affirm ]
         navigationItem.title = "Mudi"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(settingsPressed))
         tabBar.tintColor = UIColor(named: "info")
+    }
+    
+    @objc func settingsPressed() {
+        navigationController?.pushViewController(SettingsViewController(), animated: true)
     }
 }
