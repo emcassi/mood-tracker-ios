@@ -19,8 +19,7 @@ class CopeViewController : UIViewController {
         button.setImage(UIImage(systemName: "wind", withConfiguration: UIImage.SymbolConfiguration(pointSize: 18, weight: .bold, scale: .medium)), for: .normal)
         button.imageView?.tintColor = UIColor(named: "info")
         button.layer.cornerRadius = 15
-        button.layer.borderColor = UIColor(named: "panel-color")?.cgColor
-        button.layer.borderWidth = 3
+        button.layer.borderWidth = 0
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowOpacity = 0.3
@@ -39,8 +38,7 @@ class CopeViewController : UIViewController {
         button.setImage(UIImage(systemName: "hand.point.up.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 18, weight: .bold, scale: .medium)), for: .normal)
         button.imageView?.tintColor = UIColor(named: "info")
         button.layer.cornerRadius = 15
-        button.layer.borderColor = UIColor(named: "panel-color")?.cgColor
-        button.layer.borderWidth = 3
+        button.layer.borderWidth = 0
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowOpacity = 0.3
@@ -60,8 +58,7 @@ class CopeViewController : UIViewController {
         button.imageView?.tintColor = UIColor(named: "info")
         button.layer.cornerRadius = 15
         button.layer.borderColor = UIColor(named: "panel-color")?.cgColor
-        button.layer.borderWidth = 3
-        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.borderWidth = 0
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowOpacity = 0.3
         button.layer.shadowRadius = 15
