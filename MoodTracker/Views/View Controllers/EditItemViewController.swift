@@ -99,12 +99,11 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         tv.isEditable = true
         tv.textColor = UIColor(named: "info")
         tv.font = .systemFont(ofSize: 14)
-        tv.backgroundColor = .clear
+        tv.backgroundColor = UIColor(named: "panel-color")
         tv.contentInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         tv.isEditable = false
-        tv.layer.borderWidth = 1
+        tv.layer.borderWidth = 0
         tv.layer.cornerRadius = 15
-        tv.layer.borderColor = UIColor(named: "info")?.cgColor
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
@@ -171,8 +170,6 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         moodsView.delegate = self
         
         chartView = PieChartView(frame: CGRect(x: view.frame.width - 200, y: 0 ,width: 200 ,height: 200))
-        chartView.drawEntryLabelsEnabled = true
-        
         
         view.addSubview(scrollView)
         scrollView.addSubview(dateLabel)
@@ -349,7 +346,10 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         chartView.legend.enabled = false
         chartView.animate(xAxisDuration: 1, yAxisDuration: 1, easingOption: .easeOutCirc)
         chartView.drawHoleEnabled = false
-        chartView.addGestureRecognizer(chartTapper)
+        chartView.drawEntryLabelsEnabled = true
+        chartView.entryLabelFont = .boldSystemFont(ofSize: 14)
+        chartView.entryLabelColor = UIColor(named: "label")
+        
         var dataEntries: [ChartDataEntry] = []
         for i in 0..<dataPoints.count {
             let dataEntry = PieChartDataEntry(value: values[i], label: dataPoints[i], data: dataPoints[i] as AnyObject)

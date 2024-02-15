@@ -30,12 +30,15 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
     let detailsTF: UITextView = {
         let tv = UITextView()
         tv.isEditable = true
-        tv.textColor = .lightGray
+        tv.textColor = UIColor(named: "info")
         tv.font = .systemFont(ofSize: 14)
-        tv.backgroundColor = .clear
-        tv.layer.borderWidth = 1
+        tv.backgroundColor = UIColor(named: "panel-color")
+        tv.layer.borderWidth = 0
         tv.layer.cornerRadius = 15
-        tv.layer.borderColor = UIColor.white.cgColor
+        tv.layer.shadowColor = UIColor.black.cgColor
+        tv.layer.shadowOffset = CGSize(width: 2, height: 2)
+        tv.layer.shadowOpacity = 0.3
+        tv.layer.shadowRadius = 15
         tv.contentInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
@@ -175,16 +178,16 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
     // Text view delegate methods
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if textView.text == detailsPlaceholder {
             textView.text = nil
-            textView.textColor = UIColor.white
+            textView.textColor = UIColor(named: "label")
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = detailsPlaceholder
-            textView.textColor = UIColor.lightGray
+            textView.textColor = UIColor(named: "info")
         }
     }
     
