@@ -15,6 +15,9 @@ class TabbedViewController : UITabBarController {
         let home = HomeViewController()
         home.tabBarItem.title = "Journal"
         home.tabBarItem.image = UIImage(systemName: "text.book.closed.fill")
+        let learn = LearnViewController()
+        learn.tabBarItem.title = "Learn"
+        learn.tabBarItem.image = UIImage(systemName: "graduationcap.fill")
         let cope = CopeViewController()
         cope.tabBarItem.title = "Cope"
         cope.tabBarItem.image = UIImage(systemName: "heart.fill")
@@ -22,7 +25,7 @@ class TabbedViewController : UITabBarController {
         affirm.tabBarItem.title = "Wisdom"
         affirm.tabBarItem.image = UIImage(systemName: "quote.closing")
         
-        viewControllers = [ home, cope, affirm ]
+        viewControllers = [ home, learn, cope, affirm ]
         navigationItem.title = "Mudi"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(settingsPressed))
         tabBar.tintColor = UIColor(named: "info")
