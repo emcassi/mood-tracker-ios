@@ -168,7 +168,6 @@ class SenseViewController : UIViewController {
     }
     
     @objc func startPressed() {
-        print("getting items")
         SenseManager.getSetOfSenseItems { set in
             if set.isEmpty { return }
             self.items = set
