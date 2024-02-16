@@ -126,6 +126,14 @@ Hope you like it! -Alex
 <img src="images/edit.png" alt="Screen where you can edit your posts" width="200">
 <br>
 <img src="images/quote.png" alt="Screen where you can view affirmations" width="200">
+<br>
+<img src="images/breathe.png" alt="Screen for guided breathing" width="200">
+<br>
+<img src="images/senses.png" alt="Screen for 5 senses skill" width="200">
+<br>
+<img src="images/edit-senses.png" alt="Screen for editing 5 senses skill items" width="200">
+<br>
+<img src="images/iop.png" alt="Screen for guided breathing" width="200">
 
 
 
