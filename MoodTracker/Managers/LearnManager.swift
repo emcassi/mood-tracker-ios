@@ -19,13 +19,15 @@ struct LearnItem {
 
 class LearnManager {
     static let items = [
-        LearnItem(id: 1, name: "Be Mindful", completed: false, image: nil, filename: "Be-Mindful"),
-        LearnItem(id: 2, name: "Wise Mind", completed: false, image: UIImage(named: "wise-mind"), filename: "Wise-Mind"),
-        LearnItem(id: 3, name: "GIVE", completed: false, image: nil, filename: "GIVE"),
-        LearnItem(id: 4, name: "FAST", completed: false, image: nil, filename: "FAST"),
-        LearnItem(id: 5, name: "Window of Tolerance", completed: false, image: UIImage(named: "window-of-tolerance"), filename: "Window-of-Tolerance"),
-        LearnItem(id: 6, name: "Radical Acceptance", completed: false, image: UIImage(named: "circles-of-control"), filename: "Radical-Acceptance"),
-        LearnItem(id: 7, name: "Urge Surfing", completed: false, image: UIImage(named: "urge-surfing"), filename: "Urge-Surfing"),
+        LearnItem(id: 1, name: "Pain vs. Suffering", completed: false, image: nil, filename: "Pain-vs-Suffering"),
+        LearnItem(id: 2, name: "Be Mindful", completed: false, image: nil, filename: "Be-Mindful"),
+        LearnItem(id: 3, name: "Wise Mind", completed: false, image: UIImage(named: "wise-mind"), filename: "Wise-Mind"),
+        LearnItem(id: 4, name: "GIVE", completed: false, image: nil, filename: "GIVE"),
+        LearnItem(id: 5, name: "FAST", completed: false, image: nil, filename: "FAST"),
+        LearnItem(id: 6, name: "Window of Tolerance", completed: false, image: UIImage(named: "window-of-tolerance"), filename: "Window-of-Tolerance"),
+        LearnItem(id: 7, name: "Radical Acceptance", completed: false, image: UIImage(named: "circles-of-control"), filename: "Radical-Acceptance"),
+        LearnItem(id: 8, name: "Urge Surfing", completed: false, image: UIImage(named: "urge-surfing"), filename: "Urge-Surfing"),
+        LearnItem(id: 9, name: "Attending to Relationships", completed: false, image: nil, filename: "Attend-To-Relationships"),
     ]
     
     static func getContent(item: LearnItem, completion: (_ contents: String) -> Void) {

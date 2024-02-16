@@ -1,31 +1,47 @@
-# **GIVE - (Be) Gentle, (Act) Interested, Validate, (Use an) Easy manner**
+# GIVE
 
-## **(Be) Gentle**
+The **GIVE** skill in DBT is part of the interpersonal effectiveness module, designed to help individuals communicate in a way that maintains relationships and respects both parties' needs. **GIVE** stands for Gentle, Interested, Validate, and Easy manner, offering strategies for engaging with others that are conducive to positive interactions and outcomes. It's crucial to understand that this approach is not just about maintaining relationships but also about fostering an environment of mutual respect and understanding. Each component of the **GIVE** skill serves to enhance communication in a way that respects both the speaker's and the listener's needs, creating a foundation for healthy and constructive interactions.
 
+
+## (Be) Gentle
+  - Approach conversations with kindness and respect
+  - Avoid aggressive, accusatory, or defensive language
   - Be kind
   - Do not be judgmental
   - Use appropriate tone
 
-## **(Act) Interested**
+  **Note** Being gentle encourages a more open and less confrontational dialogue, making it easier to navigate sensitive topics.
 
-  - Make eye contact
-  - Ask questions
-  - Nod
-  - Repeat parts of their statements to show you are listening
 
-##  **Validate**
+## (Act) Interested
+### Demonstrate genuine interest in what others have to say validates their feelings and perspectives
 
-  - Do not dismiss their feelings
-  - Do not try to compare / one up
-  - Actively listen
-  - Show understanding
-  - NO BUTS!
+### You can show interest by
+    - Making eye contact
+    - Asking questions
+    - Nodding
+    - Repeating parts of their statements to show you are listening
 
-## **(Use an) Easy manner**
-  - Make appropriate jokes
-  - SMILE :)
-  - Be polite
-  - Don’t focus on the little things
+
+##  Validate
+### Validation is key to showing empathy and understanding. It communicates that you recognize and accept the other person's experiences and emotions as valid, even if you don't necessarily agree with them. This can significantly reduce conflict and build a stronger emotional bond.
+
+### You can validate by:
+  - Not dismissing their feelings
+  - Not trying to compare / one up
+  - Actively listening
+  - Showing understanding
+  - NO BUTS! - Do not say something like "I understand, but ...". This often negates the validation
+
+
+## (Use an) Easy manner
+### An easy manner helps to lighten the mood, making difficult conversations more approachable and less intimidating.
+
+### You can have an easy manner by:
+  - Making *appropriate* jokes
+  - Smiling :)
+  - Being polite
+  - Not focusing on the little things
 
 
 ## Other tips
@@ -35,25 +51,4 @@
   - Ask questions that others will enjoy answering
 - Do not directly tell others they are wrong
   - Instead, ask a question that will force them to challenge their point of view
-
-## Attend to relationships
-
-- Talk and spend time with others regularly
-  - This will help you feel comfortable around each other
-  - Time together strengthens your bond
-  - Having shared experiences help you create memories
-  
-- Do not let problems build up
-  - If there is a problem, address it
-  - Resentment hurts relationships
-  - By talking through a problem, you can avoid carrying around built-up emotions
-  
-- Use your skills to avoid problems
-  - Be mindful of and respect others' boundaries
-  - Assert yourself if someone crosses your boundaries
-  
-- Balance sharing and listening
-
-[How to Win Friends and Influence People](https://www.amazon.com/How-Win-Friends-Influence-People/dp/0671027034)
-
 
