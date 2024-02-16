@@ -13,11 +13,14 @@ class SettingsViewController: UIViewController {
     let privacyButton: UIButton = {
         let button = UIButton()
         button.setTitle("Privacy Policy", for: .normal)
-        button.backgroundColor = .white
+        button.backgroundColor = UIColor(named: "panel-color")
         button.layer.cornerRadius = 15
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.white.cgColor
-        button.setTitleColor(UIColor(named: "bg-color"), for: .normal)
+        button.layer.borderWidth = 0
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowRadius = 15
+        button.setTitleColor(UIColor(named: "label"), for: .normal)
         button.addTarget(self, action: #selector(privacyPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -26,11 +29,14 @@ class SettingsViewController: UIViewController {
     let signOutButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign Out", for: .normal)
-        button.backgroundColor = .white
+        button.backgroundColor = UIColor(named: "panel-color")
         button.layer.cornerRadius = 15
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.white.cgColor
-        button.setTitleColor(UIColor(named: "bg-color"), for: .normal)
+        button.layer.borderWidth = 0
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowRadius = 15
+        button.setTitleColor(UIColor(named: "label"), for: .normal)
         button.addTarget(self, action: #selector(signOutPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -39,11 +45,14 @@ class SettingsViewController: UIViewController {
     let deleteAccountButton: UIButton = {
         let button = UIButton()
         button.setTitle("Delete Account", for: .normal)
-        button.backgroundColor = .white
+        button.backgroundColor = UIColor(named: "panel-color")
         button.layer.cornerRadius = 15
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.white.cgColor
-        button.setTitleColor(.red, for: .normal)
+        button.layer.borderWidth = 0
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowRadius = 15
+        button.setTitleColor(UIColor(named: "dangerous"), for: .normal)
         button.addTarget(self, action: #selector(deleteAccountPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
