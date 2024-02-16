@@ -73,6 +73,8 @@
 		FABDC4E42B7E151300970BDF /* GIVE.md in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4DE2B7E151200970BDF /* GIVE.md */; };
 		FABDC4E52B7E151300970BDF /* FAST.md in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4DF2B7E151200970BDF /* FAST.md */; };
 		FABDC4E62B7E151300970BDF /* Wise-Mind.md in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4E02B7E151200970BDF /* Wise-Mind.md */; };
+		FABDC4E82B7EC45D00970BDF /* Urge-Surfing.md in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4E72B7EC45D00970BDF /* Urge-Surfing.md */; };
+		FABDC4EA2B7ED71B00970BDF /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4E92B7ED71B00970BDF /* Pacifico-Regular.ttf */; };
 		FADEC5182B7BA84A00197E8D /* SenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADEC5172B7BA84A00197E8D /* SenseView.swift */; };
 		FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */; };
 		FAFA448B297E89760068B4A8 /* EditMoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA448A297E89760068B4A8 /* EditMoodCell.swift */; };
@@ -165,6 +167,8 @@
 		FABDC4DE2B7E151200970BDF /* GIVE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = GIVE.md; sourceTree = "<group>"; };
 		FABDC4DF2B7E151200970BDF /* FAST.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = FAST.md; sourceTree = "<group>"; };
 		FABDC4E02B7E151200970BDF /* Wise-Mind.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Wise-Mind.md"; sourceTree = "<group>"; };
+		FABDC4E72B7EC45D00970BDF /* Urge-Surfing.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Urge-Surfing.md"; sourceTree = "<group>"; };
+		FABDC4E92B7ED71B00970BDF /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 		FADEC5172B7BA84A00197E8D /* SenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenseView.swift; sourceTree = "<group>"; };
 		FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		FAFA448A297E89760068B4A8 /* EditMoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMoodCell.swift; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 		FA3B5660290BB0A800FBA068 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				FABDC4E92B7ED71B00970BDF /* Pacifico-Regular.ttf */,
 				FA3B565E290BB0A300FBA068 /* FredokaOne-Regular.ttf */,
 			);
 			path = Fonts;
@@ -390,6 +395,7 @@
 				FABDC4DF2B7E151200970BDF /* FAST.md */,
 				FABDC4DE2B7E151200970BDF /* GIVE.md */,
 				FABDC4DB2B7E151100970BDF /* Radical-Acceptance.md */,
+				FABDC4E72B7EC45D00970BDF /* Urge-Surfing.md */,
 				FABDC4DD2B7E151200970BDF /* Window-of-Tolerance.md */,
 				FABDC4E02B7E151200970BDF /* Wise-Mind.md */,
 			);
@@ -518,6 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA20D5E9290B9FA60068332C /* LaunchScreen.storyboard in Resources */,
+				FABDC4E82B7EC45D00970BDF /* Urge-Surfing.md in Resources */,
 				FABDC4E42B7E151300970BDF /* GIVE.md in Resources */,
 				FABDC4E62B7E151300970BDF /* Wise-Mind.md in Resources */,
 				FABDC4E22B7E151300970BDF /* Be-Mindful.md in Resources */,
@@ -525,6 +532,7 @@
 				FA3B5662290BB48A00FBA068 /* GoogleService-Info.plist in Resources */,
 				FABDC4E12B7E151300970BDF /* Radical-Acceptance.md in Resources */,
 				FABDC4E52B7E151300970BDF /* FAST.md in Resources */,
+				FABDC4EA2B7ED71B00970BDF /* Pacifico-Regular.ttf in Resources */,
 				FABDC4E32B7E151300970BDF /* Window-of-Tolerance.md in Resources */,
 				FA3B565F290BB0A300FBA068 /* FredokaOne-Regular.ttf in Resources */,
 			);
