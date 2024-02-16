@@ -76,6 +76,9 @@
 		FABDC4E82B7EC45D00970BDF /* Urge-Surfing.md in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4E72B7EC45D00970BDF /* Urge-Surfing.md */; };
 		FABDC4EA2B7ED71B00970BDF /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4E92B7ED71B00970BDF /* Pacifico-Regular.ttf */; };
 		FADEC5182B7BA84A00197E8D /* SenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADEC5172B7BA84A00197E8D /* SenseView.swift */; };
+		FAF2D6102B7F823F009EC646 /* Attend-To-Relationships.md in Resources */ = {isa = PBXBuildFile; fileRef = FAF2D60F2B7F823F009EC646 /* Attend-To-Relationships.md */; };
+		FAF2D6122B7F8258009EC646 /* Pain-vs-Suffering.md in Resources */ = {isa = PBXBuildFile; fileRef = FAF2D6112B7F8258009EC646 /* Pain-vs-Suffering.md */; };
+		FAF2D6142B7F8707009EC646 /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF2D6132B7F8707009EC646 /* GoalsViewController.swift */; };
 		FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */; };
 		FAFA448B297E89760068B4A8 /* EditMoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA448A297E89760068B4A8 /* EditMoodCell.swift */; };
 		FAFA448E297F75590068B4A8 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = FAFA448D297F75590068B4A8 /* FacebookCore */; };
@@ -170,6 +173,9 @@
 		FABDC4E72B7EC45D00970BDF /* Urge-Surfing.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Urge-Surfing.md"; sourceTree = "<group>"; };
 		FABDC4E92B7ED71B00970BDF /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 		FADEC5172B7BA84A00197E8D /* SenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenseView.swift; sourceTree = "<group>"; };
+		FAF2D60F2B7F823F009EC646 /* Attend-To-Relationships.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Attend-To-Relationships.md"; sourceTree = "<group>"; };
+		FAF2D6112B7F8258009EC646 /* Pain-vs-Suffering.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Pain-vs-Suffering.md"; sourceTree = "<group>"; };
+		FAF2D6132B7F8707009EC646 /* GoalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsViewController.swift; sourceTree = "<group>"; };
 		FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		FAFA448A297E89760068B4A8 /* EditMoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMoodCell.swift; sourceTree = "<group>"; };
 		FAFA4491297F76940068B4A8 /* MoodTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoodTracker.entitlements; sourceTree = "<group>"; };
@@ -290,6 +296,7 @@
 				FA1630F7291A351B0092721A /* DeleteAccountViewController.swift */,
 				FAB21B5B2B77D0ED00395E6A /* BreatheViewController.swift */,
 				FABDC4BB2B7DB52800970BDF /* BreatheOptionsViewController.swift */,
+				FAF2D6132B7F8707009EC646 /* GoalsViewController.swift */,
 				FA492A8E2917B91800E92F9A /* CreateAccountViewController.swift */,
 				FAB21B672B78D0DE00395E6A /* SenseOptionsViewController.swift */,
 				FA492A97291822FE00E92F9A /* AddItemViewController.swift */,
@@ -397,7 +404,9 @@
 				FABDC4DB2B7E151100970BDF /* Radical-Acceptance.md */,
 				FABDC4E72B7EC45D00970BDF /* Urge-Surfing.md */,
 				FABDC4DD2B7E151200970BDF /* Window-of-Tolerance.md */,
+				FAF2D6112B7F8258009EC646 /* Pain-vs-Suffering.md */,
 				FABDC4E02B7E151200970BDF /* Wise-Mind.md */,
+				FAF2D60F2B7F823F009EC646 /* Attend-To-Relationships.md */,
 			);
 			path = Markdown;
 			sourceTree = "<group>";
@@ -527,6 +536,8 @@
 				FABDC4E82B7EC45D00970BDF /* Urge-Surfing.md in Resources */,
 				FABDC4E42B7E151300970BDF /* GIVE.md in Resources */,
 				FABDC4E62B7E151300970BDF /* Wise-Mind.md in Resources */,
+				FAF2D6102B7F823F009EC646 /* Attend-To-Relationships.md in Resources */,
+				FAF2D6122B7F8258009EC646 /* Pain-vs-Suffering.md in Resources */,
 				FABDC4E22B7E151300970BDF /* Be-Mindful.md in Resources */,
 				FA20D5E6290B9FA60068332C /* Assets.xcassets in Resources */,
 				FA3B5662290BB48A00FBA068 /* GoogleService-Info.plist in Resources */,
@@ -560,6 +571,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FABDC4CE2B7DF3B900970BDF /* LearnManager.swift in Sources */,
+				FAF2D6142B7F8707009EC646 /* GoalsViewController.swift in Sources */,
 				FA7F42D0291D756D00C6EA2C /* GetAffirmationView.swift in Sources */,
 				FABDC4C42B7DD36400970BDF /* BreathManager.swift in Sources */,
 				FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */,
