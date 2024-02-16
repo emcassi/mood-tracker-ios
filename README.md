@@ -37,10 +37,11 @@
 <h3 align="center">Mudi</h3>
 
   <p align="center">
-    Mudi is an iOS app that allows users to log their mood throughout the week based on the “Feelings Wheel” created by Dr. Gloria Willcox.
+    Mudi is an iOS app that provides users access to tools to manage their mental health including:
+	their mood throughout the week based on the “Feelings Wheel” created by Dr. Gloria Willcox.
     <br />
     Easily log exactly how you feel by tapping any of the 75+ choices
-    Keep track of how you've been feeling with a nice UI with color coded mood cells for 6 categories of feelings - Sad, Mad, Scared, Peaceful, Powerful, and Joyful
+	Keep track of how you've been feeling with a nice UI with color coded mood cells for 6 categories of feelings - Sad, Angry, Fearful, Surprised, Happy, and Disgusted. 
     <br/>
     <ul>
         <li>Sign in with your Apple, Google, or Facebook account</li>
