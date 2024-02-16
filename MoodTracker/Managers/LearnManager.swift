@@ -25,10 +25,10 @@ class LearnManager {
         LearnItem(id: 4, name: "FAST", completed: false, image: nil, filename: "FAST"),
         LearnItem(id: 5, name: "Window of Tolerance", completed: false, image: UIImage(named: "window-of-tolerance"), filename: "Window-of-Tolerance"),
         LearnItem(id: 6, name: "Radical Acceptance", completed: false, image: UIImage(named: "circles-of-control"), filename: "Radical-Acceptance"),
+        LearnItem(id: 7, name: "Urge Surfing", completed: false, image: UIImage(named: "urge-surfing"), filename: "Urge-Surfing"),
     ]
     
     static func getContent(item: LearnItem, completion: (_ contents: String) -> Void) {
-        print("\(item.filename).md")
         if let filepath = Bundle.main.path(forResource: item.filename, ofType: "md") {
             do {
                 let contents = try String(contentsOfFile: filepath)
