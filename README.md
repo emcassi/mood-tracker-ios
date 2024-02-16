@@ -26,40 +26,31 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
+![Logo](images/logo-small.png)
+## Mudi
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/emcassi/mood-tracker-ios">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+Mudi is an iOS app that provides users access to tools to manage their mental health including:
+- Logging your mood throughout the week based on the “Feelings Wheel” created by Dr. Gloria Willcox.
+    - Easily log exactly how you feel by tapping any of the 75+ choices
+    - Keep track of how you've been feeling with a nice UI with color coded mood cells for 6 categories of feelings - Sad, Angry, Fearful, Surprised, Happy, and Disgusted.
+- Motivational Quotes
+- Guided Breathing
+- The 5 Senses skill
+- Crisis Management
+- DBT Resources (Based on notes from my personal experience in IOP)
+ 
+Sign in with your Apple, Google, or Facebook account
 
-<h3 align="center">Mudi</h3>
+[Firebase](https://github.com/firebase/firebase-ios-sdk) is used for authentication and databases.
 
-  <p align="center">
-    Mudi is an iOS app that provides users access to tools to manage their mental health including:
-	their mood throughout the week based on the “Feelings Wheel” created by Dr. Gloria Willcox.
-    <br />
-    Easily log exactly how you feel by tapping any of the 75+ choices
-	Keep track of how you've been feeling with a nice UI with color coded mood cells for 6 categories of feelings - Sad, Angry, Fearful, Surprised, Happy, and Disgusted. 
-    <br/>
-    <ul>
-        <li>Sign in with your Apple, Google, or Facebook account</li>
-        <li><a href="https://github.com/firebase/firebase-ios-sdk">Firebase</a> is used for authentication and databases. </li>
-        <li>With the <a href="https://zenquotes.io/">zenquotes.io</a> API, you have access to encouraging quotes directly in the app. </li>
-        <li>Animated pie charts to help visually analyse your day</li>
-        <li>UPDATE: Edit your posts!</li>
-    </ul>
-    <br/>   
-    Hope you like it! -Alex
-    <br />
-    <br />
-    ·
-    <a href="https://github.com/emcassi/mood-tracker-ios/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/emcassi/mood-tracker-ios/issues">Request Feature</a>
-  </p>
-</div>
+With the [zenquotes.io](https://zenquotes.io/) API, you have access to encouraging quotes directly in the app.
+
+Animated pie charts to help visually analyse your day
+
+Hope you like it! -Alex
+    
+[Report Bug](https://github.com/emcassi/mood-tracker-ios/issues)
+[Request Feature](https://github.com/emcassi/mood-tracker-ios/issues)
 
 
 
