@@ -61,7 +61,6 @@ class WelcomeViewController: UIViewController {
 
     
     override func viewDidAppear(_ animated: Bool) {
-        print("Appeared")
         if Auth.auth().currentUser != nil {
             dismiss(animated: true)
         }

@@ -171,7 +171,6 @@ class SenseViewController : UIViewController {
         print("getting items")
         SenseManager.getSetOfSenseItems { set in
             if set.isEmpty { return }
-            print(set)
             self.items = set
             
             self.sightView.item.text = self.items[Sense.Sight]?.item
