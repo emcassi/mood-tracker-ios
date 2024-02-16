@@ -9,6 +9,17 @@ import Foundation
 import UIKit
 
 class TabbedViewController : UITabBarController {
+    
+    let brandView: UILabel = {
+        let view = UILabel()
+        view.text = "Mudi"
+        view.font = UIFont(name: "Pacifico", size: 20)
+        view.textColor = UIColor(named: "label")
+        view.textAlignment = .center
+        view.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 128, height: 50))
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +39,7 @@ class TabbedViewController : UITabBarController {
         viewControllers = [ home, learn, cope, affirm ]
         navigationItem.title = "Mudi"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(settingsPressed))
+        navigationItem.titleView = brandView
         tabBar.tintColor = UIColor(named: "info")
     }
     
