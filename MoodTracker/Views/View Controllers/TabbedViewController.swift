@@ -16,7 +16,7 @@ class TabbedViewController : UITabBarController {
         view.font = UIFont(name: "Pacifico", size: 20)
         view.textColor = UIColor(named: "label")
         view.textAlignment = .center
-        view.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 128, height: 50))
+        view.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 96, height: 50))
         return view
     }()
     
@@ -26,17 +26,20 @@ class TabbedViewController : UITabBarController {
         let home = HomeViewController()
         home.tabBarItem.title = "Journal"
         home.tabBarItem.image = UIImage(systemName: "text.book.closed.fill")
-        let learn = LearnViewController()
-        learn.tabBarItem.title = "Learn"
-        learn.tabBarItem.image = UIImage(systemName: "graduationcap.fill")
         let cope = CopeViewController()
         cope.tabBarItem.title = "Cope"
         cope.tabBarItem.image = UIImage(systemName: "heart.fill")
+        let goals = GoalsViewController()
+        goals.tabBarItem.title = "Goals"
+        goals.tabBarItem.image = UIImage(systemName: "trophy.fill")
+        let learn = LearnViewController()
+        learn.tabBarItem.title = "Learn"
+        learn.tabBarItem.image = UIImage(systemName: "graduationcap.fill")
         let affirm = AffirmationsViewController()
         affirm.tabBarItem.title = "Wisdom"
         affirm.tabBarItem.image = UIImage(systemName: "quote.closing")
         
-        viewControllers = [ home, learn, cope, affirm ]
+        viewControllers = [ home, cope, goals, learn, affirm ]
         navigationItem.title = "Mudi"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(settingsPressed))
         navigationItem.titleView = brandView
