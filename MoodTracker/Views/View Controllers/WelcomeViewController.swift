@@ -13,8 +13,8 @@ class WelcomeViewController: UIViewController {
     let titleLabel:UILabel = {
         let label = UILabel()
         label.text = "Mudi"
-        label.font = UIFont(name: "FredokaOne-Regular", size: 42)
-        label.textColor = .black
+        label.font = UIFont(name: "Pacifico-Regular", size: 42)
+        label.textColor = UIColor(named: "dark")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -23,7 +23,6 @@ class WelcomeViewController: UIViewController {
         let iv = UIImageView()
         iv.image = UIImage(named: "love")
         iv.contentMode = .scaleAspectFill
-        iv.backgroundColor = .yellow
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
@@ -31,7 +30,8 @@ class WelcomeViewController: UIViewController {
     let signInButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign in", for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(UIColor(named: "light"), for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
         button.backgroundColor = UIColor(named: "purple")
         button.layer.cornerRadius = 15
         button.addTarget(self, action: #selector(signInPressed), for: .touchUpInside)
@@ -42,11 +42,11 @@ class WelcomeViewController: UIViewController {
     let createAcctButton: UIButton = {
         let button = UIButton()
         button.setTitle("Create Account", for: .normal)
-        button.setTitleColor(UIColor(named: "purple"), for: .normal)
-        button.backgroundColor = .white
+        button.setTitleColor(UIColor(named: "light"), for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        button.backgroundColor = UIColor(named: "dark")
         button.layer.cornerRadius = 15
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor(named: "purple")!.cgColor
+        button.layer.borderWidth = 0
         button.addTarget(self, action: #selector(createAcctPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -55,7 +55,7 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "light")
         setupViews()
     }
 
@@ -96,7 +96,7 @@ class WelcomeViewController: UIViewController {
         createAcctButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         createAcctButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -25).isActive = true
         createAcctButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
-        createAcctButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        createAcctButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     func setupSignInButton(){
