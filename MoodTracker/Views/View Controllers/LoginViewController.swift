@@ -22,37 +22,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Sign in"
-        label.font = UIFont(name: "FredokaOne-Regular", size: 42)
-        label.textColor = .black
+        label.font = .systemFont(ofSize: 42)
+        label.textColor = UIColor(named: "label")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let emailTF: UITextField = {
-        let tf = UITextField()
-        tf.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor(gray: 200)])
-        tf.textContentType = .emailAddress
-        tf.layer.cornerRadius = 15
-        tf.layer.borderColor = UIColor.gray.cgColor
-        tf.layer.borderWidth = 1
-        tf.textColor = .black
-        tf.setLeftPaddingPoints(10)
-        tf.setRightPaddingPoints(10)
+    let emailTF: TextField = {
+        let tf = TextField(placeholder: "Email address")
+        tf.textField.textContentType = .emailAddress
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
     
-    let passwordTF: UITextField = {
-        let tf = UITextField()
-        tf.textContentType = .password
-        tf.isSecureTextEntry = true
-        tf.layer.cornerRadius = 15
-        tf.layer.borderColor = UIColor.gray.cgColor
-        tf.layer.borderWidth = 1
-        tf.textColor = .black
-        tf.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor(gray: 200)])
-        tf.setLeftPaddingPoints(10)
-        tf.setRightPaddingPoints(10)
+    let passwordTF: TextField = {
+        let tf = TextField(placeholder: "Password", isSecure: true)
+        tf.textField.textContentType = .password
+        tf.textField.isSecureTextEntry = true
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -60,7 +46,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     let errorLabel: UILabel = {
         let label = UILabel()
         label.text = ""
-        label.textColor = .red
+        label.textColor = UIColor(named: "dangerous")
         label.font = .systemFont(ofSize: 10, weight: .bold)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -81,7 +67,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     let orLabel: UILabel = {
         let label = UILabel()
         label.text = "OR"
-        label.textColor = .lightGray
+        label.textColor = UIColor(named: "info")
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -89,8 +75,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     
     let appleButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "apple"), for: .normal)
-        button.backgroundColor = UIColor(gray: 240)
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular, scale: .large)
+        button.setImage(UIImage(systemName: "apple.logo", withConfiguration: imageConfig), for: .normal)
+        button.tintColor = UIColor(named: "label")
+        button.backgroundColor = UIColor(named: "panel-color")
         button.layer.cornerRadius = 32
         button.addTarget(self, action: #selector(handleApple), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -100,7 +88,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     let googleButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "google"), for: .normal)
-        button.backgroundColor = UIColor(gray: 240)
+        button.backgroundColor = UIColor(named: "panel-color")
         button.layer.cornerRadius = 32
         button.addTarget(self, action: #selector(handleGoogle), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -111,7 +99,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
         let button = UIButton()
         button.setImage(UIImage(named: "facebook"), for: .normal)
         button.imageView?.frame = CGRectMake(0, 0, 32, 32)
-        button.backgroundColor = UIColor(gray: 240)
+        button.backgroundColor = UIColor(named: "panel-color")
         button.layer.cornerRadius = 32
         button.addTarget(self, action: #selector(handleFacebook), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -137,7 +125,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     
     override func viewDidLoad(){
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "bg-color")
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -159,9 +147,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
         scrollView.addSubview(googleButton)
         scrollView.addSubview(facebookButton)
         setupViews()
-        
-        emailTF.delegate = self
-        passwordTF.delegate = self
     }
     
     // Text field delegate methods
@@ -170,17 +155,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
         scrollView.endEditing(true)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTF {
-            passwordTF.becomeFirstResponder()
-        } else if textField == passwordTF {
-            signIn()
-        }
-        return true
-    }
-    
     // View Setup
-    
     func setupViews(){
         setupScrollView()
         setupTitleLabel()
@@ -210,8 +185,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     func setupEmailTF(){
         emailTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         emailTF.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
-        emailTF.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25).isActive = true
-        emailTF.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        emailTF.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50).isActive = true
+        emailTF.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     
@@ -219,12 +194,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
         passwordTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         passwordTF.widthAnchor.constraint(equalTo: emailTF.widthAnchor).isActive = true
         passwordTF.topAnchor.constraint(equalTo: emailTF.bottomAnchor, constant: 10).isActive = true
-        passwordTF.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        passwordTF.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     func setupErrorLabel(){
-        errorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        errorLabel.widthAnchor.constraint(equalTo: passwordTF.widthAnchor).isActive = true
+        errorLabel.leftAnchor.constraint(equalTo: passwordTF.leftAnchor, constant: 15).isActive = true
+        errorLabel.rightAnchor.constraint(equalTo: passwordTF.rightAnchor, constant: -15).isActive = true
         errorLabel.topAnchor.constraint(equalTo: passwordTF.bottomAnchor, constant: 5).isActive = true
         errorLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
@@ -269,7 +244,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, ASAuthorizatio
     }
     
     func signIn(){
-        if let email = emailTF.text, let password = passwordTF.text {
+        if let email = emailTF.textField.text, let password = passwordTF.textField.text {
             Auth.auth().signIn(withEmail: email, password: password) { result, error in
                 if let error = error {
                     if error.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {

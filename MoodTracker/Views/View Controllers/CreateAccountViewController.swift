@@ -29,23 +29,16 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Create Account"
-        label.font = UIFont(name: "FredokaOne-Regular", size: 42)
-        label.textColor = .black
+        label.font = .systemFont(ofSize: 42)
+        label.textColor = UIColor(named: "label")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let emailTF: UITextField = {
-        let tf = UITextField()
-        tf.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor(gray: 200)])
-        tf.textContentType = .emailAddress
-        tf.layer.cornerRadius = 15
-        tf.layer.borderColor = UIColor.gray.cgColor
-        tf.layer.borderWidth = 1
-        tf.textColor = .black
-        tf.setLeftPaddingPoints(10)
-        tf.setRightPaddingPoints(10)
-        tf.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+    let emailTF: TextField = {
+        let tf = TextField(placeholder: "Email address")
+        tf.textField.textContentType = .emailAddress
+        tf.textField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -53,25 +46,16 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     let emailErrorLabel: UILabel = {
         let label = UILabel()
         label.text = ""
-        label.textColor = .red
+        label.textColor = UIColor(named: "dangerous")
         label.font = .systemFont(ofSize: 10, weight: .bold)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let passwordTF: UITextField = {
-        let tf = UITextField()
-        tf.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor(gray: 200)])
-        tf.textContentType = .password
-        tf.isSecureTextEntry = true
-        tf.layer.cornerRadius = 15
-        tf.layer.borderColor = UIColor.gray.cgColor
-        tf.layer.borderWidth = 1
-        tf.textColor = .black
-        tf.setLeftPaddingPoints(10)
-        tf.setRightPaddingPoints(10)
-        tf.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+    let passwordTF: TextField = {
+        let tf = TextField(placeholder: "Password", isSecure: true)
+        tf.textField.textContentType = .password
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -79,7 +63,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     let passwordErrorLabel: UILabel = {
         let label = UILabel()
         label.text = ""
-        label.textColor = .red
+        label.textColor = UIColor(named: "dangerous")
         label.font = .systemFont(ofSize: 10, weight: .bold)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -109,8 +93,10 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     
     let appleButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "apple"), for: .normal)
-        button.backgroundColor = UIColor(gray: 240)
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular, scale: .large)
+        button.setImage(UIImage(systemName: "apple.logo", withConfiguration: imageConfig), for: .normal)
+        button.tintColor = UIColor(named: "label")
+        button.backgroundColor = UIColor(named: "panel-color")
         button.layer.cornerRadius = 32
         button.addTarget(self, action: #selector(handleApple), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -120,7 +106,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     let googleButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "google"), for: .normal)
-        button.backgroundColor = UIColor(gray: 240)
+        button.backgroundColor = UIColor(named: "panel-color")
         button.layer.cornerRadius = 32
         button.addTarget(self, action: #selector(handleGoogle), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -130,8 +116,8 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     let facebookButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "facebook"), for: .normal)
-        button.imageView?.frame = CGRectMake(0, 0, 32, 32)
-        button.backgroundColor = UIColor(gray: 240)
+//        button.imageView?.frame = CGRectMake(0, 0, 32, 32)
+        button.backgroundColor = UIColor(named: "panel-color")
         button.layer.cornerRadius = 32
         button.addTarget(self, action: #selector(handleFacebook), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -143,13 +129,16 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     
     override func viewDidLoad(){
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "bg-color")
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         let tg = UITapGestureRecognizer(target: self, action: #selector(tappedScreen))
         view.addGestureRecognizer(tg)
+        
+        emailTF.textField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        passwordTF.textField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         
         view.addSubview(scrollView)
         
@@ -166,9 +155,6 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
         
         
         setupSubviews()
-        
-        emailTF.delegate = self
-        passwordTF.delegate = self
     }
     
     @objc func tappedScreen(){
@@ -178,18 +164,6 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         let presAnchor = ASPresentationAnchor(frame: .zero)
         return presAnchor
-    }
-    
-    // Text field delegate methods
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        if textField == emailTF {
-            passwordTF.becomeFirstResponder()
-        } else if textField == passwordTF {
-            createAccount()
-        }
-        return true
     }
     
     // Subviews Setup
@@ -226,13 +200,13 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
         emailTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         emailTF.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
         emailTF.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25).isActive = true
-        emailTF.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        emailTF.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     func setupEmailErrorLabel(){
-        emailErrorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        emailErrorLabel.topAnchor.constraint(equalTo: emailTF.bottomAnchor, constant: 5).isActive = true
-        emailErrorLabel.widthAnchor.constraint(equalTo: emailTF.widthAnchor).isActive = true
+        emailErrorLabel.leftAnchor.constraint(equalTo: emailTF.leftAnchor, constant: 15).isActive = true
+        emailErrorLabel.rightAnchor.constraint(equalTo: emailTF.rightAnchor, constant: -15).isActive = true
+        emailErrorLabel.topAnchor.constraint(equalTo: emailTF.bottomAnchor).isActive = true
         emailErrorLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     
@@ -240,13 +214,13 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
         passwordTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         passwordTF.widthAnchor.constraint(equalTo: emailTF.widthAnchor).isActive = true
         passwordTF.topAnchor.constraint(equalTo: emailErrorLabel.bottomAnchor).isActive = true
-        passwordTF.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        passwordTF.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     func setupPasswordErrorLabel(){
-        passwordErrorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        passwordErrorLabel.widthAnchor.constraint(equalTo: passwordTF.widthAnchor).isActive = true
-        passwordErrorLabel.topAnchor.constraint(equalTo: passwordTF.bottomAnchor, constant: 5).isActive = true
+        passwordErrorLabel.leftAnchor.constraint(equalTo: passwordTF.leftAnchor, constant: 15).isActive = true
+        passwordErrorLabel.rightAnchor.constraint(equalTo: passwordTF.rightAnchor, constant: -15).isActive = true
+        passwordErrorLabel.topAnchor.constraint(equalTo: passwordTF.bottomAnchor).isActive = true
         passwordErrorLabel.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
     
@@ -286,7 +260,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     // Sign in button functionality
     
     @objc func createAccount(){
-        if let email = emailTF.text, let password = passwordTF.text {
+        if let email = emailTF.textField.text, let password = passwordTF.textField.text {
             if isValidEmail(email) && isValidPassword(password) {
                 Auth.auth().createUser(withEmail: email, password: password) { result, error in
                     if let error = error {
@@ -400,7 +374,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate, ASAuth
     }
     
     @objc func textFieldChanged(sender: UITextField){
-        if let email = emailTF.text, let password = passwordTF.text {
+        if let email = emailTF.textField.text, let password = passwordTF.textField.text {
             if email.count > 0{
                 if isValidEmail(email) {
                     emailErrorLabel.text = ""
