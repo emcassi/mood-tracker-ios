@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pacifico-Regular.ttf">
+            <string>Pacifico-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -24,17 +29,25 @@
                                     <constraint firstAttribute="width" constant="60" id="VjB-Qw-wuS"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logo-alpha" translatesAutoresizingMaskIntoConstraints="NO" id="35R-Dm-OgY" userLabel="logo">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="35R-Dm-OgY" userLabel="logo">
                                 <rect key="frame" x="71.666666666666686" y="301" width="250" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="SQo-lz-RRH"/>
                                     <constraint firstAttribute="width" constant="250" id="yeN-rB-bCv"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mudi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSy-6E-ASA">
+                                <rect key="frame" x="145" y="566" width="103" height="74"/>
+                                <fontDescription key="fontDescription" name="Pacifico-Regular" family="Pacifico" pointSize="42"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="purple"/>
                         <constraints>
+                            <constraint firstItem="jSy-6E-ASA" firstAttribute="top" secondItem="35R-Dm-OgY" secondAttribute="bottom" constant="15" id="3hA-j0-kbF"/>
+                            <constraint firstItem="jSy-6E-ASA" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5sf-rO-02g"/>
                             <constraint firstItem="CEr-VD-Vcl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9nB-Sx-jHa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CEr-VD-Vcl" secondAttribute="bottom" constant="15" id="C78-8t-MaE"/>
                             <constraint firstItem="35R-Dm-OgY" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Mp8-xF-2fc"/>
@@ -49,7 +62,7 @@
     </scenes>
     <resources>
         <image name="emcassi" width="946" height="946"/>
-        <image name="logo-alpha" width="718" height="716"/>
+        <image name="logo" width="718" height="716"/>
         <namedColor name="purple">
             <color red="0.56499999761581421" green="0.13300000131130219" blue="0.45199999213218689" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
