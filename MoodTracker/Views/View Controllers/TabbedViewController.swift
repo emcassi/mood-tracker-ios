@@ -16,7 +16,6 @@ class TabbedViewController : UITabBarController {
         view.font = UIFont(name: "Pacifico", size: 20)
         view.textColor = UIColor(named: "label")
         view.textAlignment = .center
-        view.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 96, height: 50))
         return view
     }()
     
