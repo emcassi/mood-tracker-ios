@@ -67,7 +67,6 @@
 		FABDC4CE2B7DF3B900970BDF /* LearnManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4CD2B7DF3B900970BDF /* LearnManager.swift */; };
 		FABDC4D02B7E07BA00970BDF /* LearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4CF2B7E07BA00970BDF /* LearnViewController.swift */; };
 		FABDC4D22B7E089300970BDF /* LearnItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDC4D12B7E089300970BDF /* LearnItemCell.swift */; };
-		FABDC4E12B7E151300970BDF /* Radical-Acceptance.md in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4DB2B7E151100970BDF /* Radical-Acceptance.md */; };
 		FABDC4E22B7E151300970BDF /* Be-Mindful.md in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4DC2B7E151100970BDF /* Be-Mindful.md */; };
 		FABDC4E32B7E151300970BDF /* Window-of-Tolerance.md in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4DD2B7E151200970BDF /* Window-of-Tolerance.md */; };
 		FABDC4E42B7E151300970BDF /* GIVE.md in Resources */ = {isa = PBXBuildFile; fileRef = FABDC4DE2B7E151200970BDF /* GIVE.md */; };
@@ -79,6 +78,17 @@
 		FAF2D6102B7F823F009EC646 /* Attend-To-Relationships.md in Resources */ = {isa = PBXBuildFile; fileRef = FAF2D60F2B7F823F009EC646 /* Attend-To-Relationships.md */; };
 		FAF2D6122B7F8258009EC646 /* Pain-vs-Suffering.md in Resources */ = {isa = PBXBuildFile; fileRef = FAF2D6112B7F8258009EC646 /* Pain-vs-Suffering.md */; };
 		FAF2D6142B7F8707009EC646 /* GoalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF2D6132B7F8707009EC646 /* GoalsViewController.swift */; };
+		FAF2D6202B8072D1009EC646 /* Mindful Walking.md in Resources */ = {isa = PBXBuildFile; fileRef = FAF2D6152B8072CF009EC646 /* Mindful Walking.md */; };
+		FAF2D6212B8072D1009EC646 /* Non-judgmental Stance.md in Resources */ = {isa = PBXBuildFile; fileRef = FAF2D6162B8072CF009EC646 /* Non-judgmental Stance.md */; };
+		FAF2D6222B8072D1009EC646 /* Mindfulness in Daily Life.md in Resources */ = {isa = PBXBuildFile; fileRef = FAF2D6172B8072D0009EC646 /* Mindfulness in Daily Life.md */; };
+		FAF2D6232B8072D1009EC646 /* Effectiveness.md in Resources */ = {isa = PBXBuildFile; fileRef = FAF2D6182B8072D0009EC646 /* Effectiveness.md */; };
+		FAF2D6242B8072D1009EC646 /* Describing Emotions.md in Resources */ = {isa = PBXBuildFile; fileRef = FAF2D6192B8072D0009EC646 /* Describing Emotions.md */; };
+		FAF2D6252B8072D1009EC646 /* Mindful Breathing.md in Resources */ = {isa = PBXBuildFile; fileRef = FAF2D61A2B8072D0009EC646 /* Mindful Breathing.md */; };
+		FAF2D6262B8072D1009EC646 /* Observing Thoughts.md in Resources */ = {isa = PBXBuildFile; fileRef = FAF2D61B2B8072D0009EC646 /* Observing Thoughts.md */; };
+		FAF2D6272B8072D1009EC646 /* Participating Fully.md in Resources */ = {isa = PBXBuildFile; fileRef = FAF2D61C2B8072D0009EC646 /* Participating Fully.md */; };
+		FAF2D6282B8072D1009EC646 /* Understanding Distress Tolerance.md in Resources */ = {isa = PBXBuildFile; fileRef = FAF2D61D2B8072D1009EC646 /* Understanding Distress Tolerance.md */; };
+		FAF2D6292B8072D1009EC646 /* Radical Acceptance.md in Resources */ = {isa = PBXBuildFile; fileRef = FAF2D61E2B8072D1009EC646 /* Radical Acceptance.md */; };
+		FAF2D62A2B8072D1009EC646 /* What is DBT?.md in Resources */ = {isa = PBXBuildFile; fileRef = FAF2D61F2B8072D1009EC646 /* What is DBT?.md */; };
 		FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */; };
 		FAFA448B297E89760068B4A8 /* EditMoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFA448A297E89760068B4A8 /* EditMoodCell.swift */; };
 		FAFA448E297F75590068B4A8 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = FAFA448D297F75590068B4A8 /* FacebookCore */; };
@@ -164,7 +174,6 @@
 		FABDC4CD2B7DF3B900970BDF /* LearnManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnManager.swift; sourceTree = "<group>"; };
 		FABDC4CF2B7E07BA00970BDF /* LearnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnViewController.swift; sourceTree = "<group>"; };
 		FABDC4D12B7E089300970BDF /* LearnItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnItemCell.swift; sourceTree = "<group>"; };
-		FABDC4DB2B7E151100970BDF /* Radical-Acceptance.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Radical-Acceptance.md"; sourceTree = "<group>"; };
 		FABDC4DC2B7E151100970BDF /* Be-Mindful.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Be-Mindful.md"; sourceTree = "<group>"; };
 		FABDC4DD2B7E151200970BDF /* Window-of-Tolerance.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Window-of-Tolerance.md"; sourceTree = "<group>"; };
 		FABDC4DE2B7E151200970BDF /* GIVE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = GIVE.md; sourceTree = "<group>"; };
@@ -176,6 +185,17 @@
 		FAF2D60F2B7F823F009EC646 /* Attend-To-Relationships.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Attend-To-Relationships.md"; sourceTree = "<group>"; };
 		FAF2D6112B7F8258009EC646 /* Pain-vs-Suffering.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Pain-vs-Suffering.md"; sourceTree = "<group>"; };
 		FAF2D6132B7F8707009EC646 /* GoalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsViewController.swift; sourceTree = "<group>"; };
+		FAF2D6152B8072CF009EC646 /* Mindful Walking.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Mindful Walking.md"; sourceTree = "<group>"; };
+		FAF2D6162B8072CF009EC646 /* Non-judgmental Stance.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Non-judgmental Stance.md"; sourceTree = "<group>"; };
+		FAF2D6172B8072D0009EC646 /* Mindfulness in Daily Life.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Mindfulness in Daily Life.md"; sourceTree = "<group>"; };
+		FAF2D6182B8072D0009EC646 /* Effectiveness.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Effectiveness.md; sourceTree = "<group>"; };
+		FAF2D6192B8072D0009EC646 /* Describing Emotions.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Describing Emotions.md"; sourceTree = "<group>"; };
+		FAF2D61A2B8072D0009EC646 /* Mindful Breathing.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Mindful Breathing.md"; sourceTree = "<group>"; };
+		FAF2D61B2B8072D0009EC646 /* Observing Thoughts.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Observing Thoughts.md"; sourceTree = "<group>"; };
+		FAF2D61C2B8072D0009EC646 /* Participating Fully.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Participating Fully.md"; sourceTree = "<group>"; };
+		FAF2D61D2B8072D1009EC646 /* Understanding Distress Tolerance.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Understanding Distress Tolerance.md"; sourceTree = "<group>"; };
+		FAF2D61E2B8072D1009EC646 /* Radical Acceptance.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Radical Acceptance.md"; sourceTree = "<group>"; };
+		FAF2D61F2B8072D1009EC646 /* What is DBT?.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "What is DBT?.md"; sourceTree = "<group>"; };
 		FAFA4488297E7A4F0068B4A8 /* EditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewController.swift; sourceTree = "<group>"; };
 		FAFA448A297E89760068B4A8 /* EditMoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMoodCell.swift; sourceTree = "<group>"; };
 		FAFA4491297F76940068B4A8 /* MoodTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoodTracker.entitlements; sourceTree = "<group>"; };
@@ -401,12 +421,22 @@
 				FABDC4DC2B7E151100970BDF /* Be-Mindful.md */,
 				FABDC4DF2B7E151200970BDF /* FAST.md */,
 				FABDC4DE2B7E151200970BDF /* GIVE.md */,
-				FABDC4DB2B7E151100970BDF /* Radical-Acceptance.md */,
 				FABDC4E72B7EC45D00970BDF /* Urge-Surfing.md */,
 				FABDC4DD2B7E151200970BDF /* Window-of-Tolerance.md */,
 				FAF2D6112B7F8258009EC646 /* Pain-vs-Suffering.md */,
 				FABDC4E02B7E151200970BDF /* Wise-Mind.md */,
 				FAF2D60F2B7F823F009EC646 /* Attend-To-Relationships.md */,
+				FAF2D6192B8072D0009EC646 /* Describing Emotions.md */,
+				FAF2D6182B8072D0009EC646 /* Effectiveness.md */,
+				FAF2D61A2B8072D0009EC646 /* Mindful Breathing.md */,
+				FAF2D6152B8072CF009EC646 /* Mindful Walking.md */,
+				FAF2D6172B8072D0009EC646 /* Mindfulness in Daily Life.md */,
+				FAF2D6162B8072CF009EC646 /* Non-judgmental Stance.md */,
+				FAF2D61B2B8072D0009EC646 /* Observing Thoughts.md */,
+				FAF2D61C2B8072D0009EC646 /* Participating Fully.md */,
+				FAF2D61E2B8072D1009EC646 /* Radical Acceptance.md */,
+				FAF2D61D2B8072D1009EC646 /* Understanding Distress Tolerance.md */,
+				FAF2D61F2B8072D1009EC646 /* What is DBT?.md */,
 			);
 			path = Markdown;
 			sourceTree = "<group>";
@@ -533,19 +563,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA20D5E9290B9FA60068332C /* LaunchScreen.storyboard in Resources */,
+				FAF2D6252B8072D1009EC646 /* Mindful Breathing.md in Resources */,
 				FABDC4E82B7EC45D00970BDF /* Urge-Surfing.md in Resources */,
 				FABDC4E42B7E151300970BDF /* GIVE.md in Resources */,
+				FAF2D6272B8072D1009EC646 /* Participating Fully.md in Resources */,
+				FAF2D6242B8072D1009EC646 /* Describing Emotions.md in Resources */,
+				FAF2D6282B8072D1009EC646 /* Understanding Distress Tolerance.md in Resources */,
 				FABDC4E62B7E151300970BDF /* Wise-Mind.md in Resources */,
 				FAF2D6102B7F823F009EC646 /* Attend-To-Relationships.md in Resources */,
+				FAF2D6212B8072D1009EC646 /* Non-judgmental Stance.md in Resources */,
+				FAF2D6292B8072D1009EC646 /* Radical Acceptance.md in Resources */,
 				FAF2D6122B7F8258009EC646 /* Pain-vs-Suffering.md in Resources */,
+				FAF2D6262B8072D1009EC646 /* Observing Thoughts.md in Resources */,
 				FABDC4E22B7E151300970BDF /* Be-Mindful.md in Resources */,
 				FA20D5E6290B9FA60068332C /* Assets.xcassets in Resources */,
+				FAF2D62A2B8072D1009EC646 /* What is DBT?.md in Resources */,
 				FA3B5662290BB48A00FBA068 /* GoogleService-Info.plist in Resources */,
-				FABDC4E12B7E151300970BDF /* Radical-Acceptance.md in Resources */,
 				FABDC4E52B7E151300970BDF /* FAST.md in Resources */,
 				FABDC4EA2B7ED71B00970BDF /* Pacifico-Regular.ttf in Resources */,
+				FAF2D6232B8072D1009EC646 /* Effectiveness.md in Resources */,
 				FABDC4E32B7E151300970BDF /* Window-of-Tolerance.md in Resources */,
+				FAF2D6222B8072D1009EC646 /* Mindfulness in Daily Life.md in Resources */,
 				FA3B565F290BB0A300FBA068 /* FredokaOne-Regular.ttf in Resources */,
+				FAF2D6202B8072D1009EC646 /* Mindful Walking.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
