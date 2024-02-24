@@ -82,7 +82,7 @@ class TextField: UIView, UITextFieldDelegate {
         clearButton.widthAnchor.constraint(equalToConstant: 24).isActive = true
         clearButton.heightAnchor.constraint(equalToConstant: 24).isActive = true
         
-        textField.rightAnchor.constraint(equalTo: clearButton.leftAnchor, constant: -40).isActive = true
+        textField.rightAnchor.constraint(equalTo: clearButton.leftAnchor, constant: -5).isActive = true
     }
     
     @objc func clearPressed() {
@@ -93,6 +93,7 @@ class TextField: UIView, UITextFieldDelegate {
         default:
             self.textField.text = ""
         }
+        self.textField.sendActions(for: .editingChanged)
     }
     
     @objc func obscurePressed() {

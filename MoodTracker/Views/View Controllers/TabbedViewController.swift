@@ -24,25 +24,31 @@ class TabbedViewController : UITabBarController {
         
         let home = HomeViewController()
         home.tabBarItem.title = "Journal"
-        home.tabBarItem.image = UIImage(systemName: "text.book.closed.fill")
+        home.tabBarItem.image = UIImage(systemName: "text.book.closed")
+        home.tabBarItem.selectedImage = UIImage(systemName: "text.book.closed.fill")
         let cope = CopeViewController()
         cope.tabBarItem.title = "Cope"
-        cope.tabBarItem.image = UIImage(systemName: "heart.fill")
+        cope.tabBarItem.image = UIImage(systemName: "heart")
+        cope.tabBarItem.selectedImage = UIImage(systemName: "heart.fill")
         let goals = GoalsViewController()
         goals.tabBarItem.title = "Goals"
-        goals.tabBarItem.image = UIImage(systemName: "trophy.fill")
+        goals.tabBarItem.image = UIImage(systemName: "trophy")
+        goals.tabBarItem.selectedImage = UIImage(systemName: "trophy.fill")
         let learn = LearnViewController()
         learn.tabBarItem.title = "Learn"
-        learn.tabBarItem.image = UIImage(systemName: "graduationcap.fill")
-        let affirm = AffirmationsViewController()
-        affirm.tabBarItem.title = "Wisdom"
-        affirm.tabBarItem.image = UIImage(systemName: "quote.closing")
+        learn.tabBarItem.image = UIImage(systemName: "graduationcap")
+        learn.tabBarItem.selectedImage = UIImage(systemName: "graduationcap.fill")
+        let profile = SettingsViewController()
+        profile.tabBarItem.title = "Profile"
+        profile.tabBarItem.image = UIImage(systemName: "person")
+        profile.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
         
-        viewControllers = [ home, cope, goals, learn, affirm ]
+        viewControllers = [ home, cope, goals, learn, profile ]
         navigationItem.title = "Mudi"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape.fill"), style: .plain, target: self, action: #selector(settingsPressed))
         navigationItem.titleView = brandView
-        tabBar.tintColor = UIColor(named: "info")
+        tabBar.tintColor = UIColor(named: "label")
+        self.selectedIndex = 2
     }
     
     @objc func settingsPressed() {

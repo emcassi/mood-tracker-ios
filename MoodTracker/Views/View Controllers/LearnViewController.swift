@@ -9,10 +9,17 @@ import Foundation
 import UIKit
 
 class LearnViewController: UITableViewController {
+    
+    var header: LearnHeaderView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "bg-color")
         tableView.register(LearnItemCell.self, forCellReuseIdentifier: "learn-cell")
+        
+        header = LearnHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 200))
+        view.addSubview(header!)
+        tableView.tableHeaderView = header!
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -35,6 +42,6 @@ class LearnViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100
+        75
     }
 }

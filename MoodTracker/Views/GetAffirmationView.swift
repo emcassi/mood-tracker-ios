@@ -80,6 +80,10 @@ class AffirmationsViewController: UIViewController {
         button.layer.borderColor = UIColor.clear.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 15
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowRadius = 15
         button.addTarget(self, action: #selector(getButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -130,7 +134,7 @@ class AffirmationsViewController: UIViewController {
         
         getButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         getButton.bottomAnchor.constraint(equalTo: undoButton.topAnchor, constant: -15).isActive = true
-        getButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        getButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         getButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
         
         undoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

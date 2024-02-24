@@ -44,10 +44,10 @@ class HomeViewController: UITableViewController {
     
     let addButton: UIButton = {
         let button = UIButton()
-        button.tintColor = UIColor(named: "bg-color")
+        button.tintColor = UIColor(named: "light")
         button.setImage(UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30)), for: .normal)
-        button.backgroundColor = UIColor(named: "info")
-        button.layer.cornerRadius = 40
+        button.backgroundColor = UIColor(named: "AccentColor")
+        button.layer.cornerRadius = 48
         button.layer.zPosition = 100
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
@@ -94,10 +94,10 @@ class HomeViewController: UITableViewController {
         emptyButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4).isActive = true
         emptyButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
-        addButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -25).isActive = true
-        addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15).isActive = true
-        addButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        addButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        addButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -30).isActive = true
+        addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
+        addButton.widthAnchor.constraint(equalToConstant: 96).isActive = true
+        addButton.heightAnchor.constraint(equalToConstant: 96).isActive = true
     }
     
     func getItems() {
