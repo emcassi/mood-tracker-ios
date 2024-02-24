@@ -12,11 +12,11 @@ import FirebaseFirestore
 import FirebaseAnalytics
 import StoreKit
 
-class AddItemViewController : UIViewController, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+class AddItemViewController : UIViewController, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var isAdding: Bool = false
     
-    let moods: [Mood]
+    var moods: [Mood]
     var moodsString: String = ""
     
     let detailsPlaceholder = "Enter any details"
@@ -26,6 +26,19 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
         sv.translatesAutoresizingMaskIntoConstraints = false
         return sv
     }()
+    
+    lazy var detailsView: AddJournalSection = {
+        let view = AddJournalSection(title: "Details", view: UIView(), canAdd:  false) {}
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var moodsSection: AddJournalSection = {
+        let view = AddJournalSection(title: "Moods", view: UIView(), canAdd:  false) {}
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     
     let detailsTF: UITextView = {
         let tv = UITextView()
@@ -57,14 +70,21 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
         return cv
     }()
     
+    lazy var photosSection: AddJournalSection = {
+        let view = AddJournalSection(title: "Photos", view: UIView(), canAdd: true) {}
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    var photosView: AddJournalPhotosView?
+    
     let addButton: UIButton = {
         let button = UIButton()
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular, scale: .large)
         button.setImage(UIImage(systemName: "checkmark", withConfiguration: largeConfig), for: .normal)
         button.imageView?.tintColor = .white
-        button.layer.cornerRadius = 32
-        button.backgroundColor = UIColor(named: "done")
-        button.addTarget(self, action: #selector(addPressed), for: .touchUpInside)
+        button.layer.cornerRadius = 48
+        button.backgroundColor = UIColor(named: "AccentColor")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
         
@@ -82,6 +102,26 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
         
         scrollView.addGestureRecognizer(tapGR)
         
+        addButton.addTarget(self, action: #selector(addPressed), for: .touchUpInside)
+        detailsView = AddJournalSection(title: "Details", view: detailsTF, canAdd:  false) {}
+        detailsView.translatesAutoresizingMaskIntoConstraints = false
+        
+        moodsSection = AddJournalSection(title: "Moods", view: moodsView, canAdd:  true) {
+            let editVC = EditMoodsViewController(collectionViewLayout: UICollectionViewFlowLayout())
+            editVC.parentVC = self
+            editVC.selectedMoods = self.moods
+            self.navigationController?.pushViewController(editVC, animated: true)
+        }
+        moodsSection.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        photosView = AddJournalPhotosView(parent: self.navigationController!, delegate: self)
+        photosView!.translatesAutoresizingMaskIntoConstraints = false
+        photosSection = AddJournalSection(title: "Photos", view: photosView!, canAdd:  true) {
+            self.presentPicker()
+        }
+        photosSection.translatesAutoresizingMaskIntoConstraints = false
+
         detailsTF.delegate = self
         detailsTF.text = detailsPlaceholder
         
@@ -91,8 +131,9 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
         moodsView.delegate = self
         
         view.addSubview(scrollView)
-        scrollView.addSubview(detailsTF)
-        scrollView.addSubview(moodsView)
+        scrollView.addSubview(detailsView)
+        scrollView.addSubview(moodsSection)
+        scrollView.addSubview(photosSection)
         view.addSubview(addButton)
         setupSubviews()
     }
@@ -101,6 +142,7 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
         setupScrollView()
         setupDetailsTF()
         setupMoodsView()
+        setupPhotosSection()
         setupAddButton()
     }
     
@@ -112,24 +154,31 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
     }
     
     func setupDetailsTF() {
-        detailsTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        detailsTF.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 25).isActive = true
-        detailsTF.heightAnchor.constraint(equalToConstant: 300).isActive = true
-        detailsTF.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
+        detailsView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        detailsView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor, constant: 25).isActive = true
+        detailsView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        detailsView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
     }
     
     func setupMoodsView(){
-        moodsView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        moodsView.topAnchor.constraint(equalTo: detailsTF.bottomAnchor, constant: 15).isActive = true
-        moodsView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        moodsView.heightAnchor.constraint(equalToConstant: 105).isActive = true
+        moodsSection.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        moodsSection.topAnchor.constraint(equalTo: detailsTF.bottomAnchor, constant: 15).isActive = true
+        moodsSection.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
+        moodsSection.heightAnchor.constraint(equalToConstant: 150).isActive = true
+    }
+    
+    func setupPhotosSection(){
+        photosSection.topAnchor.constraint(equalTo: moodsView.bottomAnchor, constant: 15).isActive = true
+        photosSection.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        photosSection.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
+        photosSection.heightAnchor.constraint(equalToConstant: 150).isActive = true
     }
     
     func setupAddButton(){
-        addButton.topAnchor.constraint(equalTo: moodsView.bottomAnchor, constant: 25).isActive = true
-        addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        addButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
-        addButton.heightAnchor.constraint(equalToConstant: 64).isActive = true
+        addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
+        addButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
+        addButton.widthAnchor.constraint(equalToConstant: 96).isActive = true
+        addButton.heightAnchor.constraint(equalToConstant: 96).isActive = true
     }
     
     // Collection view delegate methods
@@ -265,7 +314,21 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
-    
+    @objc func presentPicker() {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            alertController.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { _ in
+                PhotoManager().presentPhotoPicker(parent: self.navigationController!, delegate: self, sourceType: .camera)
+            }))
+        }
+        
+        alertController.addAction(UIAlertAction(title: "Choose Photo", style: .default, handler: { _ in
+            PhotoManager().presentPhotoPicker(parent: self.navigationController!, delegate: self, sourceType: .photoLibrary)
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
