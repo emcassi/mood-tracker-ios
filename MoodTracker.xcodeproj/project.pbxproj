@@ -28,6 +28,8 @@
 		FA28FC3F2B8A04470013CECF /* AddJournalSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC3E2B8A04470013CECF /* AddJournalSection.swift */; };
 		FA28FC412B8A1B290013CECF /* JournalPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC402B8A1B290013CECF /* JournalPhotoCell.swift */; };
 		FA28FC432B8A20A50013CECF /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC422B8A20A50013CECF /* PhotoManager.swift */; };
+		FA28FC462B8A30E60013CECF /* CrisisManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC452B8A30E60013CECF /* CrisisManagementViewController.swift */; };
+		FA28FC482B8A3D670013CECF /* JournalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC472B8A3D670013CECF /* JournalHeaderView.swift */; };
 		FA3B565F290BB0A300FBA068 /* FredokaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3B565E290BB0A300FBA068 /* FredokaOne-Regular.ttf */; };
 		FA3B5662290BB48A00FBA068 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3B5661290BB48A00FBA068 /* GoogleService-Info.plist */; };
 		FA3B5665290BB6EC00FBA068 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = FA3B5664290BB6EC00FBA068 /* FirebaseAnalytics */; };
@@ -163,6 +165,8 @@
 		FA28FC3E2B8A04470013CECF /* AddJournalSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalSection.swift; sourceTree = "<group>"; };
 		FA28FC402B8A1B290013CECF /* JournalPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalPhotoCell.swift; sourceTree = "<group>"; };
 		FA28FC422B8A20A50013CECF /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		FA28FC452B8A30E60013CECF /* CrisisManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrisisManagementViewController.swift; sourceTree = "<group>"; };
+		FA28FC472B8A3D670013CECF /* JournalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalHeaderView.swift; sourceTree = "<group>"; };
 		FA3B565E290BB0A300FBA068 /* FredokaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FredokaOne-Regular.ttf"; sourceTree = "<group>"; };
 		FA3B5661290BB48A00FBA068 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA3B566A290BBCDE00FBA068 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
@@ -352,10 +356,19 @@
 			children = (
 				FA492A97291822FE00E92F9A /* AddItemViewController.swift */,
 				FA28FC402B8A1B290013CECF /* JournalPhotoCell.swift */,
+				FA28FC472B8A3D670013CECF /* JournalHeaderView.swift */,
 				FA28FC3C2B89FCF10013CECF /* AddJournalPhotosView.swift */,
 				FA28FC3E2B8A04470013CECF /* AddJournalSection.swift */,
 			);
 			path = Journal;
+			sourceTree = "<group>";
+		};
+		FA28FC442B8A30D80013CECF /* Crisis Management */ = {
+			isa = PBXGroup;
+			children = (
+				FA28FC452B8A30E60013CECF /* CrisisManagementViewController.swift */,
+			);
+			path = "Crisis Management";
 			sourceTree = "<group>";
 		};
 		FA3B5660290BB0A800FBA068 /* Fonts */ = {
@@ -442,6 +455,7 @@
 				FA7F42CF291D756D00C6EA2C /* GetAffirmationView.swift */,
 				FA3B566A290BBCDE00FBA068 /* CustomViews.swift */,
 				FA1CC9BD29268F6A00CDA101 /* DayHeader.swift */,
+				FA28FC442B8A30D80013CECF /* Crisis Management */,
 				FAB21B632B785CF900395E6A /* ChartLegend.swift */,
 				FA28FC3B2B89FCD90013CECF /* Journal */,
 				FADEC5172B7BA84A00197E8D /* SenseView.swift */,
@@ -727,6 +741,7 @@
 				FAF2D63A2B82491A009EC646 /* CenteredCollectionViewFlowLayout.swift in Sources */,
 				FAFE2B562B88CBF7005C6AD4 /* ProConCell.swift in Sources */,
 				FABDC4C42B7DD36400970BDF /* BreathManager.swift in Sources */,
+				FA28FC482B8A3D670013CECF /* JournalHeaderView.swift in Sources */,
 				FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */,
 				FA492A8B2917AB4200E92F9A /* NavVC.swift in Sources */,
 				FA28FC3F2B8A04470013CECF /* AddJournalSection.swift in Sources */,
@@ -752,6 +767,7 @@
 				FA492AA9291951A800E92F9A /* HomeItemCell.swift in Sources */,
 				FAFE2B4A2B88A33E005C6AD4 /* NewProsConsViewController.swift in Sources */,
 				FAB21B682B78D0DF00395E6A /* SenseOptionsViewController.swift in Sources */,
+				FA28FC462B8A30E60013CECF /* CrisisManagementViewController.swift in Sources */,
 				FABDC4CC2B7DF2FE00970BDF /* LearnBaseViewController.swift in Sources */,
 				FAFE2B402B886D84005C6AD4 /* ProsConsOverviewViewController.swift in Sources */,
 				FAFE2B4C2B88A975005C6AD4 /* ProsConsRadioView.swift in Sources */,
