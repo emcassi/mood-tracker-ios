@@ -16,7 +16,7 @@ class NewProConViewController: UIViewController {
 
     let topLabel: UILabel = {
         let label = UILabel()
-        label.text = "New Scenario"
+        label.text = "New Case"
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = UIColor(named: "label")
         label.textAlignment = .center
@@ -25,7 +25,7 @@ class NewProConViewController: UIViewController {
     }()
     
     let titleTF: TextField = {
-        let tf = TextField(placeholder: "What are you contemplating?")
+        let tf = TextField(placeholder: "Make a case")
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
