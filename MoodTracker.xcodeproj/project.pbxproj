@@ -24,6 +24,10 @@
 		FA20D600290B9FAA0068332C /* MoodTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20D5FF290B9FAA0068332C /* MoodTrackerUITestsLaunchTests.swift */; };
 		FA28FC382B899D620013CECF /* NewProConView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC372B899D620013CECF /* NewProConView.swift */; };
 		FA28FC3A2B89D43C0013CECF /* EditProsConsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC392B89D43C0013CECF /* EditProsConsViewController.swift */; };
+		FA28FC3D2B89FCF10013CECF /* AddJournalPhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC3C2B89FCF10013CECF /* AddJournalPhotosView.swift */; };
+		FA28FC3F2B8A04470013CECF /* AddJournalSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC3E2B8A04470013CECF /* AddJournalSection.swift */; };
+		FA28FC412B8A1B290013CECF /* JournalPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC402B8A1B290013CECF /* JournalPhotoCell.swift */; };
+		FA28FC432B8A20A50013CECF /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC422B8A20A50013CECF /* PhotoManager.swift */; };
 		FA3B565F290BB0A300FBA068 /* FredokaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3B565E290BB0A300FBA068 /* FredokaOne-Regular.ttf */; };
 		FA3B5662290BB48A00FBA068 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3B5661290BB48A00FBA068 /* GoogleService-Info.plist */; };
 		FA3B5665290BB6EC00FBA068 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = FA3B5664290BB6EC00FBA068 /* FirebaseAnalytics */; };
@@ -155,6 +159,10 @@
 		FA20D5FF290B9FAA0068332C /* MoodTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FA28FC372B899D620013CECF /* NewProConView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProConView.swift; sourceTree = "<group>"; };
 		FA28FC392B89D43C0013CECF /* EditProsConsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProsConsViewController.swift; sourceTree = "<group>"; };
+		FA28FC3C2B89FCF10013CECF /* AddJournalPhotosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalPhotosView.swift; sourceTree = "<group>"; };
+		FA28FC3E2B8A04470013CECF /* AddJournalSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalSection.swift; sourceTree = "<group>"; };
+		FA28FC402B8A1B290013CECF /* JournalPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalPhotoCell.swift; sourceTree = "<group>"; };
+		FA28FC422B8A20A50013CECF /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		FA3B565E290BB0A300FBA068 /* FredokaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FredokaOne-Regular.ttf"; sourceTree = "<group>"; };
 		FA3B5661290BB48A00FBA068 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA3B566A290BBCDE00FBA068 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
@@ -339,6 +347,17 @@
 			path = MoodTrackerUITests;
 			sourceTree = "<group>";
 		};
+		FA28FC3B2B89FCD90013CECF /* Journal */ = {
+			isa = PBXGroup;
+			children = (
+				FA492A97291822FE00E92F9A /* AddItemViewController.swift */,
+				FA28FC402B8A1B290013CECF /* JournalPhotoCell.swift */,
+				FA28FC3C2B89FCF10013CECF /* AddJournalPhotosView.swift */,
+				FA28FC3E2B8A04470013CECF /* AddJournalSection.swift */,
+			);
+			path = Journal;
+			sourceTree = "<group>";
+		};
 		FA3B5660290BB0A800FBA068 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,7 +381,6 @@
 				FABDC4BB2B7DB52800970BDF /* BreatheOptionsViewController.swift */,
 				FA492A8E2917B91800E92F9A /* CreateAccountViewController.swift */,
 				FAB21B672B78D0DE00395E6A /* SenseOptionsViewController.swift */,
-				FA492A97291822FE00E92F9A /* AddItemViewController.swift */,
 				FAB21B652B78C64B00395E6A /* SenseViewController.swift */,
 				FA492A902917DD2400E92F9A /* SelectMoodsViewController.swift */,
 				FA492A8C2917AC7600E92F9A /* HomeViewController.swift */,
@@ -385,6 +403,7 @@
 				FABDC4CD2B7DF3B900970BDF /* LearnManager.swift */,
 				FAFE2B4F2B88AFE2005C6AD4 /* ProsConsManager.swift */,
 				FAA414AE2B791C6F004EEA57 /* SenseManager.swift */,
+				FA28FC422B8A20A50013CECF /* PhotoManager.swift */,
 				FABDC4C32B7DD36400970BDF /* BreathManager.swift */,
 				FAB21B612B7856B400395E6A /* ChartManager.swift */,
 			);
@@ -424,6 +443,7 @@
 				FA3B566A290BBCDE00FBA068 /* CustomViews.swift */,
 				FA1CC9BD29268F6A00CDA101 /* DayHeader.swift */,
 				FAB21B632B785CF900395E6A /* ChartLegend.swift */,
+				FA28FC3B2B89FCD90013CECF /* Journal */,
 				FADEC5172B7BA84A00197E8D /* SenseView.swift */,
 				FAFE2B3E2B886D48005C6AD4 /* Pros and Cons */,
 				FABDC4BD2B7DB69200970BDF /* BreatheOptionView.swift */,
@@ -699,6 +719,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAF2D62F2B80B6B3009EC646 /* AddGoalViewController.swift in Sources */,
+				FA28FC3D2B89FCF10013CECF /* AddJournalPhotosView.swift in Sources */,
 				FABDC4CE2B7DF3B900970BDF /* LearnManager.swift in Sources */,
 				FAFE2B522B88B8B8005C6AD4 /* ProsConsHeaderView.swift in Sources */,
 				FAF2D6142B7F8707009EC646 /* GoalsViewController.swift in Sources */,
@@ -708,8 +729,10 @@
 				FABDC4C42B7DD36400970BDF /* BreathManager.swift in Sources */,
 				FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */,
 				FA492A8B2917AB4200E92F9A /* NavVC.swift in Sources */,
+				FA28FC3F2B8A04470013CECF /* AddJournalSection.swift in Sources */,
 				FAB21B582B77C20400395E6A /* TabbedViewController.swift in Sources */,
 				FAFA449D297FEE460068B4A8 /* EditMoodsViewController.swift in Sources */,
+				FA28FC432B8A20A50013CECF /* PhotoManager.swift in Sources */,
 				FAFA448B297E89760068B4A8 /* EditMoodCell.swift in Sources */,
 				FA17A1D12B78EAC7004C294E /* SenseSkillCell.swift in Sources */,
 				FA492A9E2918C21700E92F9A /* MoodsItem.swift in Sources */,
@@ -747,6 +770,7 @@
 				FAFE2B482B88A299005C6AD4 /* ProsConsViewController.swift in Sources */,
 				FA1630FA291A58FC0092721A /* HomeMoodCell.swift in Sources */,
 				FA492AAB291951D900E92F9A /* MoodCollectionCell.swift in Sources */,
+				FA28FC412B8A1B290013CECF /* JournalPhotoCell.swift in Sources */,
 				FA492A8F2917B91800E92F9A /* CreateAccountViewController.swift in Sources */,
 				FAFE2B442B888FC5005C6AD4 /* ProsConsOverviewHeaderView.swift in Sources */,
 				FA1CC9BE29268F6A00CDA101 /* DayHeader.swift in Sources */,
