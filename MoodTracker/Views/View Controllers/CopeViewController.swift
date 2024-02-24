@@ -19,7 +19,7 @@ class CopeViewController : UIViewController {
     
     let imageView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "cope-2")
+        view.image = UIImage(named: "cope")
         view.contentMode = .scaleAspectFit
         view.layer.cornerRadius = 15
         view.clipsToBounds = true
@@ -170,7 +170,7 @@ class CopeViewController : UIViewController {
     }
     
     @objc func crisisPressed() {
-        navigationController?.pushViewController(BreatheViewController(), animated: true)
+        navigationController?.pushViewController(CrisisManagementViewController(), animated: true)
     }
     
     @objc func wisdomPressed() {

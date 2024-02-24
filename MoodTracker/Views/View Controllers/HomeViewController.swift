@@ -81,6 +81,7 @@ class HomeViewController: UITableViewController {
         
         tableView.contentInset.bottom = 100
         tableView.register(HomeItemCell.self, forCellReuseIdentifier: "moods-item")
+        tableView.tableHeaderView = JournalHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 200))
     }
     
     func setupSubviews(){
@@ -128,7 +129,7 @@ class HomeViewController: UITableViewController {
                                 let item = MoodsItem(id: document.documentID, moods: itemMoods, details: details, timestamp: date)
                                 items.append(item)
                             } else {
-                                print("error with deets or dates")
+                                print("error with journal details or dates")
                             }
                         }
                         
@@ -149,7 +150,7 @@ class HomeViewController: UITableViewController {
                 }
             }
         } else {
-            print("No user signed in")
+            AuthManager().logout()
         }
     }
     
@@ -220,6 +221,8 @@ class HomeViewController: UITableViewController {
                 
                 if calendar.isDate(itemsByDate.key, inSameDayAs: Date.now) {
                     date = "Today"
+                } else if calendar.isDate(itemsByDate.key, inSameDayAs: Calendar.current.date(byAdding: .day, value: -1, to: .now)!) {
+                    date = "Yesterday"
                 } else {
                     
                     df.dateFormat = "EEEE, MMM d, yyyy"
