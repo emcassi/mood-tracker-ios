@@ -15,10 +15,64 @@ import AuthenticationServices
 class MudiUser {
     var user: User
     var breathOptions: BreathOptions
+    var prosCons: [ProsCons]
     
     init(_ user: User) {
         self.user = user
         self.breathOptions = BreathOptions(inhaleLength: Defaults.breathInhaleLength, exhaleLength: Defaults.breathExhaleLength, holdLength: Defaults.breathHoldLength)
+        self.prosCons = [
+            ProsCons(id: "1", title: "Quit my job", pros: [
+                ProsConsItem(id: "1-1", title: "It'll feel good temporarily", date: .now),
+                ProsConsItem(id: "1-2", title: "It could fix my sleep schedule", date: .now),
+                ProsConsItem(id: "1-3", title: "I'll have more free time", date: .now),
+            ], cons: [
+                ProsConsItem(id: "1-4", title: "I'll lose my health insurance", date: .now),
+                ProsConsItem(id: "1-5", title: "I'll lose my paycheck", date: .now),
+                ProsConsItem(id: "1-6", title: "I won't be able to continue therapy", date: .now),
+                ProsConsItem(id: "1-7", title: "I won't be able to continue school", date: .now),
+            ], createdAt: .now, updatedAt: .now),
+            ProsCons(id: "2", title: "Start Freelancing", pros: [
+                ProsConsItem(id: "2-1", title: "Flexible schedule", date: .now),
+                ProsConsItem(id: "2-2", title: "Work from anywhere", date: .now),
+                ProsConsItem(id: "2-3", title: "Choose projects I'm passionate about", date: .now),
+                ProsConsItem(id: "2-4", title: "Potential for higher income", date: .now),
+            ], cons: [
+                ProsConsItem(id: "2-5", title: "Unstable income", date: .now),
+                ProsConsItem(id: "2-6", title: "No company benefits", date: .now),
+                ProsConsItem(id: "2-7", title: "Have to manage my own taxes", date: .now),
+            ], createdAt: .now, updatedAt: .now),
+            ProsCons(id: "3", title: "Going back to school", pros: [
+                ProsConsItem(id: "3-1", title: "Improve career prospects", date: .now),
+                ProsConsItem(id: "3-2", title: "Learn new skills", date: .now),
+                ProsConsItem(id: "3-3", title: "Network with professionals", date: .now),
+            ], cons: [
+                ProsConsItem(id: "3-4", title: "High tuition costs", date: .now),
+                ProsConsItem(id: "3-5", title: "Time-consuming", date: .now),
+                ProsConsItem(id: "3-6", title: "May not guarantee a job", date: .now),
+                ProsConsItem(id: "3-7", title: "Balancing work and study", date: .now),
+            ], createdAt: .now, updatedAt: .now),
+            ProsCons(id: "4", title: "Buying a new home", pros: [
+                ProsConsItem(id: "4-1", title: "Building equity", date: .now),
+                ProsConsItem(id: "4-2", title: "Stability and security", date: .now),
+                ProsConsItem(id: "4-3", title: "Freedom to customize", date: .now),
+            ], cons: [
+                ProsConsItem(id: "4-4", title: "Significant upfront costs", date: .now),
+                ProsConsItem(id: "4-5", title: "Maintenance responsibilities", date: .now),
+                ProsConsItem(id: "4-6", title: "Property taxes", date: .now),
+                ProsConsItem(id: "4-7", title: "Risk of property value decline", date: .now),
+                ProsConsItem(id: "4-8", title: "Less mobility", date: .now),
+            ], createdAt: .now, updatedAt: .now),
+            ProsCons(id: "5", title: "Adopting a pet", pros: [
+                ProsConsItem(id: "5-1", title: "Companionship", date: .now),
+                ProsConsItem(id: "5-2", title: "Increases physical activity", date: .now),
+                ProsConsItem(id: "5-3", title: "Improves mental health", date: .now),
+            ], cons: [
+                ProsConsItem(id: "5-4", title: "Time commitment", date: .now),
+                ProsConsItem(id: "5-5", title: "Cost of care", date: .now),
+                ProsConsItem(id: "5-6", title: "Allergies", date: .now),
+                ProsConsItem(id: "5-7", title: "Travel limitations", date: .now),
+            ], createdAt: .now, updatedAt: .now),
+        ]
         AuthManager.getUserInfo()
     }
 }

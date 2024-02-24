@@ -63,7 +63,7 @@ class GoalsViewController : UIViewController {
     
     let addButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.setImage(UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30)), for: .normal)
         button.tintColor = UIColor(named: "light")
         button.backgroundColor = UIColor(named: "AccentColor")
         button.layer.cornerRadius = 48
@@ -98,16 +98,17 @@ class GoalsViewController : UIViewController {
         button.backgroundColor = UIColor(named: "AccentColor")
         button.setTitleColor(UIColor(named: "light"), for: .normal)
         button.layer.cornerRadius = 15
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 2, height: 2)
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowRadius = 15
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        timeImage.image = UIImage(named: "dusk")
-        timeLabel.text = "9:28 PM"
-        dateLabel.text = "Friday, February 16"
+        timeChanged()
     }
     
     override func viewDidLoad() {
@@ -126,7 +127,9 @@ class GoalsViewController : UIViewController {
         emptyView.addSubview(emptyButton)
         
         view.addSubview(addButton)
-
+        
+        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timeChanged), userInfo: nil, repeats: true)
+        
         setupSubviews()
     }
     
@@ -172,11 +175,48 @@ class GoalsViewController : UIViewController {
         emptyButton.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 30).isActive = true
         emptyButton.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -30).isActive = true
         emptyButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-
-        addButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -15).isActive = true
-        addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15).isActive = true
+        
+        addButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
+        addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
         addButton.widthAnchor.constraint(equalToConstant: 96).isActive = true
         addButton.heightAnchor.constraint(equalToConstant: 96).isActive = true
-
+        
+    }
+    
+    @objc func timeChanged() {
+        let df = DateFormatter()
+        df.timeStyle = .short
+        let currentTimeString = df.string(from: Date.now)
+        
+        df.dateFormat = "EEEE, MMMM d"
+        let currentDateString = df.string(from: Date.now)
+        
+        let currentCalendar = Calendar.current
+        let hour = currentCalendar.component(.hour, from: Date.now)
+        
+        if timeLabel.text != currentTimeString {
+            timeLabel.text = currentTimeString
+        }
+        
+        if dateLabel.text != currentDateString {
+            dateLabel.text = currentDateString
+        }
+        
+        switch(hour) {
+        case 0, 1, 2, 3, 4, 22, 23: // night
+            timeImage.image = UIImage(named: "night")
+            break
+        case 5, 6, 7, 8, 9: // morning
+            timeImage.image = UIImage(named: "sunrise")
+            break
+        case 10, 11, 12, 13, 14, 15, 16, 17: // day
+            timeImage.image = UIImage(named: "day")
+            break
+        case 18, 19, 20, 21: // evening
+            timeImage.image = UIImage(named: "dusk")
+            break
+        default:
+            break
+        }
     }
 }
