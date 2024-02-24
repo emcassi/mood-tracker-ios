@@ -11,7 +11,7 @@ import UIKit
 
 class EditMoodsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var parentVC: EditItemViewController! 
+    var parentVC: UIViewController!
     var selectedMoods: [Mood] = []
     
     let topLabel: UILabel = {
@@ -116,11 +116,14 @@ class EditMoodsViewController: UICollectionViewController, UICollectionViewDeleg
     
     @objc func nextPressed(){
         if selectedMoods.count > 0 {
-            
-            parentVC.moods = selectedMoods
+            if let editVC = parentVC as? EditItemViewController {
+                editVC.moods = selectedMoods
+            } else if let addVC = parentVC as? AddItemViewController {
+                addVC.moods = selectedMoods
+                addVC.moodsView.reloadData()
+            }
             
             navigationController?.popViewController(animated: true)
-            
         }
     }
     
