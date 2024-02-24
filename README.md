@@ -36,7 +36,7 @@ Mudi is an iOS app that provides users access to tools to manage their mental he
 - Motivational Quotes
 - Guided Breathing
 - The 5 Senses skill
-- Crisis Management
+- Crisis Management including hotline information for over 50 countries.
 - DBT Resources (Based on notes from my personal experience in IOP)
  
 Sign in with your Apple, Google, or Facebook account
