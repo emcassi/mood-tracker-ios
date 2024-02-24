@@ -128,6 +128,9 @@ class GoalsViewController : UIViewController {
         
         view.addSubview(addButton)
         
+        addButton.addTarget(self, action: #selector(addPressed), for: .touchUpInside)
+        emptyButton.addTarget(self, action: #selector(emptyPressed), for: .touchUpInside)
+        
         Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timeChanged), userInfo: nil, repeats: true)
         
         setupSubviews()
@@ -218,5 +221,13 @@ class GoalsViewController : UIViewController {
         default:
             break
         }
+    }
+    
+    @objc func addPressed() {
+       present(AddGoalViewController(), animated: true)
+    }
+    
+    @objc func emptyPressed() {
+       present(AddGoalViewController(), animated: true)
     }
 }
