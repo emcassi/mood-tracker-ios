@@ -47,7 +47,7 @@ With the [zenquotes.io](https://zenquotes.io/) API, you have access to encouragi
 
 Animated pie charts to help visually analyse your day
 
-Hope you like it! -Alex
+I sincerely hope it can help you. -Alex
     
 [Report Bug](https://github.com/emcassi/mood-tracker-ios/issues)
 [Request Feature](https://github.com/emcassi/mood-tracker-ios/issues)
