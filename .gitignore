@@ -1,3 +1,9 @@
+*.sqlite3
+.venv/
+.idea/
+**__pycache__**/
+
+
 # Created by https://www.toptal.com/developers/gitignore/api/swiftpackagemanager,swift,firebase
 # Edit at https://www.toptal.com/developers/gitignore?templates=swiftpackagemanager,swift,firebase
 
@@ -104,3 +110,8 @@ xcuserdata
 
 # End of https://www.toptal.com/developers/gitignore/api/swiftpackagemanager,swift,firebase
 
+
+
+*.db
+
+*.sqlite

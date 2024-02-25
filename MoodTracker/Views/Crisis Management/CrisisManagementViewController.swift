@@ -47,7 +47,7 @@ class CrisisManagementViewController : UIViewController {
     
     let hotlineButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Suicide Hotline", for: .normal)
+        button.setTitle("Find a Hotline", for: .normal)
         button.setTitleColor(UIColor(named: "label"), for: .normal)
         button.backgroundColor = UIColor(named: "panel-color")
         button.layer.cornerRadius = 15
@@ -60,6 +60,8 @@ class CrisisManagementViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        hotlineButton.addTarget(self, action: #selector(hotlinePressed), for: .touchUpInside)
         
         view.backgroundColor = UIColor(named: "bg-color")
         view.addSubview(imageView)
@@ -92,7 +94,18 @@ class CrisisManagementViewController : UIViewController {
 
         hotlineButton.leftAnchor.constraint(equalTo: hotlineLabel.leftAnchor, constant: 30).isActive = true
         hotlineButton.rightAnchor.constraint(equalTo: hotlineLabel.rightAnchor, constant: -30).isActive = true
-        hotlineButton.topAnchor.constraint(equalTo: hotlineLabel.bottomAnchor, constant: 30).isActive = true
+        hotlineButton.topAnchor.constraint(equalTo: hotlineLabel.bottomAnchor, constant: 5).isActive = true
         hotlineButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    @objc func hotlinePressed() {
+        let urlString = "https://findahelpline.com/"
+        if let url = URL(string: urlString) {
+            // Check if the application can open the URL
+            if UIApplication.shared.canOpenURL(url) {
+                // Open the URL
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
     }
 }

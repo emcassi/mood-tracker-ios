@@ -30,6 +30,12 @@
 		FA28FC432B8A20A50013CECF /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC422B8A20A50013CECF /* PhotoManager.swift */; };
 		FA28FC462B8A30E60013CECF /* CrisisManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC452B8A30E60013CECF /* CrisisManagementViewController.swift */; };
 		FA28FC482B8A3D670013CECF /* JournalHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC472B8A3D670013CECF /* JournalHeaderView.swift */; };
+		FA28FC4A2B8AA0170013CECF /* PickCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC492B8AA0170013CECF /* PickCountryViewController.swift */; };
+		FA28FC4C2B8AA1090013CECF /* HotlineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC4B2B8AA1090013CECF /* HotlineManager.swift */; };
+		FA28FC502B8AA3180013CECF /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = FA28FC4F2B8AA3180013CECF /* SQLite */; };
+		FA28FC522B8B1A5E0013CECF /* HotlineCountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC512B8B1A5D0013CECF /* HotlineCountryCell.swift */; };
+		FA28FC542B8B561B0013CECF /* mudi.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = FA28FC532B8B55350013CECF /* mudi.sqlite */; };
+		FA28FC562B8B5B960013CECF /* HotlinesByCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28FC552B8B5B960013CECF /* HotlinesByCountryViewController.swift */; };
 		FA3B565F290BB0A300FBA068 /* FredokaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3B565E290BB0A300FBA068 /* FredokaOne-Regular.ttf */; };
 		FA3B5662290BB48A00FBA068 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3B5661290BB48A00FBA068 /* GoogleService-Info.plist */; };
 		FA3B5665290BB6EC00FBA068 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = FA3B5664290BB6EC00FBA068 /* FirebaseAnalytics */; };
@@ -167,6 +173,12 @@
 		FA28FC422B8A20A50013CECF /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		FA28FC452B8A30E60013CECF /* CrisisManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrisisManagementViewController.swift; sourceTree = "<group>"; };
 		FA28FC472B8A3D670013CECF /* JournalHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalHeaderView.swift; sourceTree = "<group>"; };
+		FA28FC492B8AA0170013CECF /* PickCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickCountryViewController.swift; sourceTree = "<group>"; };
+		FA28FC4B2B8AA1090013CECF /* HotlineManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotlineManager.swift; sourceTree = "<group>"; };
+		FA28FC4D2B8AA2130013CECF /* hotlines.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = hotlines.sqlite3; sourceTree = "<group>"; };
+		FA28FC512B8B1A5D0013CECF /* HotlineCountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotlineCountryCell.swift; sourceTree = "<group>"; };
+		FA28FC532B8B55350013CECF /* mudi.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = mudi.sqlite; sourceTree = SOURCE_ROOT; };
+		FA28FC552B8B5B960013CECF /* HotlinesByCountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotlinesByCountryViewController.swift; sourceTree = "<group>"; };
 		FA3B565E290BB0A300FBA068 /* FredokaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FredokaOne-Regular.ttf"; sourceTree = "<group>"; };
 		FA3B5661290BB48A00FBA068 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA3B566A290BBCDE00FBA068 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
@@ -262,6 +274,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA28FC502B8AA3180013CECF /* SQLite in Frameworks */,
 				FA3B5665290BB6EC00FBA068 /* FirebaseAnalytics in Frameworks */,
 				FAB46A252986503100959A7E /* AdSupport.framework in Frameworks */,
 				FAFA448E297F75590068B4A8 /* FacebookCore in Frameworks */,
@@ -315,6 +328,7 @@
 		FA20D5DB290B9F8F0068332C /* MoodTracker */ = {
 			isa = PBXGroup;
 			children = (
+				FA28FC532B8B55350013CECF /* mudi.sqlite */,
 				FAFA4491297F76940068B4A8 /* MoodTracker.entitlements */,
 				FA7F42D1291D785C00C6EA2C /* Models */,
 				FA7F42CE291D755500C6EA2C /* Views */,
@@ -367,6 +381,9 @@
 			isa = PBXGroup;
 			children = (
 				FA28FC452B8A30E60013CECF /* CrisisManagementViewController.swift */,
+				FA28FC492B8AA0170013CECF /* PickCountryViewController.swift */,
+				FA28FC552B8B5B960013CECF /* HotlinesByCountryViewController.swift */,
+				FA28FC512B8B1A5D0013CECF /* HotlineCountryCell.swift */,
 			);
 			path = "Crisis Management";
 			sourceTree = "<group>";
@@ -415,6 +432,8 @@
 				FA492A9B2918A22F00E92F9A /* AuthManager.swift */,
 				FABDC4CD2B7DF3B900970BDF /* LearnManager.swift */,
 				FAFE2B4F2B88AFE2005C6AD4 /* ProsConsManager.swift */,
+				FA28FC4B2B8AA1090013CECF /* HotlineManager.swift */,
+				FA28FC4D2B8AA2130013CECF /* hotlines.sqlite3 */,
 				FAA414AE2B791C6F004EEA57 /* SenseManager.swift */,
 				FA28FC422B8A20A50013CECF /* PhotoManager.swift */,
 				FABDC4C32B7DD36400970BDF /* BreathManager.swift */,
@@ -587,6 +606,7 @@
 				FAFA448F297F75590068B4A8 /* FacebookLogin */,
 				FAFA4493297F89B20068B4A8 /* GoogleSignIn */,
 				FABDC4C82B7DF21B00970BDF /* MarkdownKit */,
+				FA28FC4F2B8AA3180013CECF /* SQLite */,
 			);
 			productName = MoodTracker;
 			productReference = FA20D5D9290B9F8F0068332C /* MoodTracker.app */;
@@ -666,6 +686,7 @@
 				FAFA448C297F75590068B4A8 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 				FAFA4492297F89B20068B4A8 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				FABDC4C72B7DF21B00970BDF /* XCRemoteSwiftPackageReference "MarkdownKit" */,
+				FA28FC4E2B8AA3180013CECF /* XCRemoteSwiftPackageReference "SQLite" */,
 			);
 			productRefGroup = FA20D5DA290B9F8F0068332C /* Products */;
 			projectDirPath = "";
@@ -683,6 +704,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA28FC542B8B561B0013CECF /* mudi.sqlite in Resources */,
 				FA20D5E9290B9FA60068332C /* LaunchScreen.storyboard in Resources */,
 				FAF2D6252B8072D1009EC646 /* Mindful Breathing.md in Resources */,
 				FABDC4E82B7EC45D00970BDF /* Urge-Surfing.md in Resources */,
@@ -745,6 +767,7 @@
 				FAFA4489297E7A4F0068B4A8 /* EditItemViewController.swift in Sources */,
 				FA492A8B2917AB4200E92F9A /* NavVC.swift in Sources */,
 				FA28FC3F2B8A04470013CECF /* AddJournalSection.swift in Sources */,
+				FA28FC4C2B8AA1090013CECF /* HotlineManager.swift in Sources */,
 				FAB21B582B77C20400395E6A /* TabbedViewController.swift in Sources */,
 				FAFA449D297FEE460068B4A8 /* EditMoodsViewController.swift in Sources */,
 				FA28FC432B8A20A50013CECF /* PhotoManager.swift in Sources */,
@@ -759,6 +782,7 @@
 				FAB21B662B78C64B00395E6A /* SenseViewController.swift in Sources */,
 				FA20D5E1290B9F8F0068332C /* WelcomeViewController.swift in Sources */,
 				FADEC5182B7BA84A00197E8D /* SenseView.swift in Sources */,
+				FA28FC4A2B8AA0170013CECF /* PickCountryViewController.swift in Sources */,
 				FA492A942917E23100E92F9A /* Moods.swift in Sources */,
 				FA1630F8291A351B0092721A /* DeleteAccountViewController.swift in Sources */,
 				FA1630F6291A1CE00092721A /* SettingsViewController.swift in Sources */,
@@ -773,6 +797,7 @@
 				FAFE2B4C2B88A975005C6AD4 /* ProsConsRadioView.swift in Sources */,
 				FA20D5DD290B9F8F0068332C /* AppDelegate.swift in Sources */,
 				FAF2D6332B81D23C009EC646 /* LearnHeaderView.swift in Sources */,
+				FA28FC562B8B5B960013CECF /* HotlinesByCountryViewController.swift in Sources */,
 				FAFE2B4E2B88AA1F005C6AD4 /* RadioButton.swift in Sources */,
 				FA7F42D3291D78E300C6EA2C /* Quote.swift in Sources */,
 				FABDC4D02B7E07BA00970BDF /* LearnViewController.swift in Sources */,
@@ -788,6 +813,7 @@
 				FA492AAB291951D900E92F9A /* MoodCollectionCell.swift in Sources */,
 				FA28FC412B8A1B290013CECF /* JournalPhotoCell.swift in Sources */,
 				FA492A8F2917B91800E92F9A /* CreateAccountViewController.swift in Sources */,
+				FA28FC522B8B1A5E0013CECF /* HotlineCountryCell.swift in Sources */,
 				FAFE2B442B888FC5005C6AD4 /* ProsConsOverviewHeaderView.swift in Sources */,
 				FA1CC9BE29268F6A00CDA101 /* DayHeader.swift in Sources */,
 				FAB21B5E2B784B1800395E6A /* ChartLegendCell.swift in Sources */,
@@ -1169,6 +1195,14 @@
 				kind = branch;
 			};
 		};
+		FA28FC4E2B8AA3180013CECF /* XCRemoteSwiftPackageReference "SQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.15.0;
+			};
+		};
 		FA3B5663290BB6EC00FBA068 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1208,6 +1242,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FA1CC9C129269FEA00CDA101 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
+		};
+		FA28FC4F2B8AA3180013CECF /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA28FC4E2B8AA3180013CECF /* XCRemoteSwiftPackageReference "SQLite" */;
+			productName = SQLite;
 		};
 		FA3B5664290BB6EC00FBA068 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
