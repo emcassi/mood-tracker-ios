@@ -19,7 +19,7 @@ class SettingsViewController: UIViewController {
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowOpacity = 0.3
-        button.layer.shadowRadius = 15
+        button.layer.shadowRadius = 3
         button.setTitleColor(UIColor(named: "label"), for: .normal)
         button.addTarget(self, action: #selector(privacyPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +35,7 @@ class SettingsViewController: UIViewController {
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowOpacity = 0.3
-        button.layer.shadowRadius = 15
+        button.layer.shadowRadius = 3
         button.setTitleColor(UIColor(named: "label"), for: .normal)
         button.addTarget(self, action: #selector(signOutPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -51,7 +51,7 @@ class SettingsViewController: UIViewController {
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowOpacity = 0.3
-        button.layer.shadowRadius = 15
+        button.layer.shadowRadius = 3
         button.setTitleColor(UIColor(named: "dangerous"), for: .normal)
         button.addTarget(self, action: #selector(deleteAccountPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false

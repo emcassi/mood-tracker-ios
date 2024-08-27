@@ -83,7 +83,7 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular, scale: .large)
         button.setImage(UIImage(systemName: "checkmark", withConfiguration: largeConfig), for: .normal)
         button.imageView?.tintColor = .white
-        button.layer.cornerRadius = 48
+        button.layer.cornerRadius = 40
         button.backgroundColor = UIColor(named: "AccentColor")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -133,7 +133,6 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
         view.addSubview(scrollView)
         scrollView.addSubview(detailsView)
         scrollView.addSubview(moodsSection)
-        scrollView.addSubview(photosSection)
         view.addSubview(addButton)
         setupSubviews()
     }
@@ -142,7 +141,6 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
         setupScrollView()
         setupDetailsTF()
         setupMoodsView()
-        setupPhotosSection()
         setupAddButton()
     }
     
@@ -177,8 +175,8 @@ class AddItemViewController : UIViewController, UITextViewDelegate, UICollection
     func setupAddButton(){
         addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
         addButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
-        addButton.widthAnchor.constraint(equalToConstant: 96).isActive = true
-        addButton.heightAnchor.constraint(equalToConstant: 96).isActive = true
+        addButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        addButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
     }
     
     // Collection view delegate methods

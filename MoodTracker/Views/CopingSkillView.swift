@@ -32,7 +32,7 @@ class CopingSkillView: UIButton {
         super.init(frame: CGRect.zero)
         
         label.text = title
-        iconView.image = UIImage(systemName: icon, withConfiguration: UIImage.SymbolConfiguration(pointSize: 36, weight: .bold, scale: .large))
+        iconView.image = UIImage(systemName: icon, withConfiguration: UIImage.SymbolConfiguration(pointSize: 26, weight: .bold, scale: .large))
         
         self.backgroundColor = UIColor(named: "panel-color")
         self.layer.cornerRadius = 15
@@ -40,7 +40,7 @@ class CopingSkillView: UIButton {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 2, height: 2)
         self.layer.shadowOpacity = 0.3
-        self.layer.shadowRadius = 15
+        self.layer.shadowRadius = 3
         
         addSubview(iconView)
         addSubview(label)
@@ -54,10 +54,10 @@ class CopingSkillView: UIButton {
     
     func setupSubviews() {
         iconView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        iconView.topAnchor.constraint(equalTo: topAnchor, constant: 30).isActive = true
+        iconView.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
         
         label.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
         label.rightAnchor.constraint(equalTo: rightAnchor, constant: -15).isActive = true
-        label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -30).isActive = true
+        label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15).isActive = true
     }
 }

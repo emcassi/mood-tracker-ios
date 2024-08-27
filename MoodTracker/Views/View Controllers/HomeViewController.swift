@@ -47,7 +47,7 @@ class HomeViewController: UITableViewController {
         button.tintColor = UIColor(named: "light")
         button.setImage(UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: 30)), for: .normal)
         button.backgroundColor = UIColor(named: "AccentColor")
-        button.layer.cornerRadius = 48
+        button.layer.cornerRadius = 40
         button.layer.zPosition = 100
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
@@ -97,8 +97,8 @@ class HomeViewController: UITableViewController {
         
         addButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -30).isActive = true
         addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
-        addButton.widthAnchor.constraint(equalToConstant: 96).isActive = true
-        addButton.heightAnchor.constraint(equalToConstant: 96).isActive = true
+        addButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        addButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
     }
     
     func getItems() {

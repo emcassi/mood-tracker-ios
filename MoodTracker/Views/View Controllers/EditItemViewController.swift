@@ -87,7 +87,7 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         button.setImage(UIImage(systemName: "plus", withConfiguration: largeConfig), for: .normal)
         button.imageView?.tintColor = .white
         button.layer.cornerRadius = 25
-        button.backgroundColor = UIColor(named: "purple")
+        button.backgroundColor = UIColor(named: "AccentColor")
         button.isHidden = true
         button.addTarget(self, action: #selector(addMoodsTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -126,7 +126,7 @@ class EditItemViewController: UIViewController, UICollectionViewDelegate, UIColl
         button.setImage(UIImage(systemName: "checkmark", withConfiguration: largeConfig), for: .normal)
         button.imageView?.tintColor = .white
         button.layer.cornerRadius = 32
-        button.backgroundColor = UIColor(named: "done")
+        button.backgroundColor = UIColor(named: "AccentColor")
         button.addTarget(self, action: #selector(bottomPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

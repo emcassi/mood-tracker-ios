@@ -1,4 +1,5 @@
 {
+  "originHash" : "02b77a0d0569b66f966c7fae3f5df207468ca6bbc68a681077898d3ddc03b883",
   "pins" : [
     {
       "identity" : "abseil-cpp-swiftpm",
@@ -154,15 +155,6 @@
       }
     },
     {
-      "identity" : "sqlite.swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/stephencelis/SQLite.swift",
-      "state" : {
-        "revision" : "e78ae0220e17525a15ac68c697a155eb7a672a8e",
-        "version" : "0.15.0"
-      }
-    },
-    {
       "identity" : "swift-algorithms",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-algorithms",
@@ -190,5 +182,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

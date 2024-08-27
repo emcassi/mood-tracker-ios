@@ -2,7 +2,7 @@
 .venv/
 .idea/
 **__pycache__**/
-
+**.DS_Store
 
 # Created by https://www.toptal.com/developers/gitignore/api/swiftpackagemanager,swift,firebase
 # Edit at https://www.toptal.com/developers/gitignore?templates=swiftpackagemanager,swift,firebase

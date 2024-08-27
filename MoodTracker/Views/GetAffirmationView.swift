@@ -83,7 +83,7 @@ class AffirmationsViewController: UIViewController {
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 2, height: 2)
         button.layer.shadowOpacity = 0.3
-        button.layer.shadowRadius = 15
+        button.layer.shadowRadius = 4
         button.addTarget(self, action: #selector(getButtonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
