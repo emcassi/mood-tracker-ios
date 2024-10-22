@@ -29,7 +29,7 @@ class AuthManager  {
     
     func setListener(navVC: NavVC){
         Auth.auth().addStateDidChangeListener { auth, user in
-            if let user = user {
+					if user != nil {
                 navVC.popToRootViewController(animated: false)
             } else {
                 navVC.pushViewController(WelcomeViewController(), animated: true)
@@ -129,43 +129,6 @@ class AuthManager  {
             guard error != nil else { return }
             // Apple user successfully re-authenticated.
             AuthManager.user = MudiUser(user)
-        }
-    }
-    
-    static func addSenseItem(sense: Sense, item: String, completion: @escaping (_ newItem: SenseItem) -> Void)  {
-        guard let user = Auth.auth().currentUser else {
-            return
-        }
-        var collectionName = ""
-        switch sense {
-        case Sense.Sight:
-            collectionName = "sight"
-            break
-        case Sense.Sound:
-            collectionName = "sound"
-            break
-        case Sense.Touch:
-            collectionName = "touch"
-            break
-        case Sense.Smell:
-            collectionName = "smell"
-            break
-        case Sense.Taste:
-            collectionName = "taste"
-            break
-        }
-        Firestore.firestore().collection("users").document(user.uid).collection("\(collectionName)-items").document().setData([
-            "item": item,
-            "added": Timestamp(date: .now),
-            "key": Double.random(in: 0..<1)
-        ]) { err in
-            if err != nil {
-                print("Error adding sense item: \(err)")
-            } else {
-                Firestore.firestore().collection("users").document(user.uid).setData(["\(collectionName)-count": FieldValue.increment(Int64(1))], merge: true) { err in
-                    completion(SenseItem(item: item, timestamp: .now))
-                }
-            }
         }
     }
     
